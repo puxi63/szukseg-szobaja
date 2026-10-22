@@ -16663,8 +16663,9 @@ function hubArch(b) {
   b.solid(Y.x0 + 0.45, Y.z0 + 0.33, Y.x0 + 1.05, Y.z0 + 0.87, 'crates', 1.02);
   for (let i = 0; i < 9; i++) b.cyl(x - 0.5 - (i % 3) * 0.12, 0, -2.6 + i * 0.62, 0.02, 0.0, 0.25 + (i % 2) * 0.15, 3, { layer: 'flat', col: 0x4a6a2a });
   b.walkRect(Y.x0, Y.z0, x - 0.4, Y.z1);
-  // The passage through the arch (walkable once open); the closed bricks are a collider until then.
-  b.walkRect(x - 0.6, -1.5, x + 0.8, 1.5);
+  // The passage through the arch (walkable once open); the closed bricks are a collider until then. It overlaps the yard
+  // and the street by more than the player radius, otherwise the shrunk walk rectangles leave a gap at both ends.
+  b.walkRect(x - 1.4, -1.5, x + 1.6, 1.5);
   b.solid(x - 0.4, -1.6, x + 0.05, 1.6, 'archWall');
   b.inter('arch', x - 0.9, 1.4, 0, 2.2, TXT.hubArchTap, () => hubOpenArch());
 }
