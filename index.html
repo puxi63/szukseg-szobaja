@@ -16716,6 +16716,9 @@ function hubOpenArch(instant = false) {
   if (!instant && typeof sfx === 'function') sfx('sparkle');
   const S = LOC.street && LOC.street.built;
   if (S) {
+    // Kept for hubCloseArch (a new game in the same page arrives in the yard again).
+    A.wall = S.solids.filter((s) => s.tag === 'archWall');
+    A.inter = S.inters.filter((i) => i.id === 'arch');
     S.solids = S.solids.filter((s) => s.tag !== 'archWall');
     S.inters = S.inters.filter((i) => i.id !== 'arch');
     WORLD.interactables = WORLD.interactables.filter((i) => i.id !== 'arch');
@@ -16724,6 +16727,26 @@ function hubOpenArch(instant = false) {
     A.group.visible = false;
     A.done = true;
   }
+}
+
+/**
+ * Puts the bricks back into the archway: a new game arrives in the closed yard even when an earlier game in this page
+ * (or the boot of a save on the street) had opened it.
+ */
+function hubCloseArch() {
+  const A = HUB.arch;
+  const S = LOC.street && LOC.street.built;
+  if (!A || !A.open || !S || !A.wall) return;
+  A.open = false;
+  A.done = false;
+  A.t = -1;
+  const pos = A.mesh.geometry.attributes.position;
+  pos.array.set(A.base);
+  pos.needsUpdate = true;
+  A.group.visible = true;
+  for (const s of A.wall) if (!S.solids.includes(s)) S.solids.push(s);
+  for (const it of A.inter) if (!S.inters.includes(it)) S.inters.push(it);
+  if (LOC.cur === LOC.street) locRegisterInteractables(LOC.street);
 }
 
 /** The arch is open unless a fresh game starts in the yard (a continued game on the street opens it at once). */
@@ -56017,6 +56040,18 @@ function endCupFrontPose(d = 2.2) {
 }
 
 /**
+ * Where the player stands after the reveal: east-north-east of the Cup on the far side from the Kóbor Grimbusz lane
+ * (HUB_BUS.z ± w / 2; the old 3.4 m front pose stood at its edge, where the bus stops), looking at the Cup.
+ */
+function endCupSafePose() {
+  const cx = HUB_ORIGIN.x + END_CUP_AT.x;
+  const cz = HUB_ORIGIN.z + END_CUP_AT.z;
+  const x = cx + 3.0;
+  const z = cz - 1.1;
+  return { x, z, yaw: locYaw(x, z, cx, cz), pitch: -0.05 };
+}
+
+/**
  * The Cup on its plinth in the street's build (once per street build): an octagonal stepped stone plinth, the silver
  * cup with the blue flames (anim, moving with the group as it rises), the collider and the X interactable.
  */
@@ -56857,7 +56892,7 @@ function endingUpdate(dt) {
     if (t >= 7.5) {
       ENDING.capOn = false;
       endCaption(null);
-      endToPlay(endCupFrontPose(3.4));
+      endToPlay(endCupSafePose());
       toast(TXT.endRevealSub, 'gold');
     }
   } else if (S === 'portkey') {
@@ -57078,7 +57113,7 @@ function endingSkip() {
     endCupRise(1);
     WK.uLit.value.set(HUB_ORIGIN.x - 10, HUB_ORIGIN.z, 999, 1);
     endCaption(null);
-    endToPlay(endCupFrontPose(3.4));
+    endToPlay(endCupSafePose());
     return true;
   }
   ENDING.swapped = false;
@@ -67276,6 +67311,25 @@ function coopElfOver(rec, out) {
   return out;
 }
 
+/**
+ * Lowest pivot height that keeps the elf's feet on top of the pile figurines around the one it fetches (the target
+ * itself excluded: the elf reaches down to it). -Infinity off a pile.
+ */
+function coopElfPileFloor(rec, x, z) {
+  const P = rec.pile && typeof PILES !== 'undefined' ? PILES.list[rec.pile - 1] : null;
+  if (!P) return -Infinity;
+  const foot = 0.1 * ELF_CFG.scale;
+  let top = -Infinity;
+  for (const r of P.recs) {
+    if (r === rec || r.state !== ST.LOOSE) continue;
+    const rr = foot + r.met.radius * r.scale;
+    if ((r.pos.x - x) ** 2 + (r.pos.z - z) ** 2 > rr * rr) continue;
+    const t = pileTopOf(r);
+    if (t > top) top = t;
+  }
+  return top + (ELF_PIV + 0.01) * ELF_CFG.scale;
+}
+
 /** Steps the fetch's phases; returns the scale factor of the elf (0 while gone). */
 function coopElfFetchStep(F, dt) {
   F.t += dt;
@@ -67322,7 +67376,11 @@ function coopElfFetchStep(F, dt) {
     case 'grab': {
       const k = Math.min(1, F.t / C.grabS);
       if (!F.taken) coopElfOver(rec, ELF.pos);
+      const hover = ELF.pos.y;
       ELF.pos.y -= 0.1 * Math.sin(Math.PI * Math.min(1, k * 1.4));
+      // The dip stops on the neighbouring pile figurines instead of sinking among them (at most 0.3 m above the hover).
+      if (F.floor === undefined) F.floor = coopElfPileFloor(rec, ELF.pos.x, ELF.pos.z);
+      if (F.floor > ELF.pos.y) ELF.pos.y = Math.min(F.floor, hover + 0.3);
       if (!F.taken && k >= 0.45) {
         F.taken = true;
         if (!coopElfTake(rec)) {
@@ -69646,6 +69704,8 @@ function newGame(skipIntro = false, seed = null) {
   resetSnitch();
   recount();
   GAME.dirty = true;
+  // The arrival is in the closed yard, even when this page had the arch open (a save on the street, an earlier game).
+  if (typeof hubCloseArch === 'function') hubCloseArch();
   startPlay();
   if (!skipIntro) {
     openMenu('letter', { text: TXT.letterIntro, title: TXT.letterTitle, onClose: () => { GAME.flags.introSeen = true; tipOnce('tipPick'); } });
