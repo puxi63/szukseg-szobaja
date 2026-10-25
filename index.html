@@ -891,7 +891,8 @@ const CAULDRON_PRICE = 30;
 const GOLD_DUST_SECONDS = 300;
 /**
  * The Varázslatpult tracks (TERV d.3). Lumos L2 lights every figurine of the reference's district, L3 lasts 50 % longer
- * with a 12 s cooldown; Invito range 99 = the whole location (cell); Útjelző L2 also shines the slot through walls and
+ * with a 12 s cooldown; Invito gathers from every location on every level (NOTES-invito-global.md: the levels raise the
+ * count and shorten the cooldown; the Snitch and nifflers are caught within INVITO_WILD_R); Útjelző L2 also shines the slot through walls and
  * makes the Polctérkép target the held type (`shine`). Elves: count / interval in s (TERV d.4, tuned by the simulation: 30 → 240 per hour).
  */
 const UPGRADES = {
@@ -905,7 +906,7 @@ const UPGRADES = {
   /** Szökkenés bűbája (DECISIONS 30a): jumping is bought; low step-ups (JUMP_TUNE.stepUp) work without it. */
   jump: { prices: [80], values: [false, true] },
   lumos: { prices: [60, 300, 750, 1200], values: [null, { dur: 12, cd: 25, whole: false }, { dur: 12, cd: 20, whole: true }, { dur: 18, cd: 12, whole: true }, { dur: 24, cd: 10, whole: true }] },
-  invito: { prices: [100, 350, 750, 1150, 1400], values: [null, { n: 3, range: 8, cd: 45 }, { n: 5, range: 14, cd: 38 }, { n: 8, range: 99, cd: 30 }, { n: 12, range: 99, cd: 30 }, { n: 16, range: 99, cd: 25 }] },
+  invito: { prices: [100, 350, 750, 1150, 1400], values: [null, { n: 3, cd: 45 }, { n: 5, cd: 38 }, { n: 8, cd: 30 }, { n: 12, cd: 25 }, { n: 16, cd: 20 }] },
   path: { prices: [30, 250], values: [null, { dur: 8, cd: 10 }, { dur: 8, cd: 10, shine: true }] },
   elves: {
     prices: [100, 200, 350, 550, 750, 950, 1150, 1350, 1550],
@@ -1153,7 +1154,7 @@ const TXT = {
   toastLumosEmpty: 'Lumos – felragyogtak a legközelebbi rendezetlen figurák.',
   toastInvito: 'Invito – jönnek a figurák!',
   toastInvitoEmpty: 'Nincs mit hívni – előbb vegyél fel egy figurát.',
-  toastInvitoNone: 'Invito – a közelben nincs több ilyen figura.',
+  toastInvitoNone: 'Invito – sehol nincs több ilyen figura.',
   toastPath: 'Útjelző bűbáj – kövesd a szikrákat.',
   toastPathEmpty: 'Útjelző bűbáj – a legközelebbi rendezetlen figurához vezet.',
   toastCooling: 'Még töltődik: {s} mp',
@@ -1272,12 +1273,10 @@ const TXT = {
     homing: { name: 'Hazatalálás bűbája', desc: 'A jó polc felé dobott figura magától a helyére repül.', val: 'bekapcsolva' },
     jump: { name: 'Szökkenés bűbája', desc: 'Felugorhatsz a padokra, asztalokra és ládákra (kb. 1 méter magasra). Alacsony lépcsőre e nélkül is fellépsz.', val: 'ugrás' },
     lumos: { name: 'Lumos', desc: 'Felragyognak a kezedben lévő figura társai. A 2. szinten a teljes csoport.', val: '{a} mp ragyogás' },
-    invito: { name: 'Invito', desc: 'A kezedben lévő figura társai hozzád repülnek. A cikeszt és a furkászokat is elkapja a közeledben.', val: '{a} figura, {b}' },
+    invito: { name: 'Invito', desc: 'A kezedben lévő figura társai minden helyszínről hozzád jönnek. A cikeszt és a furkászokat is elkapja a közeledben.', val: '{a} figura, {b} mp töltődés' },
     path: { name: 'Útjelző bűbáj', desc: 'Szikraösvény vezet a kezedben lévő figura polchelyéhez. Üres kézzel a legközelebbi rendezetlen figurához.', val: '{a} mp ösvény' },
     elves: { name: 'Házimanó-segítség', desc: 'Házimanók segítenek: időnként egy-egy figurát a helyére varázsolnak.', val: '{a} házimanó, {b} másodpercenként' },
   },
-  rangeNear: '{n} méteren belül',
-  rangeAll: 'az egész boltból',
 
   caulTitle: 'Szerencseüst',
   caulAsk: 'Dobj be {n} galleont, és kapj egy áldást!',
@@ -1707,11 +1706,10 @@ Object.assign(TXT, {
   up: {
     ...TXT.up,
     lumos: { ...TXT.up.lumos, desc: 'Felragyognak a kezedben lévő figura társai a ládákban és a földön. 2. szint: a helyszín összes figurája; 3. szint: tovább ragyog, gyorsabban töltődik.' },
-    invito: { ...TXT.up.invito, desc: 'A kezedben lévő figura társai a ládákból és a földről hozzád repülnek. A 3. szinttől az egész helyszínről.' },
+    invito: { ...TXT.up.invito, desc: 'A kezedben lévő figura társai a ládákból és a földről hozzád jönnek – minden helyszínről, az itteniek elsőként.' },
     path: { ...TXT.up.path, desc: 'Szikraösvény vezet a kezedben lévő figura helyszínének ajtajához, majd a polchelyéhez. 2. szint: a Polctérkép is oda mutat.' },
     elves: { ...TXT.up.elves, desc: 'Házimanók tesznek a helyére egy-egy figurát a ládákból – csak olyat, amilyet te már elhelyeztél, és csak ébren lévő helyszínről.' },
   },
-  rangeAll: 'az egész helyszínről',
 
   ctl: {
     ...TXT.ctl,
@@ -1980,7 +1978,7 @@ Object.assign(TXT, {
   up: {
     ...TXT.up,
     lumos: { ...TXT.up.lumos, desc: 'Üres kézzel a helyszínen felragyognak a kupac és a kosár azon figurái, amelyekre még szükség van itt. A kezedben lévő figurával a társai ragyognak fel; 2. szint: a helyszín összes figurája; 3–4. szint: tovább ragyog, gyorsabban töltődik.' },
-    invito: { ...TXT.up.invito, desc: 'A kezedben lévő figura társai a kupacból (alulról is), a kosárból és a földről hozzád repülnek. A 3. szinttől az egész helyszínről.' },
+    invito: { ...TXT.up.invito, desc: 'A kezedben lévő figura társai a kupacokból (alulról is), a kosarakból és a földről hozzád jönnek – minden helyszínről, az itteniek elsőként. A szintek több figurát hívnak, és gyorsabban töltődnek.' },
     path: { ...TXT.up.path, desc: 'Szikraösvény vezet a kezedben lévő figura helyszínének ajtajához, majd a polchelyéhez. Üres kézzel a téren a legtöbb munkát rejtő kupac ajtajához, a helyszínen a kupac egy szükséges figurájához. 2. szint: a Polctérkép is oda mutat.' },
     elves: { ...TXT.up.elves, desc: 'Házimanók tesznek a helyére egy-egy figurát a kupacok tetejéről és a kosarakból – csak olyat, amilyet te már elhelyeztél, és csak ébren lévő helyszínről.' },
   },
@@ -53363,8 +53361,10 @@ function unseat(rec) {
   SHELF.markersDirty = true;
 }
 
-/** Detaches a record from a crate tray or the Talált tárgyak basket (it is about to move). */
+/** Detaches a record from its slot, a crate tray, the Talált tárgyak basket or its pile (it is about to move). */
 function recDetach(rec) {
+  // A record still seated here would leave a stale occupant (an unpickable copy drawn on the shelf, NOTES-invito-global).
+  if (rec.slot) unseat(rec);
   if (rec.crate >= 0 && typeof crateRelease === 'function') crateRelease(rec);
   if (rec.lost && typeof lostRelease === 'function') lostRelease(rec);
   if (rec.pile) pileLeave(rec);
@@ -53681,7 +53681,14 @@ function actionPick() {
     catchSnitch();
     return;
   }
-  const rec = AIM.fig;
+  // AIM is from the previous frame's updateAim: since then a house-elf, the Invito queue or the co-op elf may have taken
+  // that figurine into a flight. Grabbing it then gave it two owners (the hand and the running flight), and a fast
+  // place left a copy stuck in mid-air or a stale slot reservation (NOTES-invito-global.md 2): aim again instead.
+  let rec = AIM.fig;
+  if (rec && !aimTakeable(rec)) {
+    updateAim();
+    rec = AIM.fig && aimTakeable(AIM.fig) ? AIM.fig : null;
+  }
   if (!rec) return;
   if (GAME.stack.length >= stackCapacity()) {
     toast(TXT.toastHandsFull, 'bad');
@@ -53691,8 +53698,16 @@ function actionPick() {
   takeIntoStack(rec, true);
 }
 
+/** Can the aimed record still be picked up now (resting, in the pick hash, not covered, not owned by a flight)? */
+function aimTakeable(rec) {
+  return isPickable(rec.state) && rec.cell >= 0 && !rec.inStack && !(rec.pile && rec.covered) && !SCRIPTS.includes(rec);
+}
+
 /** Moves a world figurine into the stack (from a crate tray, the floor, a shelf, the basket, or a caught runaway). */
 function takeIntoStack(rec, byHand) {
+  // Already held: a second entry of the same handle would be placed twice (one copy stuck in mid-air).
+  if (rec.inStack) return;
+  stopScript(rec);
   // A stray from a location's pile (58-piles.js): the Talált tárgyak tip, once.
   if (byHand && rec.pile && rec.district >= 0 && rec.district !== rec.pile - 1) tipOnce('tipStray');
   startHandFlight(rec);
@@ -53756,6 +53771,8 @@ function actionPlace() {
 
 /** Scripted flight from the current pose into a slot position; the placement resolves on arrival. */
 function flyIntoSlot(rec, slot, posIdx, dur, homing) {
+  // A running flight's reservation goes first (startScript would otherwise free this new one if it is the same).
+  stopScript(rec);
   slot.occupants[posIdx] = rec.h;
   const p = slot.positions[posIdx];
   startScript(rec, p.x, p.y, p.z, slot.yaws[posIdx], dur, 'slot', { slot, posIdx, homing });
@@ -53765,11 +53782,25 @@ function flyToFloor(rec, x, y, z, yaw, dur) {
   startScript(rec, x, y, z, yaw, dur, 'floor', null);
 }
 
+/**
+ * Ends a record's running scripted flight without its arrival (a new flight or the hand takes it over) and frees the slot
+ * position the flight had reserved, so no stale reservation and no second SCRIPTS entry remain.
+ */
+function stopScript(rec) {
+  const i = SCRIPTS.indexOf(rec);
+  if (i < 0) return;
+  SCRIPTS.splice(i, 1);
+  const f = rec.fly;
+  const d = f && (f.kind === 'slot' || f.kind === 'elf') ? f.data : null;
+  if (d && d.slot && d.slot.occupants[d.posIdx] === rec.h) d.slot.occupants[d.posIdx] = -1;
+}
+
 function startScript(rec, x, y, z, yaw, dur, kind, data) {
   if (rec.state === ST.FLYING) {
     const i = SIMS.indexOf(rec);
     if (i >= 0) SIMS.splice(i, 1);
   }
+  stopScript(rec);
   recDetach(rec);
   setState(rec, ST.SCRIPT);
   KIT.setMode(rec.h, FIG_MODE.LOOSE);
@@ -53976,10 +54007,7 @@ function actionThrow() {
 
 /** Starts simulating a record; rec.pos is the centre of the figure while it flies. */
 function startSim(rec) {
-  if (rec.state === ST.SCRIPT) {
-    const i = SCRIPTS.indexOf(rec);
-    if (i >= 0) SCRIPTS.splice(i, 1);
-  }
+  if (rec.state === ST.SCRIPT) stopScript(rec);
   if (rec.slot) unseat(rec);
   recDetach(rec);
   setState(rec, ST.FLYING);
@@ -54138,6 +54166,7 @@ function recoverLost(force) {
     const bad = rec.pos.y < -0.3 || !inRoom(rec.pos.x, rec.pos.z) || insideCollider(rec.pos.x, rec.pos.z, rec.pos.y + 0.02);
     if (!bad) {
       rec.oobT = 0;
+      if (looseResettle(rec)) n++;
       continue;
     }
     rec.oobT += force ? 99 : 2;
@@ -54149,6 +54178,26 @@ function recoverLost(force) {
   n += looseEnforceCap();
   if (n) markDirty();
   return n;
+}
+
+/**
+ * A loose figurine of the current place that rests clearly above the highest surface under it (a copy left in mid-air
+ * by the fast-place bug, also from a save written then, or one put down on a full pile) drops onto that surface with
+ * its orientation kept. Only in the built place it was left in (its tables are known). Returns true when it moved.
+ */
+function looseResettle(rec) {
+  if (rec.nudge || rec.hopT > 0 || rec.wild || rec.loc !== SHELF.loc) return false;
+  if (typeof LOC !== 'undefined' && LOC.ready && !(LOC.cur && LOC.cur.built)) return false;
+  const g = groundAt(rec.pos.x, rec.pos.z, rec.pos.y + 0.05, true);
+  const r = rec.met.radius * rec.scale;
+  if (rec.pos.y - g <= r + 0.05) return false;
+  const lying = Math.abs(tv3.set(0, 1, 0).applyQuaternion(rec.quat).y) < 0.7;
+  rec.pos.y = g + (lying ? r * 0.92 : 0);
+  rec.lying = lying;
+  rec.groundY = g;
+  syncRec(rec);
+  hashUpdate(rec);
+  return true;
 }
 
 function updateRecovery(dt) {
@@ -55023,7 +55072,7 @@ function upgradeValueText(key, level) {
     case 'homing':
     case 'jump': return t.val;
     case 'lumos': return fmt(t.val, { a: v.dur });
-    case 'invito': return fmt(t.val, { a: v.n, b: v.range >= 99 ? TXT.rangeAll : fmt(TXT.rangeNear, { n: v.range }) });
+    case 'invito': return fmt(t.val, { a: v.n, b: v.cd });
     case 'path': return fmt(t.val, { a: v.dur });
     case 'elves': return fmt(t.val, { a: v.n, b: v.every });
     default: return '';
@@ -55183,44 +55232,82 @@ function castLumos(lvl) {
   return true;
 }
 
+/**
+ * Invito (NOTES-invito-global.md): the reference's copies come from every location (the street, the ten interiors,
+ * A Gyűjtő Csarnoka): loose on a floor or in a crate tray, in a pile (from below too), in a Talált tárgyak basket, or on
+ * a wrong shelf place; never a correctly shelved copy, the pool or one already in a flight. The ones here fly to the
+ * hand first (nearest, uncovered first); the others pop into the hand with a sparkle. Every level reaches every place;
+ * the levels raise the count (cfg.n) and shorten the cooldown. The Snitch and nifflers are caught within INVITO_WILD_R.
+ */
+const INVITO_WILD_R = 6;
+/** Copies within this distance and in the player's place fly visibly; the rest pop into the hand. */
+const INVITO_HERE_R = 30;
+
+function invitoTakeable(rec) {
+  if (rec.actor || rec.inStack || rec.coopElf || rec.pileQ) return false;
+  if (rec.state === ST.WILD) return !!rec.wild && rec.wild.mode !== 'dig';
+  return rec.state === ST.LOOSE || rec.state === ST.SHELF_WRONG;
+}
+
+/** Is the record in the player's place (drawn here; it can fly to the hand), or in another location? */
+function invitoHere(rec, eye) {
+  if (!recResident(rec)) return false;
+  if (rec.slot || rec.pile || (rec.lost && rec.basket >= 0 && rec.basket < 10)) return true;
+  if (typeof LOC === 'undefined' || !LOC.ready || typeof locAt !== 'function') return true;
+  return rec.pickC.distanceTo(eye) <= INVITO_HERE_R && locAt(rec.pos.x, rec.pos.z) === locAt(PLAYER.pos.x, PLAYER.pos.z);
+}
+
 function castInvito(lvl) {
   const cfg = UPGRADES.invito.values[lvl];
   const ref = spellReference();
   const eye = camera.position;
   const extra = [];
-  if (SNITCH.state !== 'off' && SNITCH.pos.distanceTo(eye) < 6) extra.push('snitch');
+  if (SNITCH.state !== 'off' && SNITCH.pos.distanceTo(eye) < INVITO_WILD_R) extra.push('snitch');
   for (const rec of REC) {
-    if (rec.state === ST.WILD && rec.wild && rec.wild.kind === 'scurrier' && rec.wild.mode !== 'dig' && rec.pickC.distanceTo(eye) < 6) extra.push(rec);
+    if (rec.state === ST.WILD && rec.wild && rec.wild.kind === 'scurrier' && rec.wild.mode !== 'dig' && rec.pickC.distanceTo(eye) < INVITO_WILD_R) extra.push(rec);
   }
   if (!ref && !extra.length) {
     toast(TXT.toastInvitoEmpty);
     return false;
   }
   const list = [];
+  let full = false;
   if (ref) {
-    for (const rec of REC) {
-      if (rec === ref || rec.actor || rec.id !== ref.id) continue;
-      if (rec.state !== ST.LOOSE && rec.state !== ST.SHELF_WRONG && rec.state !== ST.WILD) continue;
-      if (rec.state === ST.WILD && rec.wild && rec.wild.mode === 'dig') continue;
-      // Only the current location's piles, basket and floor (58-piles.js); a covered pile figurine is pulled out too.
-      if (!recResident(rec)) continue;
-      if (rec.pickC.distanceTo(eye) > cfg.range) continue;
-      list.push(rec);
+    const here = [];
+    const away = [];
+    const h0 = SHELF.h0.get(ref.id);
+    // The copies of a type are consecutive handles (designHandles), so only its SHELF_COPIES records are scanned.
+    const n0 = h0 === undefined ? 0 : SHELF_COPIES;
+    for (let c = 0; c < n0; c++) {
+      const rec = REC[h0 + c];
+      if (!rec || rec === ref || rec.id !== ref.id || !invitoTakeable(rec)) continue;
+      if (invitoHere(rec, eye)) here.push(rec);
+      // A runaway niffler only runs where the player is.
+      else if (rec.state !== ST.WILD) away.push(rec);
     }
     // Uncovered figurines first (pulling one out from under others makes those settle down).
-    list.sort((a, b) => a.pickC.distanceToSquared(eye) + (isCovered(a) ? 100 : 0) - b.pickC.distanceToSquared(eye) - (isCovered(b) ? 100 : 0));
-    list.length = Math.min(list.length, cfg.n);
+    here.sort((a, b) => a.pickC.distanceToSquared(eye) + (isCovered(a) ? 100 : 0) - b.pickC.distanceToSquared(eye) - (isCovered(b) ? 100 : 0));
+    away.sort((a, b) => (isCovered(a) ? 1 : 0) - (isCovered(b) ? 1 : 0) || a.h - b.h);
+    list.push(...here.slice(0, cfg.n));
+    // From the other places only as many as the hands can still hold (they would land at the player's feet otherwise).
+    const room = stackCapacity() - GAME.stack.length - INVITO.queue.length - list.length;
+    const nAway = Math.max(0, Math.min(cfg.n - list.length, room));
+    list.push(...away.slice(0, nAway));
+    full = !list.length && away.length > 0 && room <= 0;
   }
   for (const e of extra) if (e !== 'snitch' && !list.includes(e)) list.push(e);
   const caught = extra.includes('snitch') ? catchSnitch() : false;
   if (!list.length) {
-    if (!extra.length) toast(TXT.toastInvitoNone);
+    if (full) {
+      toast(TXT.toastHandsFull, 'bad');
+      sfx('deny');
+    } else if (!extra.length) toast(TXT.toastInvitoNone);
     // The cooldown is only spent when something really happened (full hands leave the Snitch flying).
     return caught;
   }
   toast(TXT.toastInvito);
   sfx('invito');
-  INVITO.queue.push(...list);
+  for (const rec of list) INVITO.queue.push({ rec, here: rec.state === ST.WILD || invitoHere(rec, eye) });
   INVITO.t = 0;
   return true;
 }
@@ -55230,8 +55317,10 @@ function updateInvito(dt) {
   INVITO.t -= dt;
   if (INVITO.t > 0) return;
   INVITO.t = 0.15;
-  const rec = INVITO.queue.shift();
-  if (!rec || (rec.state !== ST.LOOSE && rec.state !== ST.SHELF_WRONG && rec.state !== ST.WILD)) return;
+  const { rec, here } = INVITO.queue.shift();
+  // Taken meanwhile (by hand, a house-elf, the co-op elf, the owl…): skipped.
+  if (!rec || !invitoTakeable(rec)) return;
+  if (!here && GAME.stack.length >= stackCapacity()) return;
   if (rec.slot) unseat(rec);
   if (rec.state === ST.WILD) {
     rec.wild = null;
@@ -55243,6 +55332,19 @@ function updateInvito(dt) {
     toast(fmt(TXT.toastHidden, { name: rec.d.nameHu }), 'gold');
   }
   leavePile(rec);
+  if (!here) {
+    // From another location (its pile, basket, floor or shelf is not drawn here): no flight through the walls; it
+    // appears with a sparkle about a metre in front of the player, low on the right, and settles into the hand.
+    recDetach(rec);
+    tv1.set(0.22, -0.28, -0.95).applyMatrix4(camera.matrixWorld);
+    rec.pos.copy(tv1);
+    rec.quat.setFromAxisAngle(UP_AXIS, PLAYER.yaw + Math.PI);
+    rec.viewScale = rec.scale * 0.6;
+    takeIntoStack(rec, false);
+    puff(tv1.x, tv1.y, tv1.z, 0.18, [0.7, 0.85, 1.0], 8);
+    sfx('pop');
+    return;
+  }
   const feet = vec3(PLAYER.pos.x - Math.sin(PLAYER.yaw) * 0.5, 0, PLAYER.pos.z - Math.cos(PLAYER.yaw) * 0.5);
   tv1.set(STACK_VIEW.x, STACK_VIEW.y, STACK_VIEW.z).applyMatrix4(camera.matrixWorld);
   startScript(rec, tv1.x, tv1.y, tv1.z, PLAYER.yaw, 1.2, 'stack', { feet });
