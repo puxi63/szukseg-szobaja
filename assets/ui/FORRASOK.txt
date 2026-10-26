@@ -1,0 +1,27 @@
+Felület – B csomag: Pergamen és posta (NOTES-uiB.md)
+=====================================================
+
+Ebben a csomagban NINCS letöltött kép, textúra vagy hangfájl.
+
+Pergamen, újságpapír, viaszpecsét, Rivalló-boríték, bagoly, varázskönyv, Csokibéka-kártya:
+  - mind CSS-színátmenet és a játékban már meglévő, kóddal generált SVG-zaj (feTurbulence),
+    illetve a játék saját, kézzel rajzolt SVG-alakzatai (bagoly, boríték, mozdulatrajzok).
+  - A "mozgó fénykép" és a kártyák portréi a játék saját figuráinak előre sütött képei
+    (assets/figs/impostors.png, a játék saját buildje készíti).
+
+Hangok (Rivalló kiáltása, bagolyhuhogás, lapozás):
+  - WebAudio-szintézis a játék kódjában (55-audio.js primitívjei), nincs hangfájl.
+
+Betűk (Google Fonts, SIL Open Font License 1.1; a játék futás közben a Google Fonts-ról tölti,
+a service worker a betűtárba menti):
+  - Uncial Antiqua – Astigmatic (Brian J. Bonislawsky), OFL 1.1
+    https://fonts.google.com/specimen/Uncial+Antiqua
+    a Reggeli Próféta fejléce, a kártyák felirata
+  - Almendra – Ana Sanfelippo, OFL 1.1
+    https://fonts.google.com/specimen/Almendra
+    a varázskönyv címei, a rovatok és a hirdetések fejei; csak a normál vastagság
+    (az Almendra Bold latin-ext részéből hiányzik az ő és az ű, ezért nem használjuk)
+  - Mindkettőben megvan az ő, ű, Ő, Ű (ellenőrizve: 2026-10-26, böngészős glifmérés).
+  - A Cinzel Decorative-ban is megvan, de nem kellett.
+
+Nem használunk: filmzenét, Warner-logót, filmes betűtípust, filmből kivágott képet.
