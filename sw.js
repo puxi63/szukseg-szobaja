@@ -4,7 +4,7 @@
    First visit (PERF-PLAN.md 6.W13): nothing big is precached while the game loads its own files; whatever the page
    fetches is cached as it goes, and the rest of the site is precached only when the page asks for it after the
    first play session (message 'precache'). */
-const CACHE = 'szukseg-szobaja-8737cb73c5';
+const CACHE = 'szukseg-szobaja-71749fc299';
 
 /* Google Fonts and the three.js modules live in caches of their own, which a version bump does not wipe: the URLs
    are versioned by their hosts, so a stored copy stays right. */
@@ -558,6 +558,7 @@ const FILES = [
   './assets/figures-baked/yusuf_kama.json',
   './assets/figures-baked/zouwu.json',
   './assets/figures/index.json',
+  './assets/ui/FORRASOK.txt',
   './icons/apple-touch-icon.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
@@ -586,6 +587,7 @@ const CDN = [
 
 const FONT_SHEETS = [
   'https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Titan+One&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600;700&display=swap',
+  'https://fonts.googleapis.com/css2?family=Almendra&family=Uncial+Antiqua&display=swap',
 ];
 
 /* The font stylesheets and the latin / latin-ext font files they name are fetched at install, because the first
