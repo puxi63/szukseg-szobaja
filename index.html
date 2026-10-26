@@ -1443,8 +1443,12 @@ const TXT = {
 const SHELF_UNIT = {
   w: 3.45, d: 0.95, levels: [0.12, 0.92, 1.72], top: 2.55, signTop: 3.1, slotW: 1.15, side: 0.06, board: 0.035,
   colPitch: 0.205, rowPitch: 0.178, riser: 0.07, rowOff: 0.05125, frontRow: -0.12, rows: 4, perRow: 5,
-  /** Slot plate on the board's front lip (TERV a.4 / e.2): name 0.075 m, counter 0.10 m, lit. */
-  plate: { w: 0.95, h: 0.15, y: -0.085, z: 0.012, tilt: 8 },
+  /**
+   * Slot plate on the board's front lip (TERV a.4 / e.2): name and variant at the left, the x/20 counter at the right,
+   * lit. z: the gap between the fascia's front face and the plate's top edge, which leans back by `tilt` degrees (the
+   * plate stands in front of the fascia over its whole height: NOTES-fixes.md 1).
+   */
+  plate: { w: 0.95, h: 0.16, y: -0.085, z: 0.004, tilt: 8 },
   /** Unit header in the sign band (e.1): district numeral, name and slot range. */
   header: { w: 3.3, h: 0.5, y: 2.83 },
   /** Light strip under each board's front lip and the lit back panel per level (e.4); emissive, no bloom. */
@@ -2323,6 +2327,120 @@ Object.assign(TXT, {
     'A földön hagyott figurák a Talált tárgyak kosarába kerülnek, amikor elhagyod a helyszínt.',
     'Minden helyszín ajtaja fölött a kerület száma és jele áll.',
   ],
+});
+
+/* ---- 19c-txt-uic.js ---- */
+/* ==== 19c-txt-uic.js — the Hungarian strings of UI/UX package C "Haladás" (szoba/ui-csomagok.md C, NOTES-uiC.md): the
+   RBF certificates (86-ui-c.js), the pause item that reopens them, and the lines of the talking portraits. Official
+   Hungarian names: Phineas Nigellus Black, Armando Dippet, Kövér Dáma, Sir Cadogan, Cornelius Caramel, Caractacus Burke,
+   Leta Lestrange, Horatius Lumpsluck, Ampók, Matilda Weasley, A Főnix Rendje, RBF (the O.W.L.s), Kiváló / Várakozáson
+   felüli / Elfogadható (the passing O.W.L. grades). Our own wording: the "Rendrakási Vizsgabizottság" and every line the
+   portraits say. Templates never put a suffix on a variable (Hungarian vowel harmony): names stand alone or after a colon.
+   Merged over TXT after the other text sections. ==== */
+
+Object.assign(TXT, {
+  /* ---- 7. RBF certificates ---- */
+  uicPause: 'RBF-bizonyítványok',
+  uicKick: 'Vizsgaeredmények',
+  uicCertTitle: 'RBF-bizonyítvány',
+  uicCertBoard: 'Szükség Szobája · Rendrakási Vizsgabizottság',
+  uicCertIntro: 'A Vizsgabizottság igazolja, hogy a rendrakó minden polcot hiánytalanul feltöltött ezen a helyszínen:',
+  uicCertWho: 'Rendrakó: {name}',
+  uicCertRoom: '{room}',
+  uicCertDistrict: '{n}. kerület · {cat}',
+  uicCertGroup: 'Polccsoport',
+  uicCertAcc: 'Hibátlan lerakás',
+  uicCertPace: 'Tempó',
+  uicCertGrade: 'Osztályzat',
+  uicCertPaceVal: '{s} mp / figura',
+  uicCertAccVal: '{p} %',
+  uicGrades: { K: 'Kiváló', V: 'Várakozáson felüli', E: 'Elfogadható' },
+  uicCertSum: 'Összesítés: {k} Kiváló, {v} Várakozáson felüli, {e} Elfogadható',
+  uicCertIssued: 'Kiállítva: {date} · {h}. játékóra',
+  uicCertRetro: 'Visszamenőleg kiállítva: az osztályzatok egy része a korábbi mentés adataiból becsült.',
+  uicCertRule: 'Az osztályzat a hibátlan lerakások arányából (háromnegyed súllyal) és a tempóból (negyed súllyal) jön.',
+  uicCertSign: 'a Vizsgabizottság nevében',
+  uicCertClose: 'Tovább',
+  uicCertsTitle: 'RBF-bizonyítványok',
+  uicCertsSub: 'Minden mester helyszínért bizonyítvány jár, polccsoportonként egy osztályzattal.',
+  uicCertsNone: 'még nincs · {pct} % a helyén',
+  uicCertsVal: '{k} K · {v} V · {e} E',
+  uicCertsCount: '{n} / 10 bizonyítvány',
+  uicCertsLocked: 'Ehhez a helyszínhez még nincs bizonyítványod: töltsd fel minden polcát!',
+
+  /* ---- 8. Talking portraits ----
+     Each portrait: name (the bubble's title), and its line pools: group (a shelf group of the room completed; they
+     applaud), away (the player has not been here for a long time), tip (a hint in character; the general hints of
+     TXT.cfTips are mixed in after uicTipLead). */
+  uicTipLead: ['Egy jó tanács: ', 'Hallgass rám: ', 'Súgok valamit: ', 'Tudtad? '],
+  uicPortraits: {
+    phineas: {
+      name: 'Phineas Nigellus Black',
+      group: ['Hm. Egy egész polc. Szinte már elfogadható.', 'Lám, egy újabb polc rendben. Azért ne bízd el magad.', 'Egy Black is elismeri: ez szép munka volt.'],
+      away: ['Ó, visszatértél? Már azt hittem, végleg elhagytad ezt a szerény termet.', 'Milyen kegyes tőled, hogy ismét megtisztelsz minket.'],
+      tip: ['Egy mardekáros sosem cipel feleslegesen: előbb nézd meg, mi hiányzik a polcról.', 'A Rendező bűbáj a lusták és a bölcsek varázslata. Te melyik vagy?'],
+    },
+    dippet: {
+      name: 'Armando Dippet',
+      group: ['Kitűnő, kitűnő! Ilyen rendet utoljára az én időmben láttam.', 'Bravó, fiatal barátom, bravó!'],
+      away: ['Á, egy ismerős arc! Kezdtem aggódni, hogy eltévedtél a lépcsőkön.', 'Régen láttalak! A polcok már hiányoltak.'],
+      tip: ['Fiatal barátom, a házimanók szívesen segítenek. Csak engedd őket dolgozni.', 'Ne siess annyira! A rossz helyre tett figura csak visszatart.'],
+    },
+    fatLady: {
+      name: 'Kövér Dáma',
+      group: ['Ó, csodálatos! Erre a polcra ráférne egy ária!', 'Lalalaa! Egy újabb polc, tökéletes rendben!'],
+      away: ['Hát itt vagy! Jelszó nélkül is beengedlek, csak ne maradj el ennyi ideig.', 'Végre! Már senki sem hallgatta az énekemet.'],
+      tip: ['Kedvesem, a névtábla pirosra vált, ha rossz helyre került a figura.', 'A legendás figurák csillognak, mint egy jó kristálypohár. Többet is érnek!'],
+    },
+    cadogan: {
+      name: 'Sir Cadogan',
+      group: ['Hajrá, nemes lovag! Újabb polc hódolt be!', 'Kardot ki! Ez a csoport a miénk!'],
+      away: ['Ki merészel ilyen sokáig távol maradni? Gyáva kutya! Ó, te vagy az. Üdvözöllek!', 'Hosszú volt a hadjárat, barátom? Az erőd várt rád!'],
+      tip: ['Ne hátrálj meg egy halom figura előtt! Rohamra!', 'Egy jó lovag előbb felméri a terepet: nézz rá a Polctérképre!'],
+    },
+    fudge: {
+      name: 'Cornelius Caramel',
+      group: ['Pompás! Ezt még a Reggeli Prófétának is meg kell írnia.', 'Látják? Minden a legnagyobb rendben van!'],
+      away: ['Á, maga az! Hivatalosan is üdvözlöm újra a Minisztériumban.', 'Már azt hittem, elnyelte a Hop-hálózat.'],
+      tip: ['A Hop-por kandallók összekötik a helyszíneket. Nagyon minisztériumi megoldás, nemde?', 'Egy jó hivatalnok mindent iktat: a Gyűjtőnapló pontosan mutatja, mi hiányzik még.'],
+    },
+    burke: {
+      name: 'Caractacus Burke',
+      group: ['Hm. Ennyi kincs egy polcon… megfelelő ár mellett megérné.', 'Rendes munka. A Borgin & Burkes nem tűr rendetlenséget.'],
+      away: ['Visszajöttél. Mindenki visszajön ide előbb-utóbb.', 'Rég jártál a Zsebpiszok közben. Okos dolog volt.'],
+      tip: ['Ami nem ide tartozik, azt vidd a Talált tárgyak kosarához. Ingyen semmi sincs, de a Bagolyposta hazaviszi.', 'A Szerencseüst néha többet ad vissza, mint amennyit belédobsz. Néha.'],
+    },
+    leta: {
+      name: 'Leta Lestrange',
+      group: ['Newt is ilyen gondosan rendezi a lényeit… Szép munka.', 'Milyen rend! Nem is hinnéd, hogy egy bőröndben vagyunk.'],
+      away: ['Annyi ideig nem jöttél, hogy már a lények is kérdeztek felőled.'],
+      tip: ['Ebben a bőröndben minden lénynek megvan a helye. A figuráknak is.', 'A talapzat zománcgyűrűje elárulja, melyik helyszínre való egy figura.'],
+    },
+    matilda: {
+      name: 'Matilda Weasley',
+      group: ['Szép! Ezért tíz pont jár a házadnak.', 'Ezt nevezem rendnek! Így kell ezt csinálni.'],
+      away: ['Hát itt vagy végre! A Szükség Szobája mindig ott van annak, akinek szüksége van rá.'],
+      tip: ['A Szükség Szobája annak segít, aki tudja, mit keres: a Gyűjtőnapló megmondja.', 'Egy második kontrollerrel egy házimanó is beszállhat a munkába.'],
+    },
+    slughorn: {
+      name: 'Horatius Lumpsluck',
+      group: ['Pompás, drága barátom! Ezt a fényképet kitenném a többi mellé.', 'Kiváló, kiváló! A Lump Klubban mindig mondtam, hogy tehetséges vagy.'],
+      away: ['Drága fiam, de rég láttalak! Gyere, gyere, mesélj!'],
+      tip: ['Egy kis Felix Felicis csodákra képes: nagyobb ládák, kevesebb kóborló.', 'A díszítés nem hiúság, drága barátom: minden fokozat több galleont hoz.'],
+    },
+    griphook: {
+      name: 'Ampók',
+      group: ['Pontos munka. A koboldok értékelik a rendet.', 'Egy polc, hiánytalanul. Ez már majdnem kobold munka.'],
+      away: ['Megint itt. A széfje kamatozott, amíg távol volt.'],
+      tip: ['A Gringotts-széfben tartott galleon kamatozik, amíg játszik. Tudja ezt minden kobold.', 'Minden figurából húsz darab van. Egy kobold mindig megszámolja.'],
+    },
+    order: {
+      name: 'A Főnix Rendje – régi fénykép',
+      group: ['Az egész Rend tapsol! Valaki füttyent is a háttérben.', 'A fényképen mindenki integet: ez a polc is kész!'],
+      away: ['A fényképen mindenki felnéz: rég jártál erre!'],
+      tip: ['Hagrid szerint egy kis teával minden jobban megy. A polcrendezés is.', 'A régi Rend tagjai összetartottak. A figurák is a társaik mellett érzik jól magukat.'],
+    },
+  },
 });
 
 /* ---- 20-figures-data.js ---- */
@@ -13362,6 +13480,10 @@ const SHELF = {
 /** First number of the spare slot ids: the n-th spare place of a district is "<district key>:<50 + n>" in every layout. */
 const SHELF_SPARE_BASE = 50;
 
+/** Depth of a board's fascia (the strip the plates hang on) and its front face (unit-local z; its box is centred at 0.005). */
+const SHELF_FASCIA_D = 0.03;
+const SHELF_FASCIA_FRONT = 0.005 + SHELF_FASCIA_D / 2;
+
 /** Themed unit headers (FIG_SHELF_GROUPS, NOTES-shelf-groups.md): on, except in #stress (every district resident at once). */
 function shelfGroupsOn() {
   return typeof FIG_SHELF_GROUPS !== 'undefined' && Array.isArray(FIG_SHELF_GROUPS) && !STRESS.on;
@@ -13863,7 +13985,7 @@ function shelfBuildUnit(D, a, ui, B, S, pal, typesByKey) {
     shelfBox(B, a, 0, ly - U.board / 2, -U.d / 2, iw, U.board, U.d - 0.02, pal.board);
     const fTop = ly;
     const fBot = Math.max(0, ly - 0.17);
-    shelfBox(B, a, 0, (fTop + fBot) / 2, 0.005, iw + 0.02, fTop - fBot, 0.03, pal.trim);
+    shelfBox(B, a, 0, (fTop + fBot) / 2, 0.005, iw + 0.02, fTop - fBot, SHELF_FASCIA_D, pal.trim);
     // Stepped risers: the back rows stand higher (3 steps of the riser height).
     for (let st = 1; st <= 3; st++) {
       const zFront = U.frontRow - (st - 0.5) * U.rowPitch;
@@ -13929,7 +14051,10 @@ function shelfNewSlot(D, unit, a, lv, c, s, d, info) {
   };
   const py = Math.max(0.065, ly - 0.085);
   const ph = Math.min(U.plate.h, 2 * py - 0.01);
-  slot.platePos = { p: shelfToWorld(a, (c - 1) * U.slotW, py, U.plate.z + 0.012), h: ph };
+  // The fascia's front face is at z = SHELF_FASCIA_FRONT; the plate's centre stands far enough in front of it that the
+  // top edge, leaning back by the tilt, stays in front too (it used to sink into the fascia and hide the name's top).
+  const pz = SHELF_FASCIA_FRONT + U.plate.z + (ph / 2) * Math.sin(U.plate.tilt * DEG);
+  slot.platePos = { p: shelfToWorld(a, (c - 1) * U.slotW, py, pz), h: ph };
   SHELF.slots.push(slot);
   SHELF.slotById.set(slot.id, slot);
   D.slots.push(slot);
@@ -14102,7 +14227,21 @@ function shelfDrawSigns() {
 
 /* ---- plates (one instanced draw for every slot; text cells assigned to the nearest units) ---- */
 
-const SHELF_PLATE_GRID = { cw: 512, ch: 64, cols: 4, rows: 32 };
+/**
+ * Plate text cells: 512 × 84 (the plate's own aspect, 0.95 × 0.16 m, so the text is not stretched), 4 × 24 cells = 96
+ * (10 units) in the same 2048-wide atlas (2016 rows).
+ */
+const SHELF_PLATE_GRID = { cw: 512, ch: 84, cols: 4, rows: 24 };
+
+/**
+ * Plate text layout in cell pixels: [largest, smallest] font size per line kind (the name one line or two, the variant
+ * one line or two), the counter's size and width, the margins. Every block is centred vertically in the cell.
+ */
+const SHELF_PLATE_TEXT = {
+  pad: 10, gap: 12, lineGap: 3, margin: 4,
+  count: [42, 20], countSoft: 28, countW: 132,
+  name: [40, 28], name2: [32, 22], variant: [30, 22], variant2: [24, 17], variantMin: 14,
+};
 
 function shelfBuildPlates() {
   const n = SHELF.slots.length;
@@ -14194,6 +14333,60 @@ function shelfPlateFlush(max) {
   }
 }
 
+/**
+ * Lays out a plate's text block (cell pixels, maxW wide, h tall): the name on one line (auto-fit), or on two when it
+ * does not fit at the smallest one-line size; the variant below it on one line, or on two the same way (only under a
+ * one-line name). A block taller than the cell shrinks as a whole. Returns [{ text, px, weight, y }] (y: the middle).
+ */
+function shelfPlateLines(ctx, name, variant, maxW, h) {
+  const T = SHELF_PLATE_TEXT;
+  const fits = (text, px, weight) => {
+    ctx.font = BODY_FONT(px, weight);
+    return ctx.measureText(text).width <= maxW;
+  };
+  const fit = (texts, hi, lo, weight) => {
+    let px = hi;
+    while (px > lo && texts.some((t) => !fits(t, px, weight))) px--;
+    return px;
+  };
+  let names = [name];
+  let np = fit(names, T.name[0], T.name[1], 800);
+  if (!fits(name, np, 800) && name.includes(' ')) {
+    names = splitTwoLines(name);
+    np = fit(names, T.name2[0], T.name2[1], 800);
+  }
+  let vars = variant ? [variant] : [];
+  let vp = 0;
+  if (variant) {
+    const one = names.length === 1 ? T.variant : T.variant2;
+    vp = fit(vars, one[0], one[1], 700);
+    if (!fits(variant, vp, 700) && variant.includes(' ') && names.length === 1) {
+      vars = splitTwoLines(variant);
+      vp = fit(vars, T.variant2[0], T.variant2[1], 700);
+    }
+    // Last resort for a very long word: smaller still (the plate never clips a line).
+    vp = fit(vars, vp, T.variantMin, 700);
+  }
+  const block = () => names.length * np + vars.length * vp + T.lineGap * (names.length + vars.length - 1);
+  const room = h - 2 * T.margin;
+  if (block() > room) {
+    const k = room / block();
+    np = Math.floor(np * k);
+    vp = Math.floor(vp * k);
+  }
+  const out = [];
+  let y = (h - block()) / 2;
+  for (const t of names) {
+    out.push({ text: t, px: np, weight: 800, y: y + np / 2 + 1 });
+    y += np + T.lineGap;
+  }
+  for (const t of vars) {
+    out.push({ text: t, px: vp, weight: 700, y: y + vp / 2 + 1 });
+    y += vp + T.lineGap;
+  }
+  return out;
+}
+
 /** Draws a plate cell: the name (and the variant below it) at the left, the x/20 counter at the right. */
 function shelfDrawPlateCell(slot, look) {
   const P = SHELF.plates;
@@ -14213,30 +14406,20 @@ function shelfDrawPlateCell(slot, look) {
       ctx.fillText(count, w / 2, h / 2 + 2);
       return;
     }
+    const T = SHELF_PLATE_TEXT;
     ctx.textAlign = 'right';
     let cw = 0;
     if (count) {
-      shelfFitFont(ctx, count, look === 'asleep' || look === 'soon' ? 28 : 44, 150, 18, 800);
-      cw = ctx.measureText(count).width + 14;
-      ctx.fillText(count, w - 10, h / 2 + 2);
+      const soft = look === 'asleep' || look === 'soon';
+      shelfFitFont(ctx, count, soft ? T.countSoft : T.count[0], T.countW, T.count[1], 800);
+      cw = ctx.measureText(count).width + T.gap;
+      ctx.fillText(count, w - T.pad, h / 2 + 2);
     }
     ctx.textAlign = 'left';
-    const maxW = w - cw - 18;
-    if (variant) {
-      shelfFitFont(ctx, name, 31, maxW, 16, 800);
-      ctx.fillText(name, 10, h * 0.32 + 1);
-      shelfFitFont(ctx, variant, 21, maxW, 12, 600);
-      ctx.fillText(variant, 10, h * 0.76 + 1);
-    } else {
-      const lines = ctx.measureText(name).width > maxW && name.includes(' ') ? splitTwoLines(name) : [name];
-      if (lines.length === 1) {
-        shelfFitFont(ctx, name, 34, maxW, 16, 800);
-        ctx.fillText(name, 10, h / 2 + 2);
-      } else {
-        shelfFitFont(ctx, lines[0].length > lines[1].length ? lines[0] : lines[1], 27, maxW, 14, 800);
-        ctx.fillText(lines[0], 10, h * 0.3 + 1);
-        ctx.fillText(lines[1], 10, h * 0.74 + 1);
-      }
+    const lines = shelfPlateLines(ctx, name, variant, w - cw - 2 * T.pad, h);
+    for (const l of lines) {
+      ctx.font = BODY_FONT(l.px, l.weight);
+      ctx.fillText(l.text, T.pad, l.y);
     }
   });
   P.cell.setXYZW(slot.plateIdx, r[0], r[1], r[2], r[3]);
@@ -65471,7 +65654,7 @@ function initSlotLabels() {
     '  background: rgba(14, 9, 6, 0.86); color: #f6ecd4; border: 0.25vh solid rgba(246, 236, 212, 0.18);',
     '  font: 700 calc(2.9vh * var(--ts, 1)) / 1.12 "Source Sans 3", "Segoe UI", Arial, sans-serif; text-align: center; white-space: nowrap; }',
     '.slot-label .n, .slot-label .v { display: block; overflow: hidden; text-overflow: ellipsis; }',
-    '.slot-label .v { font-weight: 600; font-size: 0.68em; opacity: 0.85; }',
+    '.slot-label .v { font-weight: 600; font-size: 0.8em; color: #fbf3e0; }',
     '.slot-label .c { display: block; font-size: 0.9em; color: #f2c45a; font-variant-numeric: tabular-nums; }',
     '.slot-label.done { background: rgba(120, 78, 12, 0.92); }',
     '.slot-label.wrong .c { color: #ff8a7a; }',
@@ -65486,7 +65669,7 @@ function initSlotLabels() {
     const e = el('div', 'slot-label');
     e.innerHTML = '<span class="n"></span><span class="v"></span><span class="c"></span>';
     SLOT_LABELS.root.append(e);
-    SLOT_LABELS.els.push({ e, n: e.children[0], v: e.children[1], c: e.children[2], cls: '', key: '', x: -1, y: -1, hidden: false });
+    SLOT_LABELS.els.push({ e, n: e.children[0], v: e.children[1], c: e.children[2], cls: '', key: '', x: -1, y: -1, hidden: false, fitKey: '' });
   }
   UI.hud.append(SLOT_LABELS.root);
 }
@@ -65512,6 +65695,33 @@ function slotLabelsUnit() {
     if (front < SHELF_LABELS.near) u = null;
   }
   return u;
+}
+
+/**
+ * Auto-fit of a label's name and variant (NOTES-fixes.md 1): a line wider than the label shrinks (to 72 % / 78 % of
+ * its size) before the ellipsis cuts it. Measured on a canvas (no layout); redone only when the text, the label width
+ * (in 4 px steps), the window height or the text size changes.
+ */
+function slotLabelFit(o, pitch, H) {
+  const ts = SETTINGS.textSize || 1;
+  const fitKey = `${o.key}|${Math.round(pitch / 4)}|${H}|${ts}`;
+  if (o.fitKey === fitKey) return;
+  o.fitKey = fitKey;
+  if (!SLOT_LABELS.mctx) SLOT_LABELS.mctx = makeCanvas(4, 4).getContext('2d');
+  const ctx = SLOT_LABELS.mctx;
+  const px = 0.029 * H * ts;
+  // The label's inner width: its max width less the padding (0.8vh) and border (0.25vh) on both sides.
+  const inner = Math.max(60, pitch) - 0.021 * H;
+  const scale = (text, size, weight, min) => {
+    if (!text) return 1;
+    ctx.font = BODY_FONT(size, weight);
+    const w = ctx.measureText(text).width;
+    return w > inner ? Math.max(min, inner / w) : 1;
+  };
+  const fn = scale(o.n.textContent, px, 700, 0.72);
+  const fv = scale(o.v.textContent, px * 0.8, 600, 0.78);
+  o.n.style.fontSize = fn < 1 ? `${fn.toFixed(3)}em` : '';
+  o.v.style.fontSize = fv < 1 ? `${(0.8 * fv).toFixed(3)}em` : '';
 }
 
 function updateSlotLabels(dt) {
@@ -65549,7 +65759,7 @@ function updateSlotLabels(dt) {
   }
   let gx = 0;
   let gy = 0;
-  const ch = Math.round(H * 0.092 * (SETTINGS.textSize || 1));
+  const ch = Math.round(H * 0.096 * (SETTINGS.textSize || 1));
   if (panel) {
     const a = L.unit.anchor;
     L.v.copy(L.unit.center).project(camera);
@@ -65576,6 +65786,7 @@ function updateSlotLabels(dt) {
       // A spare place shows only its wrong copies (they can stand there too).
       o.c.textContent = !s.nameHu ? (s.wrong ? `✕${s.wrong}` : '') : s.wrong ? `${count} · ✕${s.wrong}` : count;
     }
+    slotLabelFit(o, pitch, H);
     let x;
     let y;
     let off = false;
@@ -66065,6 +66276,11 @@ MENU_BUILDERS.pause = () => {
   items.push(menuItem(escapeHtml(TXT.pauseResume), () => closeMenu()));
   items.push(menuItem(escapeHtml(TXT.pauseMap), () => openMenu('map', { tab: 0 })));
   items.push(menuItem(escapeHtml(TXT.pauseMissing), () => openMenu('book')));
+  // UI package C (86-ui-c.js): the RBF certificates of the mastered rooms.
+  if (typeof uicPauseItem === 'function') {
+    const cert = uicPauseItem();
+    if (cert) items.push(cert);
+  }
   items.push(menuItem(escapeHtml(TXT.pauseRules), () => openMenu('map', { tab: 1 })));
   items.push(menuItem(escapeHtml(TXT.pauseControls), () => openMenu('controls')));
   items.push(menuItem(escapeHtml(TXT.pauseSettings), () => openMenu('settings')));
@@ -73259,7 +73475,7 @@ onSettingChanged = ((prev) => function uiaOnSettingChanged(key) {
 const UIA = {
   settingsMigrated: false,
   hooks: { groupComplete: [] },
-  stats: { ok: 0, okSparkles: 0, wrong: 0, groups: 0, chimes: 0 },
+  stats: { ok: 0, okSparkles: 0, wrong: 0, groups: 0, chimes: 0, chimesBaked: 0 },
   chime: { last: -1, step: 0, at: -9 },
   flares: [],
   events: [],
@@ -73273,7 +73489,8 @@ const WAND = {
   q0: new THREE.Quaternion(), qa: new THREE.Quaternion(), e: new THREE.Euler(0, 0, 0, 'YXZ'),
   tipLocal: new THREE.Vector3(0, WAND_LEN, 0), tip: new THREE.Vector3(), m: new THREE.Matrix4(),
   cast: null, u: 0, t: 0, lastYaw: 0, lastPitch: 0, lagYaw: 0, lagPitch: 0, col: [1, 0.9, 0.72], colK: 0,
-  stats: { casts: { sort: 0, invito: 0, pack: 0 }, p2Casts: 0, sparks: 0, frames: 0, ms: 0, maxMs: 0 },
+  /** Tick cost; over2: ticks over 2 ms (a preempted thread shows as one or two, a real cost as many). */
+  stats: { casts: { sort: 0, invito: 0, pack: 0 }, p2Casts: 0, sparks: 0, frames: 0, ms: 0, maxMs: 0, over2: 0 },
 };
 /** The cast animations: duration (s) and the colour of the tip and the sparks. */
 const WAND_CASTS = {
@@ -73611,6 +73828,7 @@ function wandTick(dt) {
   W.stats.frames++;
   W.stats.ms += ms;
   if (ms > W.stats.maxMs) W.stats.maxMs = ms;
+  if (ms > 2) W.stats.over2++;
 }
 
 /** Test / debug view of the wand: visibility, the cast, the tip and the butt on screen (NDC). */
@@ -73709,16 +73927,75 @@ function uiaChime(quiet) {
   C.last = now;
   try {
     const t = now + 0.012;
-    const n = UIA_CHIME_NOTES[C.step];
-    const v = quiet ? 0.022 : 0.04;
-    tone(midi(n), 'sine', t, 0.55, v, AUDIO.fx, { attack: 0.004 });
-    tone(midi(n) * 2.76, 'sine', t, 0.22, v * 0.22, AUDIO.fx, { attack: 0.002 });
-    tone(midi(n + 12), 'sine', t + 0.05, 0.3, v * 0.3, AUDIO.fx, { attack: 0.004 });
+    const B = UIA_CHIME_BANK;
+    if (B.buffers.length === UIA_CHIME_NOTES.length) {
+      // The baked note: one buffer source into the persistent level gain (no oscillators, gains or envelopes).
+      const src = AUDIO.ctx.createBufferSource();
+      src.buffer = B.buffers[C.step];
+      src.connect(quiet ? B.quiet : B.loud);
+      src.start(t);
+      UIA.stats.chimesBaked++;
+    } else {
+      const n = UIA_CHIME_NOTES[C.step];
+      const v = quiet ? UIA_CHIME_LEVEL.quiet : UIA_CHIME_LEVEL.loud;
+      for (const p of UIA_CHIME_PARTIALS) tone(midi(n + p.semi) * p.mul, 'sine', t + p.at, p.dur, v * p.vol, AUDIO.fx, { attack: p.attack });
+    }
   } catch {
     /* audio is optional */
   }
   UIA.stats.chimes++;
   return true;
+}
+
+/** The chime's levels (normal / a Pakk! flight) and the three partials of its bell (TERV: a soft bell). */
+const UIA_CHIME_LEVEL = { loud: 0.04, quiet: 0.022 };
+const UIA_CHIME_PARTIALS = [
+  { semi: 0, mul: 1, at: 0, dur: 0.55, vol: 1, attack: 0.004 },
+  { semi: 0, mul: 2.76, at: 0, dur: 0.22, vol: 0.22, attack: 0.002 },
+  { semi: 12, mul: 1, at: 0.05, dur: 0.3, vol: 0.3, attack: 0.004 },
+];
+
+/**
+ * The chime notes baked once (NOTES-fixes.md 2): one mono AudioBuffer per note of UIA_CHIME_NOTES with the three
+ * partials at unit level, and two persistent gains (the normal and the quiet level) into the effects bus. A chime is
+ * then one buffer source instead of three oscillators and three gains with six envelope ramps, so a fast run of
+ * placements (a Pakk! lands up to 20) no longer creates and discards WebAudio nodes by the dozen. Baked one note per
+ * audio tick once the context runs (about 0.3 ms each); until then the chime plays the oscillators as before.
+ */
+const UIA_CHIME_BANK = { buffers: [], loud: null, quiet: null };
+
+function uiaChimeBake() {
+  const B = UIA_CHIME_BANK;
+  if (B.buffers.length >= UIA_CHIME_NOTES.length || !audioReady()) return;
+  const ctx = AUDIO.ctx;
+  if (!B.loud) {
+    B.loud = ctx.createGain();
+    B.loud.gain.value = UIA_CHIME_LEVEL.loud;
+    B.loud.connect(AUDIO.fx);
+    B.quiet = ctx.createGain();
+    B.quiet.gain.value = UIA_CHIME_LEVEL.quiet;
+    B.quiet.connect(AUDIO.fx);
+  }
+  const sr = ctx.sampleRate;
+  const end = Math.max(...UIA_CHIME_PARTIALS.map((p) => p.at + p.dur));
+  const buf = ctx.createBuffer(1, Math.ceil(end * sr) + 1, sr);
+  const d = buf.getChannelData(0);
+  const n = UIA_CHIME_NOTES[B.buffers.length];
+  // The oscillator envelope of tone(): 0.0001 → vol (exponential, the attack) → 0.0001 (exponential, to the end), at
+  // the loud level's absolute floor.
+  const floor = 0.0001 / UIA_CHIME_LEVEL.loud;
+  for (const p of UIA_CHIME_PARTIALS) {
+    const w = (2 * Math.PI * midi(n + p.semi) * p.mul) / sr;
+    const i0 = Math.round(p.at * sr);
+    const len = Math.min(d.length - i0, Math.round(p.dur * sr));
+    const up = Math.max(1, Math.round(p.attack * sr));
+    const v = Math.max(2 * floor, p.vol);
+    for (let i = 0; i < len; i++) {
+      const g = i < up ? floor * Math.pow(v / floor, i / up) : v * Math.pow(floor / v, (i - up) / Math.max(1, len - up));
+      d[i0 + i] += g * Math.sin(w * i);
+    }
+  }
+  B.buffers.push(buf);
 }
 
 /** The wrong place: a soft, dull thud (no sparkle). */
@@ -74181,6 +74458,7 @@ function uiaGraveyardStop() {
 audioTick = ((prev) => function uiaAudioTick(dt) {
   prev(dt);
   try {
+    uiaChimeBake();
     ambaTick(dt);
     // The graveyard bed stops by itself once the graveyard no longer ticks it (left, skipped).
     if (UIA_GRAVE.on && performance.now() - (UIA_GRAVE.lastAt || 0) > 500) uiaGraveyardStop();
@@ -74208,6 +74486,1872 @@ function uiaInfo() {
     stats: { ...UIA.stats }, events: UIA.events.slice(-20), flares: UIA.flares.map((f) => ({ key: f.u.key, t: +f.t.toFixed(2), amt: +(f.amt || 0).toFixed(2) })),
     hooks: UIA.hooks.groupComplete.length, ambVol: SETTINGS.ambVol, ambient: SETTINGS.ambient, settingsMigrated: UIA.settingsMigrated,
     amb: { room: AMBA.room, loops: AMBA.loops.length, starts: { ...AMBA.stats.starts }, events: JSON.parse(JSON.stringify(AMBA.stats.events)), stops: AMBA.stats.stops, gain: AUDIO.amb ? +AUDIO.amb.gain.value.toFixed(4) : null },
+  };
+}
+
+/* ---- 86-ui-c.js ---- */
+/* ==== 86-ui-c.js — UI/UX package C "Haladás" (szoba/ui-csomagok.md C, DECISIONS 50–51, NOTES-uiC.md):
+   6. the gem hourglasses (one per room beside its exit door, the row of ten on the Abszol út square), 7. the RBF
+   certificate of a mastered room (grades per shelf group, reopened from the Szünet menu), 8. the talking portraits.
+
+   Override pattern (one module scope; this section runs after every other game section): bindings are reassigned and
+   call the previous one — makeSaveData / applySaveData / resetGameState (the save's extra `uic` record),
+   onCorrectPlacement / finishScript (per shelf group: placements, errors, time), masteryStart (the certificate),
+   buildLocationInterior(+Async) and buildHub (the dynamic meshes), animateWorld / updateCoop (per frame), MENU_BUILDERS
+   (two menus; the pause item comes from one line in 61-menus.js, uicPauseItem). Package A's hook uiaOnGroupComplete
+   makes the portraits applaud.
+
+   Rendering: the static parts (wall panel, bracket shelf, end caps and posts of every hourglass; the gilded frames of
+   the portraits) are baked into the location's own WKBuilder mesh: WKBuilder.prototype.finishSteps is wrapped and adds
+   them to the room's main builder (name = location id; 'street' for the hub) before its bake, in the normal build and
+   in every pre-build template alike (+0 draw calls). The dynamic parts are ONE mesh per hourglass placement (gems, the
+   inner gem column, the falling stream and the glass in one geometry and one ShaderMaterial; the street's ten share one
+   mesh): the fill is a uniform per room (a gem is visible when its rank is below the fill, the column's vertices are
+   clamped to the level), so there is no draw call per gem. The portraits of a room are ONE mesh (one quad each) that
+   samples the figurine impostor atlas (29-figures-impostor.js) with a slow sway: +1 draw call per room.
+   The bubbles are two pooled DOM nodes, positioned only while one is shown. ==== */
+
+/* ------------------------------------------------------------------------------------------------
+   Configuration
+   ------------------------------------------------------------------------------------------------ */
+
+/**
+ * Hourglass beside the exit door, room-local: x / z = the wall surface point, yaw = facing into the room (WKBuilder
+ * convention: local +z → (sin yaw, cos yaw)), y = the bracket shelf's top, s = scale (1 → the glass is 1 m tall).
+ * Every spot was probed (wall flat and nothing within 2.6 m in front of it, NOTES-uiC.md 2) and is above head height:
+ * no collider, nothing on the floor.
+ */
+const UIC_HG_ROOMS = {
+  // The Great Hall's exit wall is lined with units: its glass hangs high on the wall past the first unit.
+  nagyterem: { x: -7.0, z: 21.0, yaw: Math.PI, y: 4.55, s: 1.35 },
+  tanari: { x: -1.75, z: 17.13, yaw: Math.PI, y: 2.05, s: 0.85 },
+  miniszterium: { x: -3.45, z: 18.94, yaw: Math.PI, y: 2.0, s: 0.8 },
+  borgin: { x: -2.6, z: 10.0, yaw: Math.PI, y: 2.0, s: 0.85 },
+  hagrid: { x: -1.55, z: 10.26, yaw: Math.PI, y: 2.05, s: 0.8 },
+  gothe: { x: -2.6, z: 21.96, yaw: Math.PI, y: 2.85, s: 0.9 },
+  szukseg: { x: -3.6, z: 13.0, yaw: Math.PI, y: 2.75, s: 0.9 },
+  bajital: { x: -7.3, z: 13.0, yaw: Math.PI, y: 2.25, s: 0.85 },
+  weasley: { x: -2.6, z: 18.5, yaw: Math.PI, y: 2.15, s: 1.0 },
+  trofea: { x: -0.4, z: 13.98, yaw: Math.PI, y: 2.3, s: 0.85 },
+};
+/** The square's row (hub-local): x of the ten (district order, I at the east end: left to right for the viewer facing the wall), the back wall's surface z at the shelf, the shelf top, scale. */
+const UIC_HG_STREET = { xs: [-9.9, -10.5, -11.1, -11.7, -12.3, -12.9, -13.5, -14.1, -14.7, -15.3], z: 13.9, yaw: Math.PI, y: 2.42, s: 0.88 };
+
+/**
+ * The portraits (8.): room, wall point (local), yaw, centre height, canvas size (m), kind ('paint' = an oil painting
+ * in a gilded frame, 'photo' = a moving wizard photograph in a dark frame), the figurines (catalog type keys) and how
+ * each is cropped from its impostor: 'framed' = the figurine is itself a portrait (its inner canvas), 'bust' = head and
+ * shoulders, 'half' = waist up. TXT.uicPortraits[id] holds the lines.
+ */
+const UIC_PORTRAITS = [
+  { id: 'fatLady', room: 'nagyterem', x: 10.97, z: 1.0, yaw: -Math.PI / 2, y: 2.75, w: 1.15, h: 1.5, kind: 'paint', figs: [{ key: 'fat_lady', crop: 'framed', box: [0.15, 0.235, 0.85, 0.915] }], bg: 0x3a2a1a },
+  { id: 'phineas', room: 'tanari', x: -4.98, z: 3.5, yaw: Math.PI / 2, y: 2.55, w: 0.75, h: 1.0, kind: 'paint', figs: [{ key: 'phineas_nigellus_black_portrait', crop: 'framed', box: [0.15, 0.225, 0.85, 0.915] }], bg: 0x1e2a1c },
+  { id: 'dippet', room: 'tanari', x: 4.98, z: 3.2, yaw: -Math.PI / 2, y: 2.55, w: 0.75, h: 1.0, kind: 'paint', figs: [{ key: 'armando_dippet', crop: 'bust', bb: [2, 5, 61, 125] }], bg: 0x2a1e30 },
+  { id: 'fudge', room: 'miniszterium', x: 11.96, z: 15.5, yaw: -Math.PI / 2, y: 2.6, w: 0.9, h: 1.2, kind: 'paint', figs: [{ key: 'cornelius_fudge', crop: 'bust', bb: [2, 9, 61, 125] }], bg: 0x1c2a22 },
+  { id: 'burke', room: 'borgin', x: 3.5, z: -9.97, yaw: 0, y: 2.45, w: 0.75, h: 1.0, kind: 'paint', figs: [{ key: 'caractacus_burke', crop: 'bust', bb: [2, 15, 61, 125] }], bg: 0x141810, dark: true },
+  { id: 'order', room: 'hagrid', x: -10.18, z: 1.3, yaw: Math.PI / 2, y: 3.15, w: 0.8, h: 0.53, kind: 'photo',
+    figs: [{ key: 'alastor_moody', crop: 'half', bb: [3, 5, 60, 125] }, { key: 'lily_potter', crop: 'half', bb: [2, 7, 61, 125] }, { key: 'albus_dumbledore', crop: 'half', bb: [6, 4, 56, 125] }, { key: 'rubeus_hagrid_umbrella', crop: 'half', bb: [5, 4, 57, 125] }, { key: 'remus_lupin_teacher', crop: 'half', bb: [3, 4, 60, 125] }], bg: 0x6a5a44 },
+  { id: 'leta', room: 'gothe', x: -16.98, z: 10.0, yaw: Math.PI / 2, y: 2.4, w: 0.6, h: 0.8, kind: 'photo', figs: [{ key: 'leta_lestrange', crop: 'bust', bb: [2, 3, 61, 125] }], bg: 0x6a5a44 },
+  { id: 'matilda', room: 'szukseg', x: 10.97, z: -1.5, yaw: -Math.PI / 2, y: 2.55, w: 0.8, h: 1.05, kind: 'paint', figs: [{ key: 'hl_matilda_weasley', crop: 'bust', bb: [3, 4, 60, 125] }], bg: 0x2a1c14 },
+  { id: 'slughorn', room: 'bajital', x: 1.5, z: -12.88, yaw: 0, y: 2.5, w: 0.5, h: 0.62, kind: 'photo', figs: [{ key: 'horace_slughorn_armchair', crop: 'half', bb: [2, 27, 61, 125] }], bg: 0x6a5a44 },
+  { id: 'griphook', room: 'weasley', x: -8.96, z: 15.5, yaw: Math.PI / 2, y: 2.5, w: 0.8, h: 1.05, kind: 'paint', figs: [{ key: 'griphook', crop: 'bust', bb: [2, 36, 61, 125] }], bg: 0x2a2416 },
+  { id: 'cadogan', room: 'trofea', x: 10.98, z: 9.5, yaw: -Math.PI / 2, y: 2.5, w: 0.85, h: 1.1, kind: 'paint', figs: [{ key: 'sir_cadogan', crop: 'framed', box: [0.13, 0.28, 0.87, 0.8] }], bg: 0x24301c },
+];
+
+/** Talk rules (s of play time): "rarely, never spammy" (szoba/ui-csomagok.md 8). */
+const UIC_TALK = {
+  gapS: 45, // between any two bubbles
+  groupGapS: 12, // a completed group may speak this soon after another bubble (the applause is always shown)
+  perPortraitS: 120,
+  tipEveryS: 300, // of time spent inside rooms, between two tips
+  tipNearM: 7, // a tip only when the player is this near and looks towards the portrait
+  awayS: 1200, // "you have not been here for a long time"
+  windowS: 600, windowMax: 6, // at most this many bubbles in any 10 minutes
+  showS: 5.2, clapGapS: 3,
+};
+/** Grades: a weighted score of the error-free ratio (acc) and the pace (s of active time per figurine). */
+const UIC_GRADE = { accLow: 0.6, accHigh: 0.98, paceFast: 8, paceSlow: 40, wAcc: 0.75, K: 0.85, V: 0.6, gapCapS: 45, firstGapS: 10 };
+
+const UIC = {
+  // Saved (data.uic): per shelf group [ok, wrong, active seconds, estimated placements]; certificates; shown mask; last visits.
+  u: new Map(), cert: {}, seen: 0, visit: new Array(10).fill(-1), from: 'new',
+  lastPlaceS: -1,
+  // Runtime.
+  hg: null, pt: null, bubbles: [], talk: { lastS: -999, by: {}, log: [], tipT: 0, pending: null }, pendingCert: null,
+  stats: { placed: 0, wrong: 0, certs: 0, popups: 0, bubbles: 0, claps: 0, suppressed: 0, roomBuilds: 0, buildMs: [], tickMs: 0, tickN: 0, tickMax: 0 },
+  events: [], err: 0,
+};
+
+/* ------------------------------------------------------------------------------------------------
+   Shelf-group statistics and grades
+   ------------------------------------------------------------------------------------------------ */
+
+function uicUnitRec(u) {
+  let r = UIC.u.get(u.key);
+  if (!r) {
+    r = [0, 0, 0, 0];
+    UIC.u.set(u.key, r);
+  }
+  return r;
+}
+
+/** Figurines a unit holds when full (its type slots' capacity). */
+function uicUnitCapacity(u) {
+  let n = 0;
+  for (const s of u.slots) if (s.type) n += s.capacity;
+  return n;
+}
+
+function uicUnitCorrect(u) {
+  let n = 0;
+  for (const s of u.slots) if (s.type) n += s.correct;
+  return n;
+}
+
+/** Active time credited to a placement by the player: the gap since the previous one, capped. */
+function uicCreditTime() {
+  const now = GAME.playS;
+  const gap = UIC.lastPlaceS < 0 ? UIC_GRADE.firstGapS : Math.max(0, now - UIC.lastPlaceS);
+  UIC.lastPlaceS = now;
+  return Math.min(UIC_GRADE.gapCapS, gap);
+}
+
+/** Grade of one group: { acc, pace, score, g: 'K' | 'V' | 'E' }. */
+function uicGradeOf(r, cap) {
+  const ok = r[0];
+  const w = r[1];
+  const acc = ok + w > 0 ? ok / (ok + w) : 1;
+  // Mostly the house-elves' work: no pace of the player's own (a neutral half).
+  const pace = ok >= Math.max(1, cap * 0.1) ? r[2] / ok : null;
+  const accS = clamp01((acc - UIC_GRADE.accLow) / (UIC_GRADE.accHigh - UIC_GRADE.accLow));
+  const spS = pace === null ? 0.5 : clamp01((UIC_GRADE.paceSlow - pace) / (UIC_GRADE.paceSlow - UIC_GRADE.paceFast));
+  const score = UIC_GRADE.wAcc * accS + (1 - UIC_GRADE.wAcc) * spS;
+  const g = score >= UIC_GRADE.K ? 'K' : score >= UIC_GRADE.V ? 'V' : 'E';
+  return { acc, pace, score, g };
+}
+
+function uicGroupName(k, ui) {
+  const G = typeof FIG_SHELF_GROUPS !== 'undefined' && FIG_SHELF_GROUPS[k] ? FIG_SHELF_GROUPS[k].find((g) => g.unit === ui) : null;
+  return G ? G.nameHu : `${ui + 1}.`;
+}
+
+/** Issues the certificate of district k from the current statistics (once). */
+function uicIssueCert(k, retro = false) {
+  if (UIC.cert[k]) return UIC.cert[k];
+  const D = SHELF.districts[k];
+  if (!D) return null;
+  const rows = [];
+  let est = 0;
+  let all = 0;
+  for (const u of D.units) {
+    const cap = uicUnitCapacity(u);
+    if (!cap) continue;
+    const r = uicUnitRec(u);
+    const G = uicGradeOf(r, cap);
+    rows.push([u.ui, Math.round(G.acc * 1000) / 10, G.pace === null ? -1 : Math.round(G.pace * 10) / 10, G.g]);
+    est += r[3];
+    all += Math.max(r[0], 1);
+  }
+  const c = { t: Math.round(Date.now() / 1000), p: Math.round(GAME.playS), r: retro || est > all * 0.5 ? 1 : 0, g: rows };
+  UIC.cert[k] = c;
+  UIC.stats.certs++;
+  markDirty();
+  return c;
+}
+
+/* ---- save ---- */
+
+function uicSaveData() {
+  const u = {};
+  for (const [key, r] of UIC.u) if (r[0] || r[1] || r[2] || r[3]) u[key] = [r[0], r[1], Math.round(r[2] * 10) / 10, r[3]];
+  const cert = {};
+  for (const k in UIC.cert) cert[k] = { ...UIC.cert[k], g: UIC.cert[k].g.map((x) => x.slice()) };
+  return { v: 1, u, cert, seen: UIC.seen, visit: UIC.visit.map((x) => Math.round(x)) };
+}
+
+function uicReset() {
+  UIC.u.clear();
+  UIC.cert = {};
+  UIC.seen = 0;
+  UIC.visit = new Array(10).fill(-1);
+  UIC.lastPlaceS = -1;
+  UIC.pendingCert = null;
+  UIC.talk.pending = null;
+  UIC.from = 'new';
+}
+
+/**
+ * Applies the `uic` record of a save; a save without one (every save before this package) gets sensible defaults:
+ * every shelved figurine counts as placed with the shift's average error rate and pace (estimated, marked), the wrong
+ * copies standing on a group's places as its errors, and every mastered room its certificate at once (already seen).
+ */
+function uicApplySave(rec, d) {
+  uicReset();
+  if (rec && typeof rec === 'object' && rec.u) {
+    UIC.from = 'save';
+    for (const key in rec.u) {
+      const r = rec.u[key];
+      if (!Array.isArray(r) || !SHELF.unitByKey.has(key)) continue;
+      UIC.u.set(key, [Math.max(0, r[0] | 0), Math.max(0, r[1] | 0), Math.max(0, +r[2] || 0), Math.max(0, r[3] | 0)]);
+    }
+    for (const k in rec.cert || {}) {
+      const c = rec.cert[k];
+      const kk = k | 0;
+      if (kk >= 0 && kk < 10 && c && Array.isArray(c.g)) UIC.cert[kk] = { t: +c.t || 0, p: +c.p || 0, r: c.r ? 1 : 0, g: c.g.filter((x) => Array.isArray(x) && x.length >= 4).map((x) => [x[0] | 0, +x[1] || 0, +x[2], 'KVE'.includes(x[3]) ? x[3] : 'E']) };
+    }
+    UIC.seen = (rec.seen | 0) & 0x3ff;
+    if (Array.isArray(rec.visit)) for (let k = 0; k < 10; k++) UIC.visit[k] = Number.isFinite(rec.visit[k]) ? rec.visit[k] : -1;
+  } else {
+    UIC.from = 'retro';
+    const st = (d && d.stats) || GAME.stats;
+    const sorted = Math.max(0, GAME.sorted | 0);
+    const playerOk = Math.max(1, sorted - Math.max(0, st.elfPlacements | 0));
+    const wrongAll = Math.max(0, st.wrongPlacements | 0);
+    const wPer = wrongAll / playerOk;
+    const pace = clampTo((GAME.playS * 0.5) / playerOk, UIC_GRADE.paceFast * 0.75, UIC_GRADE.paceSlow * 1.25);
+    for (const u of SHELF.units) {
+      const c = uicUnitCorrect(u);
+      let wrongHere = 0;
+      for (const s of u.slots) wrongHere += s.wrong;
+      if (!c && !wrongHere) continue;
+      UIC.u.set(u.key, [c, Math.round(c * wPer) + wrongHere, Math.round(c * pace * 10) / 10, c]);
+    }
+  }
+  // A mastered room without a certificate (a save from before, or a mastery the record missed): issued now, unseen
+  // only when it came from this package's own record.
+  for (let k = 0; k < 10; k++) {
+    if (!(GAME.mastered & (1 << k)) || UIC.cert[k]) continue;
+    uicIssueCert(k, UIC.from === 'retro');
+    if (UIC.from === 'retro') UIC.seen |= 1 << k;
+  }
+  if (GAME.dirty === true && UIC.from === 'retro') GAME.dirty = true;
+}
+
+/* ------------------------------------------------------------------------------------------------
+   Hooks: save, placements, mastery
+   ------------------------------------------------------------------------------------------------ */
+
+// eslint-disable-next-line no-func-assign
+makeSaveData = ((prev) => function uicMakeSaveData(...args) {
+  const d = prev(...args);
+  try {
+    if (!STRESS.on) d.uic = uicSaveData();
+  } catch (err) {
+    console.warn('[uiC] save record failed', err);
+  }
+  return d;
+})(makeSaveData);
+
+// eslint-disable-next-line no-func-assign
+applySaveData = ((prev) => function uicApplySaveData(d, spawned = false) {
+  prev(d, spawned);
+  try {
+    const dirty = GAME.dirty;
+    uicApplySave(d && d.uic, d);
+    GAME.dirty = dirty;
+    uicHgSyncAll(true);
+  } catch (err) {
+    console.warn('[uiC] save record not applied', err);
+  }
+})(applySaveData);
+
+// eslint-disable-next-line no-func-assign
+resetGameState = ((prev) => function uicResetGameState(...args) {
+  prev(...args);
+  try {
+    uicReset();
+    uicHgSyncAll(true);
+  } catch (err) {
+    console.warn('[uiC] reset failed', err);
+  }
+})(resetGameState);
+
+// A correct placement: the player's own (not the house-elves') counts for the grades; every one moves the hourglass.
+// eslint-disable-next-line no-func-assign
+onCorrectPlacement = ((prev) => function uicOnCorrectPlacement(rec, slot, byElf = false) {
+  prev(rec, slot, byElf);
+  try {
+    const u = SHELF.units[slot.unitIndex];
+    if (u && !byElf) {
+      const r = uicUnitRec(u);
+      r[0]++;
+      r[2] += uicCreditTime();
+      UIC.stats.placed++;
+    }
+    uicHgPlaced(slot.district);
+  } catch (err) {
+    if (UIC.err++ < 3) console.warn('[uiC] placement hook failed', err);
+  }
+})(onCorrectPlacement);
+
+// A wrong placement into a shelf place (by hand, a throw, a flight): an error of that place's group.
+// eslint-disable-next-line no-func-assign
+finishScript = ((prev) => function uicFinishScript(rec, f) {
+  const slot = f && f.kind === 'slot' && f.data ? f.data.slot : null;
+  prev(rec, f);
+  try {
+    if (slot && rec.slot === slot && rec.state === ST.SHELF_WRONG) {
+      const u = SHELF.units[slot.unitIndex];
+      if (u) {
+        uicUnitRec(u)[1]++;
+        uicCreditTime();
+        UIC.stats.wrong++;
+      }
+    }
+  } catch (err) {
+    if (UIC.err++ < 3) console.warn('[uiC] wrong-place hook failed', err);
+  }
+})(finishScript);
+
+// District mastery: the certificate is issued at once and shown after the lantern sweep (5 s), when nothing else runs.
+// eslint-disable-next-line no-func-assign
+masteryStart = ((prev) => function uicMasteryStart(k) {
+  const r = prev(k);
+  try {
+    if (r) {
+      uicIssueCert(k, false);
+      UIC.pendingCert = { k, at: performance.now() + 5200 };
+      uicHgSyncAll(false);
+      uicEvent({ e: 'mastery', k });
+    }
+  } catch (err) {
+    console.warn('[uiC] certificate failed', err);
+  }
+  return r;
+})(masteryStart);
+
+function uicEvent(o) {
+  UIC.events.push({ ...o, t: +GAME.playS.toFixed(1) });
+  if (UIC.events.length > 60) UIC.events.shift();
+}
+
+/* ------------------------------------------------------------------------------------------------
+   6. Gem hourglasses — geometry
+   ------------------------------------------------------------------------------------------------ */
+
+/** Glass profile [radius, height] of a 1 m hourglass (bottom bulb, the neck at 0.5, the top bulb). */
+const UIC_GLASS = [[0.1, 0.0], [0.148, 0.05], [0.165, 0.13], [0.16, 0.21], [0.13, 0.29], [0.08, 0.36], [0.034, 0.41], [0.02, 0.43],
+  [0.034, 0.45], [0.08, 0.5], [0.13, 0.57], [0.16, 0.65], [0.165, 0.73], [0.148, 0.81], [0.1, 0.86]];
+/** Gem regions (local y) of the bottom and the top bulb. */
+const UIC_BULB = { b0: 0.008, b1: 0.36, t0: 0.452, t1: 0.852, neck: 0.43 };
+
+function uicGlassR(y) {
+  const P = UIC_GLASS;
+  if (y <= P[0][1]) return P[0][0];
+  for (let i = 1; i < P.length; i++) {
+    if (y <= P[i][1]) {
+      const a = P[i - 1];
+      const b = P[i];
+      return a[0] + ((b[0] - a[0]) * (y - a[1])) / (b[1] - a[1]);
+    }
+  }
+  return P[P.length - 1][0];
+}
+
+/**
+ * One hourglass geometry template (local, 1 m): arrays of position, normal, aK (kind, rank, room, random) and the index,
+ * plus the fill → level tables of both bulbs. kind: 0 bottom gem, 1 top gem, 2 bottom column, 3 top column, 4 stream,
+ * 5 glass. The gems come first in the index (opaque), the glass last (blended over them).
+ */
+function uicHgTemplate(spacing, gemR, seed) {
+  const R = rng(seed);
+  const pos = [];
+  const nor = [];
+  const kk = [];
+  const idx = [];
+  const add = (x, y, z, nx, ny, nz, kind, rank, rnd) => {
+    pos.push(x, y, z);
+    nor.push(nx, ny, nz);
+    kk.push(kind, rank, 0, rnd);
+    return pos.length / 3 - 1;
+  };
+  // Gems: layers of a jittered hexagonal grid inside the bulb, ranked by height.
+  const gemsOf = (y0, y1) => {
+    const list = [];
+    const dy = spacing * 0.78;
+    let layer = 0;
+    for (let y = y0 + gemR; y <= y1 - gemR * 0.5; y += dy, layer++) {
+      const rr = uicGlassR(y) - 0.012 - gemR * 0.9;
+      if (rr < gemR * 0.4) {
+        list.push({ x: 0, y, z: 0 });
+        continue;
+      }
+      const off = (layer % 2) * spacing * 0.5;
+      for (let gx = -rr; gx <= rr; gx += spacing) {
+        for (let gz = -rr; gz <= rr; gz += spacing * 0.866) {
+          const row = Math.round((gz + rr) / (spacing * 0.866));
+          const x = gx + (row % 2 ? spacing * 0.5 : 0) + off * 0.3 + (R() - 0.5) * spacing * 0.3;
+          const z = gz + (R() - 0.5) * spacing * 0.3;
+          if (x * x + z * z > rr * rr) continue;
+          list.push({ x, y: y + (R() - 0.5) * dy * 0.5, z });
+        }
+      }
+    }
+    list.sort((a, b) => a.y - b.y);
+    return list;
+  };
+  const gem = (g, kind, rank) => {
+    const r = gemR * (0.8 + R() * 0.4);
+    const yaw = R() * Math.PI;
+    const tilt = (R() - 0.5) * 0.8;
+    const rnd = R();
+    const ca = Math.cos(yaw);
+    const sa = Math.sin(yaw);
+    const ct = Math.cos(tilt);
+    const st = Math.sin(tilt);
+    // A squashed octahedron, turned and tilted.
+    const P6 = [[r, 0, 0], [-r, 0, 0], [0, r * 0.72, 0], [0, -r * 0.72, 0], [0, 0, r], [0, 0, -r]].map(([x, y, z]) => {
+      const y2 = y * ct - z * st;
+      const z2 = y * st + z * ct;
+      return [x * ca - z2 * sa, y2, x * sa + z2 * ca];
+    });
+    const base = pos.length / 3;
+    for (const [x, y, z] of P6) {
+      const l = Math.hypot(x, y, z) || 1;
+      add(g.x + x, g.y + y, g.z + z, x / l, y / l, z / l, kind, rank, rnd);
+    }
+    for (const [a, b, c] of [[0, 2, 4], [4, 2, 1], [1, 2, 5], [5, 2, 0], [4, 3, 0], [1, 3, 4], [5, 3, 1], [0, 3, 5]]) idx.push(base + a, base + b, base + c);
+  };
+  const bottom = gemsOf(UIC_BULB.b0, UIC_BULB.b1);
+  const top = gemsOf(UIC_BULB.t0, UIC_BULB.t1);
+  bottom.forEach((g, i) => gem(g, 0, (i + 0.5) / bottom.length));
+  top.forEach((g, i) => gem(g, 1, (i + 0.5) / top.length));
+  // fill → level tables (33 steps): the column's top follows the highest visible gem.
+  const lev = (list, f) => {
+    if (!list.length || f <= 0) return -1;
+    const i = Math.min(list.length - 1, Math.max(0, Math.round(f * list.length) - 1));
+    return list[i].y + gemR * 0.15;
+  };
+  const levB = [];
+  const levT = [];
+  for (let i = 0; i <= 32; i++) {
+    levB.push(lev(bottom, i / 32));
+    levT.push(lev(top, 1 - i / 32));
+  }
+  // The inner columns: lathes a little inside the glass, a centre vertex on top (flattens to the level).
+  const column = (y0, y1, kind) => {
+    const segs = 10;
+    const rings = [];
+    const n = 8;
+    for (let j = 0; j <= n; j++) {
+      const y = y0 + ((y1 - y0) * j) / n;
+      rings.push([Math.max(0.006, uicGlassR(y) - 0.012 - gemR * 1.1), y]);
+    }
+    const base = pos.length / 3;
+    for (const [r, y] of rings) {
+      for (let s = 0; s < segs; s++) {
+        const a = (s / segs) * Math.PI * 2;
+        add(Math.sin(a) * r, y, Math.cos(a) * r, Math.sin(a), 0, Math.cos(a), kind, 0, 0);
+      }
+    }
+    const capTop = add(0, y1, 0, 0, 1, 0, kind, 0, 0);
+    const capBot = add(0, y0, 0, 0, -1, 0, kind, 0, 0);
+    for (let j = 0; j < n; j++) {
+      for (let s = 0; s < segs; s++) {
+        const a = base + j * segs + s;
+        const b = base + j * segs + ((s + 1) % segs);
+        idx.push(a, b, a + segs, b, b + segs, a + segs);
+      }
+    }
+    for (let s = 0; s < segs; s++) {
+      idx.push(base + n * segs + s, base + n * segs + ((s + 1) % segs), capTop);
+      idx.push(base + ((s + 1) % segs), base + s, capBot);
+    }
+  };
+  column(UIC_BULB.b0 + 0.004, UIC_BULB.b1, 2);
+  column(UIC_BULB.t0 + 0.004, UIC_BULB.t1 - 0.02, 3);
+  // The stream through the neck: a thin 6-sided tube from the neck down to the bottom level (clamped in the shader).
+  {
+    const segs = 6;
+    const r = 0.007;
+    const base = pos.length / 3;
+    for (const y of [UIC_BULB.neck + 0.02, UIC_BULB.b0]) {
+      for (let s = 0; s < segs; s++) {
+        const a = (s / segs) * Math.PI * 2;
+        add(Math.sin(a) * r, y, Math.cos(a) * r, Math.sin(a), 0, Math.cos(a), 4, 0, 0);
+      }
+    }
+    for (let s = 0; s < segs; s++) {
+      const a = base + s;
+      const b = base + ((s + 1) % segs);
+      idx.push(a, a + segs, b, b, a + segs, b + segs);
+    }
+  }
+  // The glass: a smooth lathe of the profile (outward normals), drawn last.
+  {
+    const segs = 16;
+    const P = UIC_GLASS;
+    const base = pos.length / 3;
+    for (let j = 0; j < P.length; j++) {
+      const [r, y] = P[j];
+      const a0 = P[Math.max(0, j - 1)];
+      const a1 = P[Math.min(P.length - 1, j + 1)];
+      const dr = a1[0] - a0[0];
+      const dyv = a1[1] - a0[1];
+      const l = Math.hypot(dr, dyv) || 1;
+      for (let s = 0; s < segs; s++) {
+        const a = (s / segs) * Math.PI * 2;
+        const nx = Math.sin(a) * (dyv / l);
+        const nz = Math.cos(a) * (dyv / l);
+        add(Math.sin(a) * r, y, Math.cos(a) * r, nx, -dr / l, nz, 5, 0, 0);
+      }
+    }
+    for (let j = 0; j < P.length - 1; j++) {
+      for (let s = 0; s < segs; s++) {
+        const a = base + j * segs + s;
+        const b = base + j * segs + ((s + 1) % segs);
+        idx.push(a, b, a + segs, b, b + segs, a + segs);
+      }
+    }
+  }
+  return { pos: new Float32Array(pos), nor: new Float32Array(nor), kk: new Float32Array(kk), idx, levB, levT, gems: bottom.length + top.length };
+}
+
+/** Geometry of n hourglasses from one template: placement i = [x, y, z, yaw, s, k] in the mesh's frame. */
+function uicHgGeometry(T, places) {
+  const nv = T.pos.length / 3;
+  const P = new Float32Array(nv * 3 * places.length);
+  const N = new Float32Array(nv * 3 * places.length);
+  const K = new Float32Array(nv * 4 * places.length);
+  const I = nv * places.length > 65535 ? new Uint32Array(T.idx.length * places.length) : new Uint16Array(T.idx.length * places.length);
+  places.forEach(([x, y, z, yaw, s, k], pi) => {
+    const c = Math.cos(yaw);
+    const sn = Math.sin(yaw);
+    const o = pi * nv;
+    for (let v = 0; v < nv; v++) {
+      const lx = T.pos[v * 3] * s;
+      const ly = T.pos[v * 3 + 1] * s;
+      const lz = T.pos[v * 3 + 2] * s;
+      P[(o + v) * 3] = x + lx * c + lz * sn;
+      P[(o + v) * 3 + 1] = y + ly;
+      P[(o + v) * 3 + 2] = z - lx * sn + lz * c;
+      const nx = T.nor[v * 3];
+      const nz = T.nor[v * 3 + 2];
+      N[(o + v) * 3] = nx * c + nz * sn;
+      N[(o + v) * 3 + 1] = T.nor[v * 3 + 1];
+      N[(o + v) * 3 + 2] = -nx * sn + nz * c;
+      K[(o + v) * 4] = T.kk[v * 4];
+      K[(o + v) * 4 + 1] = T.kk[v * 4 + 1];
+      K[(o + v) * 4 + 2] = k;
+      K[(o + v) * 4 + 3] = T.kk[v * 4 + 3];
+    }
+  });
+  // Index order: every placement's gems and columns first, then streams, then the glass of all (blended last).
+  let w = 0;
+  const kindOf = (i) => T.kk[i * 4];
+  for (const pass of [0, 1, 2]) {
+    places.forEach((_, pi) => {
+      const o = pi * nv;
+      for (let t = 0; t < T.idx.length; t += 3) {
+        const kd = kindOf(T.idx[t]);
+        const ps = kd === 5 ? 2 : kd === 4 ? 1 : 0;
+        if (ps !== pass) continue;
+        I[w++] = o + T.idx[t];
+        I[w++] = o + T.idx[t + 1];
+        I[w++] = o + T.idx[t + 2];
+      }
+    });
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(P, 3));
+  g.setAttribute('normal', new THREE.BufferAttribute(N, 3));
+  g.setAttribute('aK', new THREE.BufferAttribute(K, 4));
+  g.setIndex(new THREE.BufferAttribute(I, 1));
+  g.computeBoundingSphere();
+  return g;
+}
+
+/* ---- shader ---- */
+
+const UIC_HG_VERT = `
+attribute vec4 aK;
+uniform float uFill[10];
+uniform float uGlow[10];
+uniform float uFlow[10];
+uniform float uLevB[10];
+uniform float uLevT[10];
+uniform vec3 uCol[10];
+uniform float uScale;
+varying vec3 vN;
+varying vec3 vView;
+varying vec3 vCol;
+varying float vKind;
+varying float vGlow;
+varying float vFlow;
+varying float vY;
+varying float vRnd;
+varying float vFogDepth;
+void main() {
+  int k = int(aK.z + 0.5);
+  float fill = uFill[k];
+  vec3 p = position;
+  float kind = aK.x;
+  float hide = 0.0;
+  if (kind < 0.5) hide = step(fill + 0.0001, aK.y);
+  else if (kind < 1.5) hide = step(1.0 - fill + 0.0001, aK.y);
+  else if (kind < 2.5) { float l = uLevB[k]; hide = step(l, 0.0); p.y = min(p.y, l); }
+  else if (kind < 3.5) { float l = uLevT[k]; hide = step(l, 0.0); p.y = min(p.y, l); }
+  else if (kind < 4.5) { float l = uLevB[k]; hide = step(uFlow[k], 0.01) + step(0.999, fill); p.y = max(p.y, max(l, 0.0)); }
+  if (hide > 0.5) { gl_Position = vec4(0.0, 0.0, 2.0, 1.0); return; }
+  vec4 mv = modelViewMatrix * vec4(p, 1.0);
+  vN = normalize(normalMatrix * normal);
+  vView = -mv.xyz;
+  vKind = kind;
+  vCol = uCol[k] * (0.82 + 0.36 * aK.w);
+  vGlow = uGlow[k];
+  vFlow = uFlow[k];
+  vY = position.y / uScale;
+  vRnd = aK.w;
+  vFogDepth = -mv.z;
+  gl_Position = projectionMatrix * mv;
+}`;
+const UIC_HG_FRAG = `
+uniform vec3 fogColor;
+uniform float fogDensity;
+uniform float uTime;
+uniform float uAmb;
+varying vec3 vN;
+varying vec3 vView;
+varying vec3 vCol;
+varying float vKind;
+varying float vGlow;
+varying float vFlow;
+varying float vY;
+varying float vRnd;
+varying float vFogDepth;
+void main() {
+  vec3 V = normalize(vView);
+  vec3 N = vKind < 1.5 ? normalize(cross(dFdx(vView), dFdy(vView))) : normalize(vN);
+  if (dot(N, V) < 0.0) N = -N;
+  vec3 L = normalize(vec3(0.35, 0.85, 0.55));
+  float dif = max(dot(N, L), 0.0);
+  float spec = pow(max(dot(N, normalize(L + V)), 0.0), 36.0);
+  float glow = vGlow * (0.78 + 0.22 * sin(uTime * 2.1));
+  vec3 col;
+  float a = 1.0;
+  if (vKind < 1.5) {
+    float tw = pow(max(0.0, sin(uTime * 2.6 + vRnd * 61.0)), 28.0);
+    col = vCol * (uAmb * 0.35 + 0.75 * dif) + vec3(1.0) * (spec * 0.75 + tw * 0.55) + vCol * (0.22 + 0.85 * glow);
+  } else if (vKind < 3.5) {
+    col = vCol * (uAmb * 0.12 + 0.28 * dif + 0.1 + 0.6 * glow);
+  } else if (vKind < 4.5) {
+    float dash = step(0.45, fract(vY * 22.0 + uTime * 3.2));
+    col = vCol * 1.4 + 0.15;
+    a = vFlow * dash;
+    if (a < 0.02) discard;
+  } else {
+    float fr = pow(1.0 - abs(dot(N, V)), 2.6);
+    col = mix(vec3(0.78, 0.86, 0.95), vCol, 0.2) * (0.1 + fr * 0.8) * (0.5 + 0.5 * uAmb) + vec3(1.0) * spec * 0.7 + vCol * glow * (0.35 + fr * 1.3);
+    a = clamp(0.07 + fr * 0.42 + spec * 0.55 + glow * 0.18, 0.0, 0.92);
+  }
+  gl_FragColor = vec4(col, a);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+  float fogFactor = 1.0 - exp(-fogDensity * fogDensity * vFogDepth * vFogDepth);
+  gl_FragColor.rgb = mix(gl_FragColor.rgb, fogColor, fogFactor);
+}`;
+
+/** Shared uniform values (one entry per district), referenced by every hourglass material. */
+function uicHgState() {
+  if (UIC.hg) return UIC.hg;
+  const col = new Float32Array(30);
+  FIG_DISTRICTS.forEach((d, k) => {
+    const c = new THREE.Color(d.color || '#d8b45a');
+    // A little lifted, so the darker room colours still read as gems.
+    c.lerp(new THREE.Color(1, 1, 1), 0.12);
+    col[k * 3] = c.r;
+    col[k * 3 + 1] = c.g;
+    col[k * 3 + 2] = c.b;
+  });
+  UIC.hg = {
+    fill: new Float32Array(10), target: new Float32Array(10), glow: new Float32Array(10), flow: new Float32Array(10),
+    uFill: { value: null }, uGlow: { value: null }, uFlow: { value: null }, uCol: { value: col },
+    tplRoom: null, tplStreet: null, matRoom: null, matStreet: null, street: null, rooms: new Map(), syncT: 0,
+  };
+  const H = UIC.hg;
+  H.uFill.value = H.fill;
+  H.uGlow.value = H.glow;
+  H.uFlow.value = H.flow;
+  return H;
+}
+
+function uicHgMaterial(tpl, name, scale) {
+  const H = uicHgState();
+  const levB = new Float32Array(10);
+  const levT = new Float32Array(10);
+  const m = new THREE.ShaderMaterial({
+    name, vertexShader: UIC_HG_VERT, fragmentShader: UIC_HG_FRAG, transparent: true, depthWrite: true,
+    uniforms: {
+      uFill: H.uFill, uGlow: H.uGlow, uFlow: H.uFlow, uCol: H.uCol, uLevB: { value: levB }, uLevT: { value: levT },
+      uScale: { value: scale }, uTime: WK.uTime, uAmb: { value: 1 }, ...wkFogUniforms(),
+    },
+  });
+  m.userData.tpl = tpl;
+  m.userData.scale = scale;
+  // The kit keeps the fog of its materials in step with the location (40-world.js wkSyncFog walks WK.atlasMats).
+  WK.atlasMats.set(name, m);
+  if (typeof wkSyncFog === 'function') wkSyncFog();
+  return m;
+}
+
+/** Templates and materials (boot, before the staged compile: the programs are warmed with the others). */
+function uicHgEnsure() {
+  const H = uicHgState();
+  if (!H.tplRoom) H.tplRoom = uicHgTemplate(0.045, 0.021, 5501);
+  if (!H.tplStreet) H.tplStreet = uicHgTemplate(0.062, 0.028, 5502);
+  if (!H.matRoom) H.matRoom = uicHgMaterial(H.tplRoom, 'uic:hg', 1);
+  if (!H.matStreet) H.matStreet = uicHgMaterial(H.tplStreet, 'uic:hgStreet', 1);
+  return H;
+}
+
+/** Level tables → per-district level uniforms of one material (local y × the placement scale). */
+function uicHgLevels(m, scales) {
+  const H = uicHgState();
+  const T = m.userData.tpl;
+  const B = m.uniforms.uLevB.value;
+  const Tt = m.uniforms.uLevT.value;
+  for (let k = 0; k < 10; k++) {
+    const f = clamp01(H.fill[k]) * 32;
+    const i = Math.floor(f);
+    const fr = f - i;
+    const s = scales ? scales[k] : 1;
+    const lb = (a, b) => (a < 0 && b < 0 ? -1 : a < 0 ? (fr > 0.5 ? b : -1) : b < 0 ? (fr < 0.5 ? a : -1) : a + (b - a) * fr);
+    const vb = lb(T.levB[i], T.levB[Math.min(32, i + 1)]);
+    const vt = lb(T.levT[i], T.levT[Math.min(32, i + 1)]);
+    B[k] = vb < 0 ? -1 : vb * s;
+    Tt[k] = vt < 0 ? -1 : vt * s;
+  }
+}
+
+/** Progress of district k: correct copies / capacity of its type slots. */
+function uicDistrictFill(k) {
+  const D = SHELF.districts[k];
+  if (!D) return 0;
+  let n = 0;
+  let m = 0;
+  for (const s of D.slots) {
+    if (!s.type) continue;
+    n += s.correct;
+    m += s.capacity;
+  }
+  return m ? n / m : 0;
+}
+
+/** Targets of all districts from the shelves; `snap` jumps there (load, reset), else the tick eases. */
+function uicHgSyncAll(snap) {
+  const H = uicHgState();
+  if (!SHELF || !SHELF.districts) return;
+  for (let k = 0; k < 10; k++) {
+    H.target[k] = uicDistrictFill(k);
+    H.glow[k] = GAME.mastered & (1 << k) ? 1 : 0;
+    if (snap) {
+      H.fill[k] = H.target[k];
+      H.flow[k] = 0;
+    }
+  }
+  uicHgLevelsAll();
+}
+
+/** The level uniforms of both materials (the room's in the mesh's scaled local frame, the street's in world metres). */
+function uicHgLevelsAll() {
+  const H = UIC.hg;
+  if (!H) return;
+  if (H.matRoom) uicHgLevels(H.matRoom, H.roomScale || null);
+  uicHgLevelsStreet();
+}
+
+function uicHgPlaced(k) {
+  const H = uicHgState();
+  if (k < 0 || k >= 10) return;
+  H.target[k] = uicDistrictFill(k);
+  H.flow[k] = 1;
+  H.glow[k] = GAME.mastered & (1 << k) ? 1 : 0;
+}
+
+/** Per frame: the fills ease to their targets (≈ 1.2 s), the streams fade; levels only when something moved. */
+function uicHgTick(dt) {
+  const H = UIC.hg;
+  if (!H) return;
+  let moved = false;
+  for (let k = 0; k < 10; k++) {
+    const d = H.target[k] - H.fill[k];
+    if (Math.abs(d) > 1e-5) {
+      H.fill[k] += Math.sign(d) * Math.min(Math.abs(d), Math.max(0.0005, Math.abs(d) * 2.5 * dt));
+      moved = true;
+    }
+    if (H.flow[k] > 0) H.flow[k] = Math.max(0, H.flow[k] - dt / 2.4);
+  }
+  // Removals (a figurine taken off a shelf) are picked up twice a second.
+  H.syncT -= dt;
+  if (H.syncT <= 0) {
+    H.syncT = 0.5;
+    const k = LOC.cur && LOC.cur.index >= 0 ? LOC.cur.index : -1;
+    if (k >= 0) {
+      H.target[k] = uicDistrictFill(k);
+      H.glow[k] = GAME.mastered & (1 << k) ? 1 : 0;
+    }
+  }
+  if (moved) uicHgLevelsAll();
+}
+
+/* ---- baked parts (the room's own builder) ---- */
+
+const UIC_WOOD = { layer: 'wood', col: 0x3a2414, seg: 0 };
+const UIC_GOLD = { layer: 'metal', col: 0xd8a840, emit: 0.22, seg: 0 };
+const UIC_BRASS = { layer: 'metal', col: 0xb88a38, emit: 0.12, seg: 0 };
+
+/** The end caps, posts and finial of one hourglass, glass bottom at local (0, 0, 0), scale s (local frame of b). */
+function uicHgFrameParts(b, s, k) {
+  const g = UIC_GLASS;
+  const topY = g[g.length - 1][1] * s;
+  b.cyl(0, -0.055 * s, 0, 0.205 * s, 0.195 * s, 0.055 * s, 14, UIC_GOLD);
+  b.cyl(0, topY, 0, 0.195 * s, 0.205 * s, 0.055 * s, 14, UIC_GOLD);
+  b.sphere(0, topY + 0.09 * s, 0, 0.035 * s, UIC_GOLD, 8, 6);
+  for (let i = 0; i < 3; i++) {
+    const a = (i / 3) * Math.PI * 2 + Math.PI / 6;
+    b.cyl(Math.sin(a) * 0.182 * s, 0, Math.cos(a) * 0.182 * s, 0.013 * s, 0.013 * s, topY, 6, UIC_BRASS);
+  }
+  void k;
+}
+
+/** One room hourglass on its wall: panel, bracket shelf, corbel, the district emblem, the frame parts. */
+function uicHgDressRoom(b, P, k) {
+  const s = P.s;
+  const dz = 0.26 * s;
+  b.push(P.x, 0, P.z, P.yaw);
+  const y0 = P.y;
+  b.box(0, y0 - 0.32 * s, 0.015, 0.62 * s, 1.715 * s, 0.03, UIC_WOOD);
+  b.box(0, y0 - 0.32 * s, 0.032, 0.66 * s, 0.035 * s, 0.012, UIC_GOLD);
+  b.box(0, y0 + 1.36 * s, 0.032, 0.66 * s, 0.035 * s, 0.012, UIC_GOLD);
+  b.box(0, y0 - 0.06 * s, (dz + 0.23 * s) / 2, 0.5 * s, 0.06 * s, dz + 0.23 * s, UIC_WOOD);
+  b.box(0, y0 - 0.06 * s, dz + 0.23 * s, 0.52 * s, 0.03 * s, 0.02, UIC_GOLD);
+  b.box(0, y0 - 0.3 * s, 0.09 * s, 0.1 * s, 0.24 * s, 0.14 * s, UIC_WOOD);
+  b.decal(LOC_SIGN.tex, locSignUV(`blade:${k}`), -0.12 * s, 0.034, 0.12 * s, 0.034, y0 + 1.08 * s, y0 + 1.32 * s, { emit: 0.9, anim: [0, 0, 0, 0] });
+  b.push(0, y0 + 0.055 * s, dz, 0);
+  uicHgFrameParts(b, s, k);
+  b.pop();
+  b.pop();
+}
+
+/** The square's row: one long carved shelf on corbels, a back board, an emblem over each glass. */
+function uicHgDressStreet(b) {
+  const S = UIC_HG_STREET;
+  const s = S.s;
+  const dz = 0.26 * s;
+  const x0 = Math.min(...S.xs) - 0.42;
+  const x1 = Math.max(...S.xs) + 0.42;
+  const cx = (x0 + x1) / 2;
+  const w = x1 - x0;
+  b.push(cx, 0, S.z, S.yaw);
+  // Local x runs the other way under the yaw: the row's x are mirrored around the centre.
+  const y0 = S.y;
+  b.box(0, y0 - 0.3, 0.015, w + 0.1, 1.62 * s + 0.36, 0.03, UIC_WOOD);
+  b.box(0, y0 - 0.3, 0.032, w + 0.16, 0.04, 0.012, UIC_GOLD);
+  b.box(0, y0 + 1.32 * s + 0.06, 0.032, w + 0.16, 0.04, 0.012, UIC_GOLD);
+  b.box(0, y0 - 0.07, (dz + 0.24 * s) / 2, w, 0.07, dz + 0.24 * s, UIC_WOOD);
+  b.box(0, y0 - 0.07, dz + 0.24 * s, w + 0.02, 0.035, 0.02, UIC_GOLD);
+  for (let i = 0; i <= 5; i++) b.box(-w / 2 + 0.2 + (i * (w - 0.4)) / 5, y0 - 0.34, 0.1, 0.12, 0.27, 0.16, UIC_WOOD);
+  S.xs.forEach((x, k) => {
+    const lx = -(x - cx);
+    b.decal(LOC_SIGN.tex, locSignUV(`blade:${k}`), lx - 0.12, 0.034, lx + 0.12, 0.034, y0 + 1.07 * s, y0 + 1.07 * s + 0.22, { emit: 0.9, anim: [0, 0, 0, 0] });
+    b.push(lx, y0 + 0.055 * s, dz, 0);
+    uicHgFrameParts(b, s, k);
+    b.pop();
+  });
+  b.light(0, y0 + 1.9, 1.4, 0xffe0b0, 1.3, 5);
+  b.pop();
+}
+
+/* ------------------------------------------------------------------------------------------------
+   8. Portraits — geometry, shader, baked frames
+   ------------------------------------------------------------------------------------------------ */
+
+const UIC_PT_VERT = `
+attribute vec4 aP;
+varying vec2 vUv;
+varying vec4 vP;
+varying float vFogDepth;
+void main() {
+  vUv = uv;
+  vP = aP;
+  vec4 mv = modelViewMatrix * vec4(position, 1.0);
+  vFogDepth = -mv.z;
+  gl_Position = projectionMatrix * mv;
+}`;
+const UIC_PT_FRAG = `
+uniform sampler2D uAtlas;
+uniform vec2 uGrid;
+uniform float uTime;
+uniform float uReady;
+uniform float uLight;
+uniform vec4 uTalk;
+uniform vec4 uClap;
+uniform vec4 uFig[8];
+uniform vec4 uCrop[8];
+uniform vec3 uBg[4];
+uniform vec3 fogColor;
+uniform float fogDensity;
+varying vec2 vUv;
+varying vec4 vP;
+varying float vFogDepth;
+void main() {
+  int slot = int(vP.x + 0.5);
+  float talk = slot == 0 ? uTalk.x : slot == 1 ? uTalk.y : slot == 2 ? uTalk.z : uTalk.w;
+  float clap = slot == 0 ? uClap.x : slot == 1 ? uClap.y : slot == 2 ? uClap.z : uClap.w;
+  vec2 uv = vUv;
+  vec3 bg = uBg[slot];
+  float r = length((uv - vec2(0.5, 0.58)) * vec2(1.2, 1.0));
+  vec3 col = bg * (1.25 - r * 1.1) + bg * 0.15 * sin(uv.y * 31.0 + uv.x * 7.0);
+  int s0 = int(vP.z + 0.5);
+  int n = int(vP.w + 0.5);
+  for (int j = 0; j < 5; j++) {
+    int i = s0 + j;
+    vec4 F = uFig[i];
+    vec4 C = uCrop[i];
+    float ph = F.w;
+    float on = j < n ? 1.0 : 0.0;
+    // The moving portrait: a slow sway and breath, a quicker nod while talking, a hop while clapping.
+    float sway = 0.018 * sin(uTime * 0.7 + ph) + talk * 0.012 * sin(uTime * 6.5 + ph);
+    float bob = 0.01 * sin(uTime * 1.1 + ph * 1.7) + talk * 0.014 * abs(sin(uTime * 8.0 + ph)) + clap * 0.045 * abs(sin(uTime * 13.0 + ph));
+    float y = (uv.y - bob) / (1.0 + 0.012 * sin(uTime * 1.3 + ph));
+    float x = (uv.x - F.y) / F.z + 0.5 - sway * (y - 0.1) * 1.6;
+    float inside = step(0.0, x) * step(x, 1.0) * step(0.0, y) * step(y, 1.0) * on;
+    vec2 cu = vec2(mix(C.x, C.z, x), mix(C.y, C.w, y));
+    inside *= step(0.0, cu.x) * step(cu.x, 1.0) * step(0.0, cu.y) * step(cu.y, 1.0);
+    cu = clamp(cu, vec2(0.004), vec2(0.996));
+    float cx = mod(F.x, uGrid.x);
+    float cy = floor(F.x / uGrid.x);
+    vec2 auv = vec2((cx + cu.x) / uGrid.x, 1.0 - (cy + 1.0 - cu.y) / uGrid.y);
+    vec4 t = texture2D(uAtlas, auv);
+    col = mix(col, t.rgb, t.a * inside * uReady);
+  }
+  if (vP.y > 0.5) {
+    // A wizard photograph: sepia, grain, a soft flicker, darker corners.
+    float g = dot(col, vec3(0.3, 0.59, 0.11));
+    col = mix(vec3(g) * vec3(1.12, 0.95, 0.72), col, 0.12);
+    col *= 0.93 + 0.07 * sin(uTime * 19.0 + uv.y * 3.0);
+    col *= 1.0 - 0.5 * smoothstep(0.35, 0.75, length(uv - 0.5));
+  } else {
+    // Old varnish: warm, a little darker at the edges.
+    col *= vec3(1.04, 0.97, 0.84) * (1.0 - 0.35 * smoothstep(0.3, 0.72, length(uv - 0.5)));
+  }
+  gl_FragColor = vec4(col * uLight, 1.0);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+  float fogFactor = 1.0 - exp(-fogDensity * fogDensity * vFogDepth * vFogDepth);
+  gl_FragColor.rgb = mix(gl_FragColor.rgb, fogColor, fogFactor);
+}`;
+
+function uicPtState() {
+  if (UIC.pt) return UIC.pt;
+  UIC.pt = { mats: new Map(), meshes: new Map(), crops: new Map(), atlas: null, warm: null };
+  return UIC.pt;
+}
+
+/** The portraits of a room. */
+function uicPortraitsOf(id) {
+  return UIC_PORTRAITS.filter((p) => p.room === id);
+}
+
+/** World position of a portrait's centre and its facing (for bubbles, applause and the tip distance). */
+function uicPortraitWorld(p) {
+  const L = LOC.byId[p.room];
+  if (!L) return null;
+  const n = new THREE.Vector3(Math.sin(p.yaw), 0, Math.cos(p.yaw));
+  const c = new THREE.Vector3(L.origin.x + p.x, p.y, L.origin.z + p.z).addScaledVector(n, 0.05);
+  return { c, n, top: c.clone().setY(p.y + p.h / 2 + 0.15) };
+}
+
+/** The gilded (paint) or dark (photo) frame of one portrait, baked; local frame: the wall point, +z into the room. */
+function uicPtDress(b, p) {
+  b.push(p.x, 0, p.z, p.yaw);
+  const w = p.w;
+  const h = p.h;
+  const t = p.kind === 'photo' ? 0.05 : 0.09;
+  const d = p.kind === 'photo' ? 0.04 : 0.06;
+  const F = p.kind === 'photo' ? { layer: 'wood', col: 0x2a1a10, seg: 0 } : p.dark ? { layer: 'metal', col: 0x6a5430, emit: 0.06, seg: 0 } : { layer: 'metal', col: 0xd0a040, emit: 0.16, seg: 0 };
+  const yb = p.y - h / 2;
+  b.box(0, yb - t, d / 2, w + 2 * t, t, d, F);
+  b.box(0, yb + h, d / 2, w + 2 * t, t, d, F);
+  b.box(-w / 2 - t / 2, yb, d / 2, t, h, d, F);
+  b.box(w / 2 + t / 2, yb, d / 2, t, h, d, F);
+  // The back board behind the canvas and, for the paintings, an inner lip and a little name plate.
+  b.box(0, yb - t * 0.5, 0.008, w + t, h + t, 0.016, { layer: 'wood', col: 0x1a120a, seg: 0 });
+  if (p.kind !== 'photo') {
+    b.box(0, yb - 0.012, d - 0.004, w + 0.02, 0.012, 0.012, UIC_BRASS);
+    b.box(0, yb + h, d - 0.004, w + 0.02, 0.012, 0.012, UIC_BRASS);
+    b.box(0, yb - t - 0.11, 0.02, Math.min(0.34, w * 0.45), 0.075, 0.02, UIC_BRASS);
+  } else {
+    b.box(0, yb + h + t, 0.01, 0.03, 0.12, 0.01, { layer: 'metal', col: 0x2a2a2a, seg: 0 });
+  }
+  b.pop();
+}
+
+/** The portraits' mesh of a room: one quad per portrait (canvas 2 cm in front of the wall). */
+function uicPtMesh(id) {
+  const list = uicPortraitsOf(id);
+  if (!list.length) return null;
+  const L = LOC.byId[id];
+  const P = [];
+  const UV = [];
+  const AP = [];
+  const I = [];
+  let fig = 0;
+  const figs = [];
+  list.forEach((p, slot) => {
+    const n = [Math.sin(p.yaw), Math.cos(p.yaw)];
+    const t = [n[1], -n[0]];
+    const cx = L.origin.x + p.x + n[0] * 0.022;
+    const cz = L.origin.z + p.z + n[1] * 0.022;
+    const base = P.length / 3;
+    for (const [u, v] of [[0, 0], [1, 0], [1, 1], [0, 1]]) {
+      // u runs to the viewer's right (+t seen from the front), so the quad winds counter-clockwise towards the room.
+      const ox = (u - 0.5) * p.w;
+      P.push(cx + t[0] * ox, p.y + (v - 0.5) * p.h, cz + t[1] * ox);
+      UV.push(u, v);
+      AP.push(slot, p.kind === 'photo' ? 1 : 0, fig, Math.min(5, p.figs.length));
+    }
+    I.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    const nF = Math.min(5, p.figs.length);
+    for (let j = 0; j < nF; j++) figs.push({ p, j, n: nF });
+    fig += nF;
+  });
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(P, 3));
+  g.setAttribute('uv', new THREE.Float32BufferAttribute(UV, 2));
+  g.setAttribute('aP', new THREE.Float32BufferAttribute(AP, 4));
+  g.setIndex(I);
+  g.computeBoundingSphere();
+  const m = uicPtMaterial(id, list, figs);
+  const mesh = new THREE.Mesh(g, m);
+  mesh.name = `uic:portraits:${id}`;
+  mesh.matrixAutoUpdate = false;
+  mesh.renderOrder = BAND.props;
+  mesh.userData.uic = true;
+  return mesh;
+}
+
+function uicPtMaterial(id, list, figs) {
+  const S = uicPtState();
+  let m = S.mats.get(id);
+  if (m) return m;
+  const fig = [];
+  const crop = [];
+  for (let i = 0; i < 8; i++) {
+    fig.push(new THREE.Vector4(0, 0.5, 1, 0));
+    crop.push(new THREE.Vector4(0, 0, 1, 1));
+  }
+  const bg = [0, 1, 2, 3].map((i) => new THREE.Color(list[i] ? list[i].bg : 0x222222));
+  m = new THREE.ShaderMaterial({
+    name: 'uic:portrait', vertexShader: UIC_PT_VERT, fragmentShader: UIC_PT_FRAG,
+    uniforms: {
+      uAtlas: { value: null }, uGrid: { value: new THREE.Vector2(32, 16) }, uTime: WK.uTime, uReady: { value: 0 }, uLight: { value: 1 },
+      uTalk: { value: new THREE.Vector4() }, uClap: { value: new THREE.Vector4() }, uFig: { value: fig }, uCrop: { value: crop }, uBg: { value: bg },
+      ...wkFogUniforms(),
+    },
+  });
+  m.userData.figs = figs;
+  m.userData.list = list;
+  WK.atlasMats.set(`uic:portrait:${id}`, m);
+  if (typeof wkSyncFog === 'function') wkSyncFog();
+  S.mats.set(id, m);
+  uicPtFill(m);
+  return m;
+}
+
+/**
+ * Alpha bounding box of a figurine's impostor cell ([x0, y0, x1, y1] in cell px, y from the top). A canvas read-back of
+ * the atlas: tools only (the portrait specs carry the measured boxes, `bb`), never called on the door path.
+ */
+function uicCellBox(a, t) {
+  const S = uicPtState();
+  if (S.crops.has(t.key)) return S.crops.get(t.key);
+  const c = makeCanvas(64, 128);
+  let box = [4, 4, 60, 124];
+  if (uibDrawPortrait(c, t)) {
+    const px = c.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, 64, 128).data;
+    let x0 = 64;
+    let x1 = -1;
+    let y0 = 128;
+    let y1 = -1;
+    for (let y = 0; y < 128; y++) {
+      for (let x = 0; x < 64; x++) {
+        if (px[(y * 64 + x) * 4 + 3] > 40) {
+          x0 = Math.min(x0, x);
+          x1 = Math.max(x1, x);
+          y0 = Math.min(y0, y);
+          y1 = Math.max(y1, y);
+        }
+      }
+    }
+    if (x1 > x0 && y1 > y0) box = [x0, y0, x1, y1];
+  }
+  S.crops.set(t.key, box);
+  return box;
+}
+
+/** Fills a portrait material's figure uniforms once the impostor atlas is there (cell, placement, crop). */
+function uicPtFill(m) {
+  const a = typeof uibAtlas === 'function' ? uibAtlas() : null;
+  if (!a || !a.tex) return false;
+  const U = m.uniforms;
+  const cols = (a.grid && a.grid.cols) || 32;
+  const rows = (a.grid && a.grid.rows) || 16;
+  U.uGrid.value.set(cols, rows);
+  m.userData.figs.forEach((f, i) => {
+    if (i >= 8) return;
+    const spec = f.p.figs[f.j];
+    const t = FIG_TYPES.find((x) => x.key === spec.key);
+    const d = t && typeof FIG_BY_ID !== 'undefined' ? FIG_BY_ID[t.design] : null;
+    const cell = t ? (d && figImpostorCell(a, d)) || a.cells[t.key] : null;
+    if (!cell) return;
+    // Placement inside the canvas: one figure fills it, a group stands side by side.
+    const wC = f.n > 1 ? 1 / f.n + 0.06 : 1;
+    const cxC = f.n > 1 ? (f.j + 0.5) / f.n : 0.5;
+    U.uFig.value[i].set(cell[0], cxC, wC, 1.3 + i * 2.17);
+    const aspect = (f.p.w * wC) / f.p.h; // canvas part w / h
+    let box;
+    if (spec.crop === 'framed' && spec.box) box = spec.box;
+    else {
+      // The figure's alpha box in its cell (measured once offline: reading the atlas back here would stall the door).
+      const b = spec.bb || uicPtState().crops.get(t.key) || [4, 4, 60, 124];
+      const figH = b[3] - b[1];
+      const keep = spec.crop === 'half' ? 0.62 : 0.5;
+      const topPx = Math.max(0, b[1] - 7);
+      const hPx = figH * keep + 7;
+      const wPx = hPx * aspect * 1.0;
+      const cxPx = (b[0] + b[2]) / 2;
+      const v1 = 1 - topPx / 128;
+      const v0 = v1 - hPx / 128;
+      const u0 = (cxPx - wPx / 2) / 64;
+      const u1 = (cxPx + wPx / 2) / 64;
+      box = [u0, v0, u1, v1];
+    }
+    U.uCrop.value[i].set(box[0], box[1], box[2], box[3]);
+  });
+  U.uAtlas.value = a.tex;
+  U.uReady.value = 1;
+  return true;
+}
+
+/* ------------------------------------------------------------------------------------------------
+   Attaching the dynamic meshes and the baked parts
+   ------------------------------------------------------------------------------------------------ */
+
+// The room's main builder (its name is the location id) and the hub's builder get the baked parts before their bake.
+{
+  const prevSteps = WKBuilder.prototype.finishSteps;
+  WKBuilder.prototype.finishSteps = function* uicFinishSteps(...args) {
+    try {
+      if (!this.uicDressed && !STRESS.on) {
+        this.uicDressed = true;
+        if (this.name === 'street') uicHgDressStreet(this);
+        else if (UIC_HG_ROOMS[this.name] && LOC.byId[this.name] && this.ox === LOC.byId[this.name].origin.x && this.oz === LOC.byId[this.name].origin.z) {
+          const L = LOC.byId[this.name];
+          uicHgDressRoom(this, UIC_HG_ROOMS[this.name], L.index);
+          for (const p of uicPortraitsOf(this.name)) uicPtDress(this, p);
+        }
+      }
+    } catch (err) {
+      console.warn('[uiC] baked parts failed', this.name, err);
+    }
+    return yield* prevSteps.apply(this, args);
+  };
+}
+
+/** The dynamic meshes of an interior's build: its hourglass and its portraits (geometry per build, shared materials). */
+function uicAttachRoom(L, B) {
+  if (!L || !B || !B.group || B.uic || STRESS.on) return;
+  const P = UIC_HG_ROOMS[L.id];
+  if (!P) return;
+  const t0 = performance.now();
+  B.uic = true;
+  const H = uicHgEnsure();
+  const s = P.s;
+  const n = [Math.sin(P.yaw), Math.cos(P.yaw)];
+  const x = L.origin.x + P.x + n[0] * 0.26 * s;
+  const z = L.origin.z + P.z + n[1] * 0.26 * s;
+  const g = uicHgGeometry(H.tplRoom, [[0, 0, 0, 0, s, L.index]]);
+  const mesh = new THREE.Mesh(g, H.matRoom);
+  mesh.name = `uic:hourglass:${L.id}`;
+  mesh.position.set(x, P.y + 0.055 * s, z);
+  mesh.rotation.y = P.yaw;
+  mesh.updateMatrix();
+  mesh.matrixAutoUpdate = false;
+  mesh.userData.uic = true;
+  B.group.add(mesh);
+  // The room material's levels use this room's scale.
+  if (!H.roomScale) H.roomScale = new Float32Array(10).fill(1);
+  for (const id in UIC_HG_ROOMS) if (LOC.byId[id]) H.roomScale[LOC.byId[id].index] = UIC_HG_ROOMS[id].s;
+  uicHgLevelsAll();
+  H.rooms.set(L.id, mesh);
+  const pm = uicPtMesh(L.id);
+  if (pm) {
+    pm.updateMatrix();
+    B.group.add(pm);
+    uicPtState().meshes.set(L.id, pm);
+  }
+  if (L.id === 'szukseg') uicMirrorCopies(B, [mesh, pm]);
+  UIC.stats.roomBuilds++;
+  UIC.stats.buildMs.push(+(performance.now() - t0).toFixed(2));
+  if (UIC.stats.buildMs.length > 20) UIC.stats.buildMs.shift();
+}
+
+/**
+ * The Szükség Szobája's side-wall mirrors (47-loc-szukseg.js szkMirrorCopies) reflect the room's meshes, the baked
+ * frames included: the hourglass and the portraits get the same mirrored copies (shared geometry, bounded by the mirror
+ * window, so they are culled unless that mirror is in view).
+ */
+function uicMirrorCopies(B, meshes) {
+  if (typeof SZK !== 'object' || !SZK || !Array.isArray(SZK.mirrors) || !SZK.mirrorY) return;
+  for (const side of [-1, 1]) {
+    const ms = SZK.mirrors.filter((m) => m.s === side);
+    if (!ms.length) continue;
+    const z0 = Math.min(...ms.map((m) => m.z0));
+    const z1 = Math.max(...ms.map((m) => m.z1));
+    const X = SZK.ox + side * SZK.W;
+    const M = new THREE.Matrix4().makeTranslation(2 * X, 0, 0).multiply(new THREE.Matrix4().makeScale(-1, 1, 1));
+    const [y0, y1] = SZK.mirrorY;
+    const sphere = new THREE.Sphere(new THREE.Vector3(X, (y0 + y1) / 2, SZK.oz + (z0 + z1) / 2), Math.hypot((z1 - z0) / 2, (y1 - y0) / 2) + 0.4);
+    for (const m of meshes) {
+      if (!m) continue;
+      const g = new THREE.BufferGeometry();
+      for (const [k, at] of Object.entries(m.geometry.attributes)) g.setAttribute(k, at);
+      g.setIndex(m.geometry.index);
+      const c = new THREE.Mesh(g, m.material);
+      c.name = `${m.name}:mirror${side < 0 ? 'L' : 'R'}`;
+      c.matrixAutoUpdate = false;
+      c.matrix.copy(M).multiply(m.matrix);
+      g.boundingSphere = sphere.clone().applyMatrix4(c.matrix.clone().invert());
+      c.matrixWorldNeedsUpdate = true;
+      c.renderOrder = m.renderOrder;
+      c.userData.uicMirror = true;
+      B.group.add(c);
+    }
+  }
+}
+
+// eslint-disable-next-line no-func-assign
+buildLocationInterior = ((prev) => function uicBuildLocationInterior(L) {
+  const B = prev(L);
+  try {
+    uicAttachRoom(L, B);
+  } catch (err) {
+    console.warn('[uiC] room meshes failed', err);
+  }
+  return B;
+})(buildLocationInterior);
+
+// eslint-disable-next-line no-func-assign
+buildLocationInteriorAsync = ((prev) => async function uicBuildLocationInteriorAsync(L) {
+  const B = await prev(L);
+  try {
+    uicAttachRoom(L, B);
+  } catch (err) {
+    console.warn('[uiC] room meshes failed', err);
+  }
+  return B;
+})(buildLocationInteriorAsync);
+
+/** The square's ten hourglasses: one mesh (one draw call) in the street group. */
+function uicAttachStreet(rec) {
+  if (!rec || !rec.built || rec.built.uic || STRESS.on) return;
+  rec.built.uic = true;
+  const H = uicHgEnsure();
+  const S = UIC_HG_STREET;
+  const s = S.s;
+  const places = S.xs.map((x, k) => [HUB_ORIGIN.x + x, S.y + 0.055 * s, HUB_ORIGIN.z + S.z - 0.26 * s, S.yaw, s, k]);
+  const g = uicHgGeometry(H.tplStreet, places);
+  H.matStreet.uniforms.uScale.value = s;
+  const mesh = new THREE.Mesh(g, H.matStreet);
+  mesh.name = 'uic:hourglasses:street';
+  mesh.matrixAutoUpdate = false;
+  mesh.userData.uic = true;
+  // Its levels are in world metres: the template's table × the scale.
+  H.streetScale = new Float32Array(10).fill(s);
+  rec.built.group.add(mesh);
+  H.street = mesh;
+}
+
+// The street's level uniforms are relative to the mesh's own frame (world, scaled glass bottom at y = S.y): the vertex
+// shader compares the vertex y with the level, so the levels carry the placement's base height too.
+function uicHgLevelsStreet() {
+  const H = UIC.hg;
+  if (!H || !H.matStreet) return;
+  const S = UIC_HG_STREET;
+  const base = S.y + 0.055 * S.s;
+  const B = H.matStreet.uniforms.uLevB.value;
+  const T = H.matStreet.uniforms.uLevT.value;
+  uicHgLevels(H.matStreet, H.streetScale || null);
+  for (let k = 0; k < 10; k++) {
+    if (B[k] >= 0) B[k] += base;
+    if (T[k] >= 0) T[k] += base;
+  }
+}
+
+// eslint-disable-next-line no-func-assign
+buildHub = ((prev) => function uicBuildHub(...args) {
+  const rec = prev(...args);
+  try {
+    uicAttachStreet(rec);
+  } catch (err) {
+    console.warn('[uiC] street hourglasses failed', err);
+  }
+  return rec;
+})(buildHub);
+
+/**
+ * Boot (with the puffs, before the staged compile): the materials, and one small warm-up mesh of the portrait program
+ * in the scene, so its first use in a room never links a program during play. It is removed once play started.
+ */
+// eslint-disable-next-line no-func-assign
+buildPuffs = ((prev) => function uicBuildPuffs() {
+  prev();
+  try {
+    uicHgEnsure();
+    const S = uicPtState();
+    const m = uicPtMaterial('__warm', [{ bg: 0x222222 }], []);
+    const g = new THREE.PlaneGeometry(0.01, 0.01);
+    g.setAttribute('aP', new THREE.Float32BufferAttribute(new Array(16).fill(0), 4));
+    const w = new THREE.Mesh(g, m);
+    w.name = 'uic:warm';
+    w.position.set(0, -50, 0);
+    w.frustumCulled = false;
+    scene.add(w);
+    S.warm = w;
+  } catch (err) {
+    console.warn('[uiC] warm-up failed', err);
+  }
+})(buildPuffs);
+
+/* ------------------------------------------------------------------------------------------------
+   8. Talking: bubbles, applause, triggers
+   ------------------------------------------------------------------------------------------------ */
+
+uibStyle('uic-style', `
+.uic-bubble { position: absolute; left: 0; top: 0; z-index: 6; max-width: min(46vh, 70vw); padding: 1vh 1.5vh 1.1vh; pointer-events: none; opacity: 0;
+  transform: translate(-50%, -100%) scale(0.9); transition: opacity 0.35s ease, transform 0.35s ease; color: #20160d;
+  background-color: #efe4c8; background-image: var(--noise), radial-gradient(ellipse at 30% 20%, #f8f0dc, #e2d2ae 70%, #cdb98e);
+  background-size: 160px 160px, 100% 100%; background-blend-mode: multiply, normal; border-radius: 1.6vh;
+  box-shadow: 0 0.8vh 2.4vh rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(60, 40, 20, 0.45); }
+.uic-bubble.on { opacity: 1; }
+.uic-bubble::after { content: ''; position: absolute; left: 50%; bottom: -1.4vh; width: 2.4vh; height: 1.6vh; transform: translateX(-50%);
+  background: #e2d2ae; clip-path: polygon(0 0, 100% 0, 30% 100%); }
+.uic-bubble.dock::after { display: none; }
+.uic-bubble .who { font: 400 calc(1.55vh * var(--ts))/1.1 "Almendra", var(--font-serif); letter-spacing: 0.1em; text-transform: uppercase; color: #8e1d16; margin-bottom: 0.4vh; }
+.uic-bubble .say { font: 600 italic calc(2.15vh * var(--ts))/1.25 var(--font-serif); }
+#app.hc .uic-bubble { background: #fff; color: #000; }
+.layer.uic-layer { background: radial-gradient(ellipse at 50% 45%, rgba(10, 4, 12, 0.35), rgba(10, 4, 12, 0.75)); }
+.uic-cert { position: relative; box-sizing: border-box; width: min(calc(96vh * min(var(--ts), 1.25)), 100%); max-height: 100%; overflow: hidden;
+  display: grid; gap: 1vh; padding: 3vh 4vh 2.4vh; color: #20160d; text-align: center; transform-origin: 50% 0;
+  background-color: #eadfc3; background-image: var(--noise), radial-gradient(ellipse 120% 90% at 30% 20%, #f6eedb, #e6d7b4 60%, #cbb486 100%);
+  background-size: 180px 180px, 100% 100%; background-blend-mode: multiply, normal; border-radius: 0.6vh;
+  box-shadow: 0 2.4vh 6vh rgba(0, 0, 0, 0.7), inset 0 0 7vh rgba(120, 84, 30, 0.38), inset 0 0 0 0.5vh #eadfc3, inset 0 0 0 0.75vh #7a5a2a, inset 0 0 0 0.95vh #eadfc3, inset 0 0 0 1.1vh #7a5a2a; }
+.uic-cert.fresh { animation: uicUnroll 0.9s cubic-bezier(0.2, 0.8, 0.25, 1) both; }
+.uic-cert .ttl { margin: 0; font: 400 calc(5.6vh * min(var(--ts), 1.25))/1 "Uncial Antiqua", var(--font-display); color: #120b05; }
+.uic-cert .board { font: 400 calc(1.8vh * var(--ts))/1.2 "Almendra", var(--font-serif); letter-spacing: 0.14em; text-transform: uppercase; color: #6a4a1e; }
+.uic-cert .intro { font: 500 italic calc(2.05vh * var(--ts))/1.3 var(--font-serif); color: #3a2a18; }
+.uic-cert .who { font: 700 calc(2.3vh * var(--ts))/1.2 var(--font-serif); }
+.uic-cert .room { font: 400 calc(3.6vh * min(var(--ts), 1.3))/1.05 "Abril Fatface", var(--font-display); color: #120b05; }
+.uic-cert .dist { font: 600 calc(1.7vh * var(--ts))/1.2 var(--font-body); letter-spacing: 0.12em; text-transform: uppercase; color: #5b452c; }
+.uic-cert table { width: 100%; border-collapse: collapse; margin: 0.6vh 0; font: 500 calc(1.95vh * var(--ts))/1.2 var(--font-serif); }
+.uic-cert th { font: 400 calc(1.5vh * var(--ts))/1.1 "Almendra", var(--font-serif); letter-spacing: 0.1em; text-transform: uppercase; color: #8e1d16; padding: 0.4vh 0.8vh; border-bottom: 1px solid #20160d; }
+.uic-cert td { padding: 0.5vh 0.8vh; border-bottom: 1px dashed rgba(32, 22, 13, 0.45); }
+.uic-cert td.g { text-align: left; font-weight: 700; }
+.uic-cert td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.uic-cert .gr { display: inline-flex; align-items: center; gap: 0.8vh; font-weight: 700; white-space: nowrap; }
+.uic-cert .gr b { display: inline-grid; place-items: center; width: 3vh; height: 3vh; border-radius: 50%; color: #fff6df; font: 400 calc(1.9vh * var(--ts))/1 "Uncial Antiqua", var(--font-display); }
+.uic-cert .gr.K b { background: radial-gradient(circle at 35% 30%, #e8c25a, #9a6a12); color: #2a1a04; }
+.uic-cert .gr.V b { background: radial-gradient(circle at 35% 30%, #b8c4d0, #5a6a7a); }
+.uic-cert .gr.E b { background: radial-gradient(circle at 35% 30%, #c89a6a, #7a4a22); }
+.uic-cert .sum { font: 700 calc(2vh * var(--ts))/1.25 var(--font-serif); }
+.uic-cert .foot { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 2vh; margin-top: 0.4vh; }
+.uic-cert .issued, .uic-cert .rule, .uic-cert .retro { font: 500 calc(1.55vh * var(--ts))/1.3 var(--font-body); color: #5b452c; }
+.uic-cert .retro { font-style: italic; color: #7a3a1a; }
+.uic-cert .sign { font: 600 italic calc(2.4vh * var(--ts))/1.1 var(--font-serif); color: #2a1a4a; border-top: 1px solid #20160d; padding-top: 0.4vh; }
+.uic-cert .sign small { display: block; font: 500 calc(1.4vh * var(--ts))/1.2 var(--font-body); color: #5b452c; font-style: normal; }
+.uic-seal { position: relative; width: 11vh; height: 11vh; margin: 0 auto; }
+.uic-seal .wax { position: absolute; inset: 0; border-radius: 47% 53% 50% 48% / 52% 46% 54% 48%;
+  background: radial-gradient(circle at 38% 32%, #e0503e, #a3201a 45%, #6a0e0c 80%); box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.45), inset 0 0 0 0.7vh rgba(120, 10, 8, 0.6), inset 0 0 1.6vh rgba(0, 0, 0, 0.5); }
+.uic-seal .wax::before { content: ''; position: absolute; inset: 1.5vh; border-radius: 50%; border: 0.35vh solid rgba(255, 170, 150, 0.35); box-shadow: inset 0 0.3vh 0.6vh rgba(0, 0, 0, 0.35); }
+.uic-seal .mark { position: absolute; inset: 0; display: grid; place-items: center; font: 400 5vh/1 "Uncial Antiqua", var(--font-display); color: rgba(255, 200, 180, 0.55); text-shadow: 0 -0.15vh 0 rgba(0, 0, 0, 0.5), 0 0.15vh 0 rgba(255, 220, 200, 0.25); }
+.uic-seal .rib { position: absolute; left: 50%; top: 70%; width: 2.4vh; height: 6vh; background: linear-gradient(90deg, #6a0e0c, #a3201a 50%, #6a0e0c); transform-origin: 50% 0; z-index: -1; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%); }
+.uic-seal .rib.a { transform: translateX(-90%) rotate(16deg); }
+.uic-seal .rib.b { transform: translateX(-10%) rotate(-16deg); }
+.uic-cert.fresh .uic-seal { animation: uicStamp 0.5s 0.75s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+.uic-cert .items { justify-content: center; }
+.uic-cert .item { justify-content: center; min-width: 30vh; margin: 0 auto; color: #20160d; background: transparent; border: 1px solid rgba(32, 22, 13, 0.5); }
+.uic-cert .item.focused { color: #f4ecd8; background: linear-gradient(180deg, #2e2012, #1a1008); box-shadow: 0 0 0 0.3vh #f4ecd8, 0 0 0 0.7vh var(--focus-out); }
+.uic-cert.big .intro, .uic-cert.big .rule { display: none; }
+.uic-list .item .val { font-variant-numeric: tabular-nums; }
+.uic-list .item.locked { opacity: 0.62; }
+#app.hc .uic-cert { background: #fff; color: #000; }
+@keyframes uicUnroll { 0% { transform: scaleY(0.08); opacity: 0.2; } 60% { opacity: 1; } 100% { transform: scaleY(1); opacity: 1; } }
+@keyframes uicStamp { 0% { transform: scale(1.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .uic-cert.fresh, .uic-cert.fresh .uic-seal { animation: none; } .uic-bubble { transition: none; } }
+`);
+
+/** The two pooled bubble nodes. */
+function uicBubblePool() {
+  if (UIC.bubbles.length) return UIC.bubbles;
+  const host = byId('app') || document.body;
+  for (let i = 0; i < 2; i++) {
+    const n = el('div', 'uic-bubble');
+    n.setAttribute('role', 'status');
+    const who = el('div', 'who');
+    const say = el('div', 'say');
+    n.append(who, say);
+    host.append(n);
+    UIC.bubbles.push({ n, who, say, p: null, t: 0, on: false, x: -1, y: -1, dock: false });
+  }
+  return UIC.bubbles;
+}
+
+const uicV1 = new THREE.Vector3();
+const uicV2 = new THREE.Vector3();
+
+/** Shows a bubble for portrait p. */
+function uicSay(p, text, why) {
+  const pool = uicBubblePool();
+  let b = pool.find((x) => !x.on) || pool[0];
+  for (const o of pool) if (o.on && o.p === p) b = o;
+  for (const o of pool) {
+    if (o !== b && o.on) {
+      o.on = false;
+      o.n.classList.remove('on');
+    }
+  }
+  b.p = p;
+  b.t = UIC_TALK.showS + Math.min(3, text.length / 40);
+  b.on = true;
+  b.who.textContent = TXT.uicPortraits[p.id] ? TXT.uicPortraits[p.id].name : p.id;
+  b.say.textContent = text;
+  b.x = -1;
+  b.n.classList.add('on');
+  UIC.talk.lastS = GAME.playS;
+  UIC.talk.by[p.id] = GAME.playS;
+  UIC.talk.log.push(GAME.playS);
+  while (UIC.talk.log.length && GAME.playS - UIC.talk.log[0] > UIC_TALK.windowS) UIC.talk.log.shift();
+  UIC.stats.bubbles++;
+  uicEvent({ e: 'say', id: p.id, why, text });
+  uicSoundHm();
+  uicPtSetTalk(p, 1);
+}
+
+function uicPtSetTalk(p, v, key = 'uTalk') {
+  const m = uicPtState().mats.get(p.room);
+  if (!m) return;
+  const i = m.userData.list.indexOf(p);
+  if (i < 0 || i > 3) return;
+  m.uniforms[key].value.setComponent(i, v);
+}
+
+/** Per frame (right before the draw): bubble positions, fades, the talk and clap envelopes. */
+function uicBubbleTick(dt) {
+  if (!UIC.bubbles.length) return;
+  const hide = MENU.open || GAME.phase !== 'play' || !!LOC.trans || LOC.titleView;
+  for (const b of UIC.bubbles) {
+    if (!b.on) continue;
+    b.t -= dt;
+    const W = uicPortraitWorld(b.p);
+    const here = LOC.cur && LOC.cur.id === b.p.room;
+    if (b.t <= 0 || !here || !W) {
+      b.on = false;
+      b.n.classList.remove('on');
+      uicPtSetTalk(b.p, 0);
+      continue;
+    }
+    b.n.style.visibility = hide ? 'hidden' : '';
+    if (hide) continue;
+    // On screen above the portrait when it is in view, else docked at the top centre.
+    uicV1.copy(W.top).project(camera);
+    const facing = uicV2.copy(camera.position).sub(W.c).dot(W.n) > 0;
+    const inView = facing && uicV1.z < 1 && Math.abs(uicV1.x) < 0.92 && uicV1.y < 0.9 && uicV1.y > -0.7;
+    const dock = !inView;
+    const vw = innerWidth;
+    const vh = innerHeight;
+    // Kept inside the screen: the bubble hangs above its anchor (translate −100 %), so the anchor stays below its height.
+    const x = dock ? vw * 0.5 : clampTo((uicV1.x * 0.5 + 0.5) * vw, vw * 0.16, vw * 0.84);
+    const y = dock ? vh * 0.3 : clampTo((-uicV1.y * 0.5 + 0.5) * vh, vh * 0.14, vh * 0.8);
+    if (Math.abs(x - b.x) > 0.5 || Math.abs(y - b.y) > 0.5 || dock !== b.dock) {
+      b.x = x;
+      b.y = y;
+      if (dock !== b.dock) b.n.classList.toggle('dock', dock);
+      b.dock = dock;
+      b.n.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px) translate(-50%, -100%)`;
+    }
+  }
+}
+
+/** The clap envelopes of the portraits (decay ≈ 1.6 s). */
+function uicClapTick(dt) {
+  const S = UIC.pt;
+  if (!S) return;
+  for (const m of S.mats.values()) {
+    const c = m.uniforms.uClap.value;
+    if (c.x || c.y || c.z || c.w) {
+      c.set(Math.max(0, c.x - dt / 1.6), Math.max(0, c.y - dt / 1.6), Math.max(0, c.z - dt / 1.6), Math.max(0, c.w - dt / 1.6));
+    }
+  }
+}
+
+function uicSoundHm() {
+  if (typeof audioReady !== 'function' || !audioReady()) return;
+  try {
+    const t = AUDIO.ctx.currentTime + 0.01;
+    tone(196, 'triangle', t, 0.22, 0.018, AUDIO.fx, { attack: 0.03, filter: 'lowpass', ff: 900 });
+    tone(247, 'triangle', t + 0.16, 0.26, 0.016, AUDIO.fx, { attack: 0.03, filter: 'lowpass', ff: 900 });
+  } catch {
+    /* audio is optional */
+  }
+}
+
+/** A small round of applause from a painting (noise claps of a few hands). */
+function uicSoundClap() {
+  if (typeof audioReady !== 'function' || !audioReady()) return;
+  try {
+    const t = AUDIO.ctx.currentTime + 0.02;
+    const R = Math.random;
+    for (let i = 0; i < 16; i++) {
+      const at = t + i * 0.09 + R() * 0.05;
+      noise(at, 0.035, 0.05 * (1 - i / 22), 'bandpass', 1300 + R() * 1100, 1.1, AUDIO.fx);
+    }
+  } catch {
+    /* audio is optional */
+  }
+}
+
+/** True while the portraits may speak at all (play, no menu, no transition, no cinematic). */
+function uicTalkAllowed() {
+  if (GAME.phase !== 'play' || MENU.open || LOC.trans || LOC.titleView) return false;
+  if (typeof FINALE === 'object' && FINALE.active) return false;
+  if (typeof ENDING === 'object' && ENDING && ENDING.scene) return false;
+  if (typeof document !== 'undefined' && document.hidden) return false;
+  return !!(LOC.cur && LOC.cur.index >= 0 && LOC.cur.built);
+}
+
+/** The rate limit: the global gap, the per-portrait gap and the 10-minute window. */
+function uicTalkFree(p, gap = UIC_TALK.gapS) {
+  const now = GAME.playS;
+  if (now - UIC.talk.lastS < gap) return false;
+  if (now - (UIC.talk.by[p.id] ?? -999) < (gap === UIC_TALK.gapS ? UIC_TALK.perPortraitS : gap * 2)) return false;
+  const recent = UIC.talk.log.filter((s) => now - s < UIC_TALK.windowS).length;
+  return recent < UIC_TALK.windowMax;
+}
+
+function uicPick(list, salt) {
+  if (!Array.isArray(list) || !list.length) return '';
+  const i = Math.floor((GAME.playS * 7.31 + salt * 13 + UIC.stats.bubbles * 5) % list.length);
+  return list[Math.max(0, i)];
+}
+
+/** A shelf group completed (package A's hook): the nearest portrait of that room applauds and may say something. */
+function uicOnGroup(u, info) {
+  if (!LOC.cur || LOC.cur.index !== u.k) return;
+  const list = uicPortraitsOf(LOC.cur.id);
+  if (!list.length) return;
+  let best = list[0];
+  let bd = Infinity;
+  const at = info && info.plaque ? info.plaque : PLAYER.pos;
+  for (const p of list) {
+    const W = uicPortraitWorld(p);
+    const d = W ? W.c.distanceTo(at) : Infinity;
+    if (d < bd) {
+      bd = d;
+      best = p;
+    }
+  }
+  const now = GAME.playS;
+  if (now - (UIC.talk.clapS ?? -999) >= UIC_TALK.clapGapS) {
+    UIC.talk.clapS = now;
+    uicPtSetTalk(best, 1, 'uClap');
+    uicSoundClap();
+    UIC.stats.claps++;
+    uicEvent({ e: 'clap', id: best.id, unit: u.key });
+  }
+  if (uicTalkAllowed() && uicTalkFree(best, UIC_TALK.groupGapS)) uicSay(best, uicPick(TXT.uicPortraits[best.id].group, u.ui), 'group');
+  else UIC.stats.suppressed++;
+}
+
+if (typeof uiaOnGroupComplete === 'function') uiaOnGroupComplete((u, info) => uicOnGroup(u, info));
+
+/** A general tip from package B's list (plain strings only), or the portrait's own. */
+function uicTipText(p, salt) {
+  const own = TXT.uicPortraits[p.id].tip;
+  if (salt % 2 === 0 || !Array.isArray(TXT.cfTips)) return uicPick(own, salt);
+  const plain = TXT.cfTips.filter((t) => typeof t === 'string');
+  return uicPick(TXT.uicTipLead, salt) + uicPick(plain, salt + 3).replace(/^./, (c) => c.toLowerCase());
+}
+
+/** Per frame in play: the visit clock, a pending greeting, and now and then a tip near a portrait. */
+function uicTalkTick(dt) {
+  const L = LOC.cur;
+  if (!L || L.index < 0 || GAME.phase !== 'play') return;
+  UIC.visit[L.index] = GAME.playS;
+  if (!uicTalkAllowed()) return;
+  UIC.talk.tipT += dt;
+  const list = uicPortraitsOf(L.id);
+  if (!list.length) return;
+  const P = UIC.talk.pending;
+  if (P && P.room === L.id && GAME.playS >= P.at) {
+    UIC.talk.pending = null;
+    const p = list[Math.floor(GAME.playS) % list.length];
+    if (uicTalkFree(p, UIC_TALK.groupGapS)) uicSay(p, uicPick(TXT.uicPortraits[p.id].away, L.index), 'away');
+    else UIC.stats.suppressed++;
+    return;
+  }
+  if (UIC.talk.tipT < UIC_TALK.tipEveryS) return;
+  for (const p of list) {
+    const W = uicPortraitWorld(p);
+    if (!W) continue;
+    const d = W.c.distanceTo(uicV1.set(PLAYER.pos.x, W.c.y, PLAYER.pos.z));
+    if (d > UIC_TALK.tipNearM) continue;
+    // The player looks roughly at it and stands in front of it.
+    const fwd = uicV2.set(-Math.sin(PLAYER.yaw), 0, -Math.cos(PLAYER.yaw));
+    const to = uicV1.set(W.c.x - PLAYER.pos.x, 0, W.c.z - PLAYER.pos.z).normalize();
+    if (fwd.dot(to) < 0.55 || uicV1.set(PLAYER.pos.x - W.c.x, 0, PLAYER.pos.z - W.c.z).dot(W.n) <= 0) continue;
+    if (!uicTalkFree(p)) return;
+    UIC.talk.tipT = 0;
+    uicSay(p, uicTipText(p, UIC.stats.bubbles + L.index), 'tip');
+    return;
+  }
+}
+
+// Entering a room the player has not visited for a long time: one greeting after the doors opened.
+if (typeof locOn === 'function') {
+  locOn('enter', (d) => {
+    try {
+      if (!d || d.index < 0 || d.index >= 10) return;
+      const last = UIC.visit[d.index];
+      const L = LOC.list[d.index];
+      if (last >= 0 && GAME.playS - last >= UIC_TALK.awayS && uicPortraitsOf(L.id).length) UIC.talk.pending = { room: L.id, at: GAME.playS + 3 };
+      UIC.visit[d.index] = GAME.playS;
+      // A build that did not pass the two wrapped builders (a template adopted elsewhere): attach here.
+      if (L.built && !L.built.uic) uicAttachRoom(L, L.built);
+      const H = UIC.hg;
+      if (H) {
+        H.target[d.index] = uicDistrictFill(d.index);
+        H.fill[d.index] = H.target[d.index];
+        uicHgLevelsAll();
+      }
+    } catch (err) {
+      console.warn('[uiC] enter hook failed', err);
+    }
+  });
+}
+
+/* ------------------------------------------------------------------------------------------------
+   7. Certificates: the menus and the pause item
+   ------------------------------------------------------------------------------------------------ */
+
+function uicRoomName(k) {
+  return (LOC.list[k] && LOC.list[k].nameHu) || (FIG_DISTRICTS[k] && FIG_DISTRICTS[k].nameHu) || String(k + 1);
+}
+
+function uicDateOf(c) {
+  try {
+    return new Date((c.t || 0) * 1000).toLocaleDateString('hu-HU', { year: 'numeric', month: 'long', day: 'numeric' });
+  } catch {
+    return '';
+  }
+}
+
+function uicCountGrades(c) {
+  const n = { K: 0, V: 0, E: 0 };
+  for (const r of c.g) n[r[3]] = (n[r[3]] || 0) + 1;
+  return n;
+}
+
+MENU_BUILDERS.uicCert = (d) => {
+  const k = d.k | 0;
+  const c = UIC.cert[k];
+  const root = layer('dim uic-layer');
+  const big = (SETTINGS.textSize || 1) >= 1.5;
+  const sheet = el('div', `uic-cert${d.fresh ? ' fresh' : ''}${big ? ' big' : ''}`);
+  sheet.append(el('h2', 'ttl', TXT.uicCertTitle), el('div', 'board', TXT.uicCertBoard));
+  if (c) {
+    sheet.append(el('div', 'intro', TXT.uicCertIntro), el('div', 'who', fmt(TXT.uicCertWho, { name: GAME.name || TXT.setNameDefault })));
+    sheet.append(el('div', 'room', fmt(TXT.uicCertRoom, { room: uicRoomName(k) })), el('div', 'dist', fmt(TXT.uicCertDistrict, { n: FIG_DISTRICTS[k].key, cat: FIG_DISTRICTS[k].nameHu })));
+    const tab = el('table');
+    const head = el('tr');
+    for (const h of [TXT.uicCertGroup, TXT.uicCertAcc, TXT.uicCertPace, TXT.uicCertGrade]) head.append(el('th', '', h));
+    tab.append(head);
+    for (const r of c.g) {
+      const tr = el('tr');
+      tr.append(el('td', 'g', uicGroupName(k, r[0])), el('td', 'num', fmt(TXT.uicCertAccVal, { p: fmtDec(r[1], 1) })),
+        el('td', 'num', r[2] < 0 ? '–' : fmt(TXT.uicCertPaceVal, { s: fmtDec(r[2], 1) })));
+      const td = el('td');
+      const gr = el('span', `gr ${r[3]}`);
+      gr.append(el('b', '', r[3]), document.createTextNode(TXT.uicGrades[r[3]]));
+      td.append(gr);
+      tr.append(td);
+      tab.append(tr);
+    }
+    sheet.append(tab);
+    const n = uicCountGrades(c);
+    sheet.append(el('div', 'sum', fmt(TXT.uicCertSum, { k: n.K, v: n.V, e: n.E })));
+    const foot = el('div', 'foot');
+    const left = el('div', 'issued', fmt(TXT.uicCertIssued, { date: uicDateOf(c), h: Math.floor((c.p || 0) / 3600) + 1 }));
+    const seal = el('div', 'uic-seal');
+    seal.append(el('div', 'rib a'), el('div', 'rib b'), el('div', 'wax'), el('div', 'mark', 'R'));
+    const sign = el('div', 'sign', 'Rendrakási Vizsgabizottság');
+    sign.append(el('small', '', TXT.uicCertSign));
+    foot.append(left, seal, sign);
+    if (c.r) sheet.append(el('div', 'retro', TXT.uicCertRetro));
+    sheet.append(el('div', 'rule', TXT.uicCertRule), foot);
+  } else sheet.append(el('div', 'intro', TXT.uicCertsLocked));
+  const close = menuItem(escapeHtml(TXT.uicCertClose), () => closeMenu());
+  const box = el('div', 'items');
+  box.append(close);
+  sheet.append(box, hintsRow([['confirm', TXT.promptSelect], ['back', TXT.promptBack]]));
+  root.append(sheet);
+  if (d.fresh) uicSoundSeal();
+  return { root, items: [close], onBack: () => closeMenu() };
+};
+
+MENU_BUILDERS.uicCerts = () => {
+  const root = layer('dim uic-layer');
+  const panel = el('div', 'uic-cert uic-list');
+  panel.append(el('h2', 'ttl', TXT.uicCertsTitle), el('div', 'board', TXT.uicCertsSub));
+  const items = [];
+  let n = 0;
+  for (let k = 0; k < 10; k++) {
+    const c = UIC.cert[k];
+    if (c) n++;
+    const val = c ? (() => { const g = uicCountGrades(c); return fmt(TXT.uicCertsVal, { k: g.K, v: g.V, e: g.E }); })() : fmt(TXT.uicCertsNone, { pct: Math.floor(uicDistrictFill(k) * 100) });
+    const it = menuItem(`<span class="grow">${escapeHtml(`${FIG_DISTRICTS[k].key}. ${uicRoomName(k)}`)}</span><span class="val">${escapeHtml(val)}</span>`, () => {
+      if (UIC.cert[k]) openMenu('uicCert', { k });
+      else toast(TXT.uicCertsLocked);
+    }, { cls: c ? '' : 'locked' });
+    items.push(it);
+  }
+  panel.append(el('div', 'dist', fmt(TXT.uicCertsCount, { n })));
+  const box = el('div', 'items scroll');
+  box.style.maxHeight = '58vh';
+  box.append(...items);
+  panel.append(box, hintsRow([['confirm', TXT.promptSelect], ['back', TXT.promptBack]]));
+  root.append(panel);
+  return { root, items, onBack: () => closeMenu() };
+};
+
+/** The pause item (61-menus.js calls it while building the Szünet menu). */
+function uicPauseItem() {
+  if (STRESS.on) return null;
+  let n = 0;
+  for (const k in UIC.cert) if (UIC.cert[k]) n++;
+  return menuItem(`<span class="grow">${escapeHtml(TXT.uicPause)}</span><span class="val">${n} / 10</span>`, () => openMenu('uicCerts'), { cls: 'uic-pause' });
+}
+
+// The Próféta's sections need a kicker for every item: ours is "Vizsgaeredmények".
+{
+  const prophet = MENU_BUILDERS.pause;
+  MENU_BUILDERS.pause = (d) => {
+    const m = prophet(d);
+    try {
+      const it = m.items.find((x) => x.classList.contains('uic-pause'));
+      const rv = it && it.querySelector('.rv');
+      if (rv && !rv.querySelector('.rv-k')) {
+        const kick = el('span', 'rv-k', TXT.uicKick);
+        rv.prepend(kick);
+      }
+    } catch {
+      /* the kicker is optional */
+    }
+    return m;
+  };
+}
+
+function uicSoundSeal() {
+  if (typeof audioReady !== 'function' || !audioReady()) return;
+  try {
+    const t = AUDIO.ctx.currentTime + 0.02;
+    noise(t, 0.5, 0.04, 'bandpass', 2400, 0.8, AUDIO.fx, 900);
+    tone(90, 'sine', t + 0.78, 0.25, 0.09, AUDIO.fx, { glide: 50 });
+    noise(t + 0.78, 0.08, 0.05, 'lowpass', 600, 0.7, AUDIO.fx);
+  } catch {
+    /* audio is optional */
+  }
+}
+
+/** Opens the pending certificate when nothing else is going on (no menu, no transition, no cinematic). */
+function uicCertTick() {
+  let P = UIC.pendingCert;
+  if (!P) {
+    // An unseen certificate from the record (a mastery saved before its sheet was shown): once in play.
+    for (let k = 0; k < 10; k++) {
+      if (UIC.cert[k] && !(UIC.seen & (1 << k))) {
+        P = UIC.pendingCert = { k, at: performance.now() + 2500 };
+        break;
+      }
+    }
+    if (!P) return;
+  }
+  if (performance.now() < P.at) return;
+  if (GAME.phase !== 'play' || MENU.open || LOC.trans || LOC.titleView) return;
+  if (typeof FINALE === 'object' && FINALE.active) return;
+  if (typeof ENDING === 'object' && ENDING && ENDING.scene) return;
+  UIC.pendingCert = null;
+  UIC.seen |= 1 << P.k;
+  markDirty();
+  UIC.stats.popups++;
+  uicEvent({ e: 'cert', k: P.k });
+  openMenu('uicCert', { k: P.k, fresh: true });
+}
+
+/* ------------------------------------------------------------------------------------------------
+   Per frame
+   ------------------------------------------------------------------------------------------------ */
+
+// eslint-disable-next-line no-func-assign
+animateWorld = ((prev) => function uicAnimateWorld(t, dt) {
+  prev(t, dt);
+  const t0 = performance.now();
+  try {
+    uicHgTick(dt);
+    uicClapTick(dt);
+    uicTalkTick(dt);
+    uicCertTick();
+    const S = UIC.pt;
+    if (S) {
+      if (S.warm && BOOT.done && GAME.phase === 'play') {
+        scene.remove(S.warm);
+        S.warm.geometry.dispose();
+        S.warm = null;
+      }
+      for (const [id, m] of S.mats) if (id !== '__warm' && !m.uniforms.uReady.value) uicPtFill(m);
+    }
+  } catch (err) {
+    if (UIC.err++ < 5) console.warn('[uiC] tick failed', err);
+  }
+  const ms = performance.now() - t0;
+  UIC.stats.tickMs += ms;
+  UIC.stats.tickN++;
+  if (ms > UIC.stats.tickMax) UIC.stats.tickMax = ms;
+})(animateWorld);
+
+// eslint-disable-next-line no-func-assign
+updateCoop = ((prev) => function uicUpdateCoop(dt) {
+  prev(dt);
+  try {
+    uicBubbleTick(dt);
+  } catch (err) {
+    if (UIC.err++ < 5) console.warn('[uiC] bubbles failed', err);
+  }
+})(updateCoop);
+
+/** Test / debug summary of package C. */
+function uicInfo() {
+  const H = UIC.hg;
+  return {
+    from: UIC.from, units: UIC.u.size, cert: Object.keys(UIC.cert).map(Number), seen: UIC.seen, visit: UIC.visit.slice(),
+    fill: H ? Array.from(H.fill, (x) => +x.toFixed(4)) : null, target: H ? Array.from(H.target, (x) => +x.toFixed(4)) : null,
+    glow: H ? Array.from(H.glow) : null, flow: H ? Array.from(H.flow, (x) => +x.toFixed(2)) : null,
+    gems: H && H.tplRoom ? { room: H.tplRoom.gems, street: H.tplStreet.gems } : null,
+    street: !!(H && H.street), rooms: H ? [...H.rooms.keys()] : [], portraits: UIC.pt ? [...UIC.pt.meshes.keys()] : [],
+    talk: { lastS: UIC.talk.lastS, by: { ...UIC.talk.by }, log: UIC.talk.log.slice(), tipT: +UIC.talk.tipT.toFixed(1), pending: UIC.talk.pending },
+    bubbles: UIC.bubbles.map((b) => ({ on: b.on, id: b.p ? b.p.id : null, text: b.say.textContent, dock: b.dock })),
+    stats: { ...UIC.stats, buildMs: UIC.stats.buildMs.slice(), tickAvg: UIC.stats.tickN ? +(UIC.stats.tickMs / UIC.stats.tickN).toFixed(4) : 0 },
+    events: UIC.events.slice(-30), pendingCert: UIC.pendingCert,
   };
 }
 
