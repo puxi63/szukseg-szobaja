@@ -16727,6 +16727,9 @@ function uibCardWanted(T) {
   return !(T.opts && T.opts.noCard);
 }
 
+/** The card's opacity while shown (see uibCardVeil). */
+const UIB_CARD_MAX_A = 0.99;
+
 function uibCardVeil(p) {
   const C = UIB_CARDS;
   const T = LOC.trans;
@@ -16759,7 +16762,9 @@ function uibCardVeil(p) {
     }
     if (!C.cur) return;
     // Fade in with the name plate while closing; full while loading and opening (the card lingers after).
-    const a = T.phase === 'close' ? clamp01((p - 0.55) / 0.35) : 1;
+    // "Full" is UIB_CARD_MAX_A, just under 1: at exactly 1 Chrome re-rasterizes the whole card layer once (100–220 ms
+    // on the UHD 630, the first time per page), which stalled the first door's opening (NOTES-perf-pass.md).
+    const a = Math.min(UIB_CARD_MAX_A, T.phase === 'close' ? clamp01((p - 0.55) / 0.35) : 1);
     if (Math.abs(a - C.lastA) > 0.01) {
       C.lastA = a;
       C.node.style.setProperty('--cf-a', a.toFixed(2));
