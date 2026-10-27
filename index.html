@@ -2443,6 +2443,153 @@ Object.assign(TXT, {
   },
 });
 
+/* ---- 19d-txt-uid.js ---- */
+/* ==== 19d-txt-uid.js — the Hungarian strings of UI/UX package D (87-wands.js, 88-menus-hp.js, NOTES-uiD.md): the
+   Ollivander wand picker with the canon wands, and the Harry Potter flavoured headings of every restyled menu.
+   Official Hungarian names and terms (the Hungarian translation): Ollivander, Abszol út, Kóbor Grimbusz, Stan Shunpike,
+   Hop-por, Hop-hálózat, Gringotts, Mágiaügyi Minisztérium, Pálcák Ura, Halál ereklyéi, Perselus Piton, Göthe Salmander,
+   Voldemort Nagyúr, magyal, főnixtoll, unikornisszőr, sárkányszívhúr, tiszafa, bodza, galagonya, dió, szil, fűz,
+   cseresznye, ciprus, tölgy, thesztrál, hüvelyk. Terms marked [ellenőrizendő] in NOTES-uiD.md are not verified against
+   the printed translation. Every description, kicker and conductor line is our own wording (no quotation from the
+   books). Merged over TXT after the other text sections. ==== */
+
+Object.assign(TXT, {
+  uid: {
+    /* ---- the Ollivander wand picker ---- */
+    olvTitle: 'Ollivander',
+    olvSign: 'Minőségi varázspálcák i. e. 382 óta',
+    olvMotto: 'A pálca választja a varázslót',
+    olvBoxes: 'A polcon',
+    olvWood: 'Fa',
+    olvCore: 'Mag',
+    olvLen: 'Hossz',
+    olvTrait: 'Jelleg',
+    olvUnknown: 'nem ismert',
+    olvInches: '{n} hüvelyk',
+    olvChosen: 'Ez a te pálcád.',
+    olvChoose: 'Kipróbálom',
+    olvChooseHint: 'Kipróbálás és választás',
+    olvSpark: 'A pálca választja a varázslót!',
+    olvSparkSub: 'Szikrák pattannak a hegyéből: {name} mostantól a tiéd.',
+    olvLocked: 'Lezárt doboz',
+    olvLockedLine: 'Ez a pálca csak annak engedelmeskedik, aki végigvitte a műszakot: a Gyűjtő Csarnoka megnyitása után választható.',
+    olvLockedToast: 'A Pálcák Ura még nem enged közel magához: vidd végig a műszakot, és Ollivander kinyitja a dobozát.',
+    olvUnlockedToast: 'Ollivander üzeni: a Pálcák Ura mostantól választható a pálcaboltban.',
+    olvFree: 'Ingyen próbálható: a pálcákért itt nem kell galleont fizetni.',
+    olvBack: 'Vissza a boltból',
+    olvTitleItem: 'Pálcaválasztás',
+    olvPauseItem: 'Pálcaválasztás',
+    olvKick: 'Ollivander pálcaboltja',
+    olvClose: 'Becsukja a dobozt',
+    olvTestBack: 'A választott pálca a kezedben marad.',
+    /* ---- the restyled menus: headings, kickers, ornaments ---- */
+    titleKick: 'Abszol út · éjszakai műszak',
+    titleSeal: 'SZ',
+    titleAddress: 'Kedves Gondnok! Az Abszol út boltosai várják a válaszodat.',
+    confirmKick: 'Megerősítés szükséges',
+    decreeHead: 'Mágiaügyi Minisztérium',
+    decreeSub: 'Rendelet a műszak beállításairól',
+    decreeSec: '{n}. cikkely',
+    decreeStamp: 'Jóváhagyva',
+    controlsHead: 'Gondnoki kézikönyv',
+    albumKick: 'Bőrkötéses gyűjtőalbum',
+    chartKick: 'Az Abszol út és a tíz raktár térképe',
+    chartRules: 'A rendrakás szabályai',
+    busKick: 'Menetjegy · Kóbor Grimbusz',
+    busNo: 'Jegy száma: {n}',
+    busConductor: 'Kalauz: Stan Shunpike',
+    busLine: [
+      'Isten hozta a Kóbor Grimbuszon! Mondja, hova vigyük a ládát, és már ott is van.',
+      'Kapaszkodjon! A busz hármat ugrik, a láda egyet sem.',
+      'Ládát rendel? A Grimbusz mindig megáll, ha valaki inti.',
+      'Három emelet, egy sofőr, és egyetlen láda sem esett még le. Na jó, csak egy.',
+    ],
+    busPunch: 'Lyukasztva',
+    districtsKick: 'Útjelző tábla',
+    flooKick: 'Zöld láng · Hop-por kandallók',
+    flooSay: 'Mondd ki tisztán a célt, és lépj a zöld lángba.',
+    counterKick: 'A bolt pultja',
+    vaultKick: 'Gringotts Varázslóbank',
+    caulKick: 'Kotyogó üst',
+    noteKick: 'Bagolyposta',
+    parcelKick: 'Talált tárgyak · csomagcímke',
+    tagKick: 'Árcédula',
+    hallKick: 'A Gyűjtő Csarnoka',
+    credKick: 'A műszak krónikája',
+  },
+  /* The wands (87-wands.js WAND_DEFS): who, wood, core, length (inches, canon), a short trait and our own description. */
+  uidWands: {
+    shift: {
+      who: 'A műszak pálcája', short: 'Saját pálca', wood: 'diófa nyél', core: '', len: 0, trait: 'megbízható',
+      desc: 'A pálca, amellyel a Szükség Szobájában a műszakot kezdted: gyűrűs, sötét markolat, meleg fényű hegy. Szerény, de sosem hagyott cserben.',
+    },
+    harry: {
+      who: 'Harry Potter', short: 'Harry', wood: 'magyal', core: 'főnixtoll', len: 11, trait: 'kellemes, hajlékony',
+      desc: 'A magja Fawkes egyik tolla, és ugyanaz a főnix adta, amelyik Voldemort pálcájának magját: a két pálca testvér. A magyal a nehéz utat választók fája.',
+    },
+    hermione: {
+      who: 'Hermione Granger', short: 'Hermione', wood: 'szőlő', core: 'sárkányszívhúr', len: 10.75, trait: 'élénk, szorgalmas',
+      desc: 'Szőlőfa pálca sárkányszívhúrral: a nagy célokat kergető, mélyen gondolkodó varázslókhoz húz. A gazdája szinte minden bűbájt elsőre megtanult vele.',
+    },
+    ron: {
+      who: 'Ron Weasley', short: 'Ron', wood: 'fűz', core: 'unikornisszőr', len: 14, trait: 'hosszú, hűséges',
+      desc: 'Ron második pálcája: az első, Charlie bátyja régi pálcája, a Fúria fűzzel való találkozás után ragasztószalaggal sem bírta tovább. Ez már új, és csak az övé.',
+    },
+    ginny: {
+      who: 'Ginny Weasley', short: 'Ginny', wood: 'tiszafa', core: '', len: 0, trait: 'tüzes',
+      desc: 'A Weasley család legfiatalabbjának pálcája, amelyből a híres Denevér-rontás szárnyra kel. A magját a könyvek nem árulják el.',
+    },
+    neville: {
+      who: 'Neville Longbottom', short: 'Neville', wood: 'cseresznye', core: 'unikornisszőr', len: 13, trait: 'erős, a gazdájához nőtt',
+      desc: 'Az apja régi pálcája a Minisztériumban tört el; ezt a cseresznyefa pálcát Ollivandertől kapta, és vele lett igazán önmaga.',
+    },
+    luna: {
+      who: 'Luna Lovegood', short: 'Luna', wood: '', core: '', len: 0, trait: 'álmodozó',
+      desc: 'Világos, kanyargós pálca, amely mintha maga is nyargalászokat figyelne. Fáját és magját a könyvek nem írják le.',
+    },
+    draco: {
+      who: 'Draco Malfoy', short: 'Draco', wood: 'galagonya', core: 'unikornisszőr', len: 10, trait: 'meglehetősen rugalmas',
+      desc: 'Galagonyafa pálca unikornisszőrrel. A Malfoy-kúrián Harry kicsavarta a gazdája kezéből, és a pálca hűsége vele együtt gazdát cserélt.',
+    },
+    voldemort: {
+      who: 'Voldemort Nagyúr', short: 'Voldemort', wood: 'tiszafa', core: 'főnixtoll', len: 13.5, trait: 'hatalmas',
+      desc: 'Halvány, csontszerű tiszafa pálca. A magja Fawkes tolla, ezért Harry pálcájával szemben nem tud igazán harcolni: a két testvérpálca egymásra felel.',
+    },
+    bellatrix: {
+      who: 'Bellatrix Lestrange', short: 'Bellatrix', wood: 'dió', core: 'sárkányszívhúr', len: 12.75, trait: 'merev',
+      desc: 'Görbe, sötét diófa pálca sárkányszívhúrral. Engedetlen és kemény, akár a gazdája; egyszer Hermione is használta.',
+    },
+    snape: {
+      who: 'Perselus Piton', short: 'Piton', wood: '', core: '', len: 0, trait: 'pontos',
+      desc: 'Karcsú, fekete, finoman faragott markolatú pálca. Fáját és magját a könyvek nem árulják el, a titkait a gazdája sem.',
+    },
+    lucius: {
+      who: 'Lucius Malfoy', short: 'Lucius', wood: 'szil', core: 'sárkányszívhúr', len: 0, trait: 'elegáns',
+      desc: 'Szilfa pálca sárkányszívhúrral, ezüst kígyófejes sétabotba rejtve. Voldemort elkérte tőle, és nem adta vissza egészben.',
+    },
+    elder: {
+      who: 'Albus Dumbledore', short: 'Pálcák Ura', wood: 'bodza', core: 'thesztrálszőr', len: 15, trait: 'a legerősebb pálca',
+      desc: 'A Pálcák Ura, a Halál ereklyéinek egyike: bogos bodzafa pálca thesztrálszőr maggal. Az engedelmessége azé, aki legyőzte az előző gazdáját. Jutalom a műszak végéért.',
+    },
+    newt: {
+      who: 'Göthe Salmander', short: 'Göthe', wood: '', core: '', len: 0, trait: 'türelmes',
+      desc: 'A magizoológus kérges, csontszínű hegyű pálcája; vele nyitja és zárja a bőröndje ezer zugát. Fáját és magját a könyvek nem nevezik meg.',
+    },
+    sirius: {
+      who: 'Sirius Black', short: 'Sirius', wood: '', core: '', len: 0, trait: 'vakmerő',
+      desc: 'Sötét, gazdagon faragott pálca a Black család ízlése szerint. A könyvek nem írják le, miből készült.',
+    },
+    lupin: {
+      who: 'Remus Lupin', short: 'Lupin', wood: 'ciprus', core: 'unikornisszőr', len: 10.25, trait: 'nemes, kopott',
+      desc: 'Ciprusfa pálca unikornisszőrrel: a ciprus a nemes lelkű, önfeláldozó varázslók fája. Sokat látott, a markolata kifényesedett.',
+    },
+    hagrid: {
+      who: 'Rubeus Hagrid', short: 'Hagrid ernyője', wood: 'tölgy', core: '', len: 16, trait: 'rózsaszín és gyanús',
+      desc: 'Hagrid tölgyfa pálcáját kettétörték, amikor kicsapták a Roxfortból. A darabjai állítólag ebben a rózsaszín esernyőben lapulnak. Hivatalosan ez csak egy esernyő.',
+    },
+  },
+});
+
 /* ---- 20-figures-data.js ---- */
 /* ==== 20-figures-data.js — figurine data: the 521 mesh designs, the legacy shop categories, the 10 districts, the
    500 catalogued district types and the 500 palette-swap stress types (generated by tools/figbake/gen-data.mjs from
@@ -53613,7 +53760,7 @@ function updateNudges(dt, feetX, feetZ, feetY, moveX, moveZ) {
         const n = { rec, fx: rec.pos.x, fz: rec.pos.z, fy: rec.pos.y, tx: t[0], tz: t[1], t: 0, spin: (Math.random() - 0.5) * 3 };
         rec.nudge = n;
         NUDGE.list.push(n);
-        if (SETTINGS.ambient) sfx('step');
+        sfx('step');
       }
     }
   }
@@ -60499,7 +60646,7 @@ function updatePlayer(dt, allowMove) {
     P.stepAcc += moved;
     if (P.stepAcc > 0.55) {
       P.stepAcc = 0;
-      if (SETTINGS.ambient) sfx('step');
+      sfx('step');
     }
     P.bobT += moved * 7;
   }
@@ -66289,6 +66436,8 @@ MENU_BUILDERS.pause = () => {
   items.push(menuItem(escapeHtml(TXT.pauseRules), () => openMenu('map', { tab: 1 })));
   items.push(menuItem(escapeHtml(TXT.pauseControls), () => openMenu('controls')));
   items.push(menuItem(escapeHtml(TXT.pauseSettings), () => openMenu('settings')));
+  // UI package D (87-wands.js): the Ollivander wand picker.
+  if (typeof uidPauseItem === 'function') items.push(uidPauseItem());
   items.push(menuItem(escapeHtml(TXT.pauseRecall), () => {
     const n = recoverLost(true);
     toast(n ? fmt(TXT.toastRecall, { n }) : TXT.toastRecallNone);
@@ -67057,7 +67206,8 @@ function bookDistrictChips(cur) {
 
 function tabHints(prevNext, extra = []) {
   const pad = IN.device === 'pad';
-  const tabs = pad ? '<span class="glyphs"><span class="pad bump">LB</span><span class="pad bump">RB</span></span>' : '<span class="glyphs"><span class="key">Q</span><span class="key">Tab</span></span>';
+  // glyph('tabs'): LB / RB, or L1 / R1 on a PlayStation pad (71-pad-glyphs.js).
+  const tabs = pad ? glyph('tabs', 'pad') : '<span class="glyphs"><span class="key">Q</span><span class="key">Tab</span></span>';
   const h = el('div', 'hints');
   h.innerHTML = [`<span>${tabs}${escapeHtml(prevNext)}</span>`, ...extra.map(([a, l]) => `<span>${glyph(a)}${escapeHtml(l)}</span>`)].join('');
   return h;
@@ -67625,13 +67775,16 @@ function coopInitDom() {
   COOP.prompt = mk('coop-prompt');
 }
 
-/** Player 2's buttons with their Xbox glyphs (its own map, COOP_PRESS_MAP: the helper never jumps). */
+/**
+ * Player 2's buttons with the glyphs of player 2's own pad (Xbox or PlayStation: padButton, 71-pad-glyphs.js; its own
+ * map, COOP_PRESS_MAP: the helper never jumps).
+ */
 function coopHelpHtml() {
   const H = TXT.coopHelpParts;
-  const pad = (cls, t) => `<span class="pad ${cls}">${t}</span>`;
+  const pad = (b) => padButton(b, 1);
   const items = [
-    [pad('stick', 'L'), H.move], [pad('a', 'A'), H.mark], [pad('x', 'X'), TXT.spellSort], [pad('y', 'Y'), TXT.spellInvito || 'Invito'],
-    [pad('b', 'B'), H.unmark], [pad('bump', 'RB'), H.crate], [pad('menubtn', VIEW_SVG), H.help], [pad('menubtn', MENU_SVG), H.leave],
+    [pad('L'), H.move], [pad('A'), H.mark], [pad('X'), TXT.spellSort], [pad('Y'), TXT.spellInvito || 'Invito'],
+    [pad('B'), H.unmark], [pad('RB'), H.crate], [pad('View'), H.help], [pad('Menu'), H.leave],
   ];
   return `<b>${escapeHtml(TXT.coopHelpTitle)}</b>${items.map(([g, t]) => `<span class="it">${g}${escapeHtml(t)}</span>`).join('')}`;
 }
@@ -67805,7 +67958,7 @@ function coopPromptTick(dt) {
   if (pad !== COOP.promptPad) {
     COOP.promptPad = pad;
     COOP.promptT = 10;
-    COOP.prompt.innerHTML = escapeHtml(TXT.coopJoin).replace('Start', `<span class="pad menubtn">${MENU_SVG}</span> Start`);
+    COOP.prompt.innerHTML = coopPromptHtml();
   }
   COOP.promptT -= dt;
   COOP.prompt.style.display = COOP.promptT > 0 ? 'block' : 'none';
@@ -67833,7 +67986,7 @@ function coopActTick(show) {
   }
   if (key !== COOP.actKey) {
     COOP.actKey = key;
-    COOP.act.innerHTML = key ? `<span class="pad a">A</span><span>${escapeHtml(text)}</span>` : '';
+    COOP.act.innerHTML = key ? `${padButton('A', 1)}<span>${escapeHtml(text)}</span>` : '';
   }
   if (!key) {
     COOP.act.style.display = 'none';
@@ -72956,6 +73109,280 @@ function doFullscreenToggle() {
   }
 }
 
+/* ---- 71-pad-glyphs.js ---- */
+/* ==== 71-pad-glyphs.js — PlayStation controller glyphs (NOTES-psglyphs.md). When a player's pad is a DualSense (PS5)
+   or a DualShock 4 (PS4), every pad prompt of that player shows the PlayStation face symbols and labels instead of the
+   Xbox ones: A → ✕, B → ○, X → □, Y → △, LB / RB → L1 / R1, LT / RT → L2 / R2, Menu → Options, View → Create (PS5) /
+   Share (PS4); the sticks and the d-pad keep their meaning (the d-pad is drawn as the PlayStation's four separate
+   arrows). Every other pad keeps the Xbox glyphs (the default).
+   - Detection: padTypeOfId(Gamepad.id): Sony's USB vendor id 054c, or the names "DualSense" / "DUALSHOCK" /
+     "PlayStation" / a bare "Wireless Controller" (the DualShock 4's Windows name; "Xbox Wireless Controller" stays
+     Xbox). Both Chromium formats ("DualSense Wireless Controller (STANDARD GAMEPAD Vendor: 054c Product: 0ce6)") and
+     the Firefox one ("054c-0ce6-DualSense …") match. PS5 = DualSense / DualSense Edge (product 0ce6 / 0df2).
+   - Per player: player 1 reads IN.pads[0], player 2 (the co-op house-elf) IN.pads[1]; the co-op join prompt reads the
+     unassigned pad that would join (COOP_IN.extraPad). Player 1 keeps its last known type while its pad is away.
+   - The ONE lookup for every prompt: padGlyph(action, player) (the action names of PAD_GLYPH) and padButton(btn, who)
+     (the Xbox button names 'A' 'B' 'X' 'Y' 'LB' 'RB' 'LT' 'RT' 'L' 'R' 'View' 'Menu'). glyph() and spellGlyph() of
+     60-ui.js are overridden by assignment, so hintsRow, tabHints, the tips, the hover card, the HUD and every menu that
+     goes through glyph() follow player 1 without own code.
+   - Texts with a button name in them (TXT.lostHint, TXT.ctlMenus, TXT.ctl.unused, …) are swapped in TXT while player 1
+     holds a PlayStation pad, and swapped back for any other pad.
+   - Live: a change of either player's pad type re-renders the HUD, the open menu, the tip, the spell cross and the
+     co-op help, prompt and action label (through the existing device-change path of updateHud).
+   Only glyphs and labels change: no input mapping, no save field (save v5 is untouched). ==== */
+
+const PADG = {
+  // Last applied type per player and of the join prompt ('xbox' | 'ps5' | 'ps4'), the TXT swap state, a memo by id.
+  t: ['xbox', 'xbox'], join: 'xbox', last0: 'xbox', txt: 'xbox', memo: new Map(), orig: null, css: false,
+  stats: { changes: 0, txtSwaps: 0 },
+};
+
+/** Pad family of one Gamepad.id: 'ps5' (DualSense), 'ps4' (DualShock 4 and other Sony pads) or 'xbox' (everything else). */
+function padTypeOfId(id) {
+  if (!id) return 'xbox';
+  const m = PADG.memo.get(id);
+  if (m) return m;
+  const s = String(id);
+  let t = 'xbox';
+  if (!/xbox|xinput|vendor:\s*045e|^045e-/i.test(s)) {
+    const sony = /vendor:\s*054c|^054c-|\b054c\b/i.test(s) || /dualsense|dualshock|playstation|\bps[45]\b/i.test(s) || /^\s*wireless controller\b/i.test(s);
+    if (sony) t = /dualsense|product:\s*0(ce6|df2)\b|^054c-0(ce6|df2)-/i.test(s) ? 'ps5' : 'ps4';
+  }
+  if (PADG.memo.size < 64) PADG.memo.set(id, t);
+  return t;
+}
+
+/** The Gamepad.id of the pad at Gamepad API index `index` ('' when none). */
+function padIdAt(index) {
+  if (index < 0) return '';
+  for (const p of connectedPads()) if (p.index === index) return p.id || '';
+  return '';
+}
+
+/**
+ * Pad type of a player: 0 = player 1, 1 = player 2 (the house-elf), 'join' = the free pad the co-op prompt invites, or
+ * a type string ('xbox' | 'ps5' | 'ps4') passed through.
+ */
+function padType(who = 0) {
+  if (who === 'xbox' || who === 'ps5' || who === 'ps4') return who;
+  if (who === 'join') return padTypeOfId(padIdAt(COOP_IN.extraPad));
+  const k = who === 1 ? 1 : 0;
+  const info = IN.pads[k];
+  if (info && info.connected && info.id) {
+    const t = padTypeOfId(info.id);
+    if (k === 0) PADG.last0 = t;
+    return t;
+  }
+  if (k === 1) return padTypeOfId(padIdAt(COOP_IN.extraPad));
+  return PADG.last0;
+}
+
+function padIsPs(who = 0) {
+  return padType(who) !== 'xbox';
+}
+
+/* ---- PlayStation glyph HTML ------------------------------------------------------------------------------------- */
+const PS_SYM = {
+  cross: '<path class="ps-sym" d="M7 7l10 10M17 7L7 17"/>',
+  circle: '<circle class="ps-sym" cx="12" cy="12" r="5.8"/>',
+  square: '<rect class="ps-sym" x="6.6" y="6.6" width="10.8" height="10.8" rx="0.5"/>',
+  triangle: '<path class="ps-sym" d="M12 5.6l6.4 11H5.6z"/>',
+};
+const PS_FACE = (k) => `<span class="pad ps face ps-${k}" title="${k === 'cross' ? '✕' : k === 'circle' ? '○' : k === 'square' ? '□' : '△'}"><svg viewBox="0 0 24 24" aria-hidden="true">${PS_SYM[k]}</svg></span>`;
+const PS_CREATE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M12 4.5v4.2M6.2 7.4l2.8 2.8M17.8 7.4L15 10.2M6 16.5h12"/></svg>';
+const PS_SHARE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M12 14.5V4.8M8.4 8.2L12 4.6l3.6 3.6M6 12.5v6h12v-6"/></svg>';
+/** The PlayStation d-pad: four separate arrow-shaped buttons, only the lit one(s) coloured. */
+const PS_DPAD_SVG = (lit, arrow) => {
+  const arm = { up: 'M9 2.6h6v5.2L12 10.8 9 7.8z', down: 'M9 21.4h6v-5.2L12 13.2 9 16.2z', left: 'M2.6 9v6h5.2l3-3-3-3z', right: 'M21.4 9v6h-5.2l-3-3 3-3z' };
+  const tip = { up: 'M12 3.6l2 2.6h-4z', down: 'M12 20.4l-2-2.6h4z', left: 'M3.6 12l2.6-2v4z', right: 'M20.4 12l-2.6 2v-4z' };
+  let s = '';
+  for (const d of ['up', 'down', 'left', 'right']) {
+    s += `<path class="${lit.includes(d) ? 'dpad-on' : 'dpad-base'}" d="${arm[d]}"/>`;
+    if (arrow && lit.includes(d)) s += `<path class="dpad-arrow" d="${tip[d]}"/>`;
+  }
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${s}</svg>`;
+};
+const PS_DPAD = (lit, arrow = false) => `<span class="pad dpad ps-dpad">${PS_DPAD_SVG(lit, arrow)}</span>`;
+
+/** One button of a player's pad, by its Xbox name; the Xbox HTML is exactly the one 60-ui.js always drew. */
+function padButton(btn, who = 0) {
+  const t = padType(who);
+  if (t === 'xbox') {
+    switch (btn) {
+      case 'A': return '<span class="pad a">A</span>';
+      case 'B': return '<span class="pad b">B</span>';
+      case 'X': return '<span class="pad x">X</span>';
+      case 'Y': return '<span class="pad y">Y</span>';
+      case 'LB': case 'RB': return `<span class="pad bump">${btn}</span>`;
+      case 'LT': case 'RT': return `<span class="pad trig">${btn}</span>`;
+      case 'L': case 'R': return `<span class="pad stick">${btn}</span>`;
+      case 'View': return `<span class="pad menubtn">${VIEW_SVG}</span>`;
+      case 'Menu': return `<span class="pad menubtn">${MENU_SVG}</span>`;
+      default: return '';
+    }
+  }
+  switch (btn) {
+    case 'A': return PS_FACE('cross');
+    case 'B': return PS_FACE('circle');
+    case 'X': return PS_FACE('square');
+    case 'Y': return PS_FACE('triangle');
+    case 'LB': return '<span class="pad ps bump">L1</span>';
+    case 'RB': return '<span class="pad ps bump">R1</span>';
+    case 'LT': return '<span class="pad ps trig">L2</span>';
+    case 'RT': return '<span class="pad ps trig">R2</span>';
+    case 'L': case 'R': return `<span class="pad stick">${btn}</span>`;
+    case 'View': return t === 'ps4' ? `<span class="pad ps sysbtn share" title="Share">${PS_SHARE_SVG}</span>` : `<span class="pad ps sysbtn create" title="Create">${PS_CREATE_SVG}</span>`;
+    case 'Menu': return `<span class="pad ps sysbtn options" title="Options">${MENU_SVG}</span>`;
+    default: return '';
+  }
+}
+
+/** The pad buttons of the PAD_GLYPH actions (60-ui.js); the others (sticks) are the same on every pad. */
+const PAD_ACTION_BTN = {
+  pick: 'RT', place: 'LT', throw: 'RB', cycle: 'LB', drop: 'B', interact: 'X', jump: 'A', map: 'Y', info: 'View', pause: 'Menu',
+  confirm: 'A', back: 'B', catch: 'RT',
+};
+const PAD_ACTION_DPAD = { spell1: ['left'], spell2: ['up'], spell3: ['right'], missing: ['down'], adjust: ['left', 'right'] };
+
+/**
+ * THE pad prompt lookup (package D and any later menu call this): the glyph HTML of a PAD_GLYPH action for player
+ * `player` (0 = player 1, 1 = player 2, 'join', or a type string). Xbox output is PAD_GLYPH's, unchanged.
+ */
+function padGlyph(action, player = 0) {
+  const t = padType(player);
+  if (t === 'xbox') return PAD_GLYPH[action] || '';
+  if (action === 'tabs') return `<span class="glyphs">${padButton('LB', t)}${padButton('RB', t)}</span>`;
+  const b = PAD_ACTION_BTN[action];
+  if (b) return padButton(b, t);
+  const d = PAD_ACTION_DPAD[action];
+  if (d) return PS_DPAD(d);
+  return PAD_GLYPH[action] || '';
+}
+
+/* ---- The overrides of the 60-ui.js lookups ---------------------------------------------------------------------- */
+const GLYPH_XBOX = glyph;
+glyph = function padGlyphLookup(action, device = IN.device, player = 0) {
+  if (device === 'pad' && action !== 'spellsAll') return padGlyph(action, player);
+  return GLYPH_XBOX(action, device);
+};
+const SPELL_GLYPH_XBOX = spellGlyph;
+spellGlyph = function padSpellGlyph(k, device = IN.device, player = 0) {
+  const u = SPELL_UI[k];
+  if (!u || device !== 'pad' || !padIsPs(player)) return SPELL_GLYPH_XBOX(k, device);
+  return PS_DPAD([u.pad], true);
+};
+
+/* ---- Player 2 (63-coop.js) -------------------------------------------------------------------------------------- */
+/** The co-op join prompt for the free pad: "… nyomd meg a [Menu] Start / [Options] Options gombot …". */
+function coopPromptHtml() {
+  const t = padType('join');
+  if (t === 'xbox') return escapeHtml(TXT.coopJoin).replace('Start', `${padButton('Menu', t)} Start`);
+  return escapeHtml(PS_TXT_COOP_JOIN).replace('Options', `${padButton('Menu', t)} Options`);
+}
+const PS_TXT_COOP_JOIN = '2. kontroller: nyomd meg az Options gombot, és segíts házimanóként!';
+
+/* ---- Texts with button names (player 1) ------------------------------------------------------------------------- */
+/** [object getter, key or array matcher, PlayStation text (t: 'ps5' | 'ps4')]. */
+const PS_TXT = [
+  [() => TXT, 'lostHint', () => 'Válassz a nyilakkal, és nyomd meg a ✕ gombot vagy az Entert.'],
+  [() => TXT, 'loadSafeHint', () => 'Kontrollerrel: nyíl lefelé, majd ✕'],
+  [() => TXT, 'loadSafeHintFocused', () => 'Nyomd meg a ✕ gombot vagy az Entert'],
+  [() => TXT, 'ctlPad', () => 'PlayStation-kontroller'],
+  [() => TXT, 'ctlMenus', () => 'Menükben: irányítókereszt vagy bal kar a lépkedéshez, ✕ a kiválasztáshoz, ○ a visszalépéshez.'],
+  [() => TXT.ctl, 'unused', () => 'A PS gombot és az érintőpanelt a játék nem használja.'],
+  [() => TXT, 'perfMore', (t) => `Kattints (vagy ${t === 'ps4' ? 'Share' : 'Create'} gomb) a gép adataiért`],
+  [() => TXT.setDesc, 'perf', (t) => `Képkocka/másodperc, rajzhívások, felbontás és memória a sarokban. A panelre kattintva (vagy a ${t === 'ps4' ? 'Share' : 'Create'} gombbal) a gép adatai is látszanak.`],
+  [() => TXT.cfTips, /Start gombot/, () => 'Egy második kontrollerrel egy házimanó is beszállhat: elég megnyomnia az Options gombot.'],
+];
+
+/** Puts the PlayStation (t: 'ps5' | 'ps4') or the original (t: 'xbox') button texts into TXT. */
+function padApplyTexts(t) {
+  if (t === PADG.txt) return;
+  if (!PADG.orig) {
+    // The original strings, taken once (the array entries by index).
+    PADG.orig = PS_TXT.map(([get, key]) => {
+      const o = get();
+      if (!o) return null;
+      if (key instanceof RegExp) {
+        const i = Array.isArray(o) ? o.findIndex((v) => typeof v === 'string' && key.test(v)) : -1;
+        return i >= 0 ? { o, k: i, v: o[i] } : null;
+      }
+      return typeof o[key] === 'string' ? { o, k: key, v: o[key] } : null;
+    });
+  }
+  PS_TXT.forEach(([, , ps], i) => {
+    const r = PADG.orig[i];
+    if (r) r.o[r.k] = t === 'xbox' ? r.v : ps(t);
+  });
+  PADG.txt = t;
+  PADG.stats.txtSwaps++;
+}
+
+/* ---- Styles ------------------------------------------------------------------------------------------------------- */
+function padGlyphCss() {
+  if (PADG.css || !document.head) return;
+  PADG.css = true;
+  const st = document.createElement('style');
+  st.id = 'ps-glyph-css';
+  st.textContent = [
+    // A round dark button with the coloured symbol (the Xbox face buttons' size), a thin light rim for dark menus.
+    '.pad.ps { --pc: #16181f; color: #eef1f6; box-shadow: inset 0 0 0 0.16vh rgba(255,255,255,0.22), inset 0 -1px 2px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.65); }',
+    '.pad.ps.face svg { width: 84%; height: 84%; }',
+    '.pad.ps .ps-sym { fill: none; stroke: var(--psc); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }',
+    '.pad.ps-cross { --psc: #7aa9ff; } .pad.ps-circle { --psc: #ff5f6a; } .pad.ps-square { --psc: #f28fd6; } .pad.ps-triangle { --psc: #3fd9a4; }',
+    // L1 / R1 / L2 / R2: pills (the triggers a little deeper, so the two rows still read apart).
+    '.pad.ps.bump, .pad.ps.trig { border-radius: 999px; font-size: calc(var(--fs-glyph) * 0.86); letter-spacing: 0.02em; }',
+    '.pad.ps.trig { box-shadow: inset 0 0 0 0.16vh rgba(255,255,255,0.22), inset 0 -0.45vh 0 rgba(255,255,255,0.10), 0 1px 2px rgba(0,0,0,0.65); }',
+    // Options / Create / Share: small dark pills with the icon.
+    '.pad.ps.sysbtn { border-radius: 999px; width: calc(3.8vh * var(--ts, 1)); }',
+    '.pad.ps .glyph { stroke: #eef1f6; }',
+    // The PlayStation d-pad: four separate arrows (the colours of .dpad-base / .dpad-on, so the spell tints still apply).
+    '.pad.ps-dpad svg { width: 84%; height: 84%; }',
+  ].join('\n');
+  document.head.appendChild(st);
+}
+padGlyphCss();
+
+/* ---- Live update ------------------------------------------------------------------------------------------------ */
+/** Per frame (before the HUD): when a player's pad type changed, re-render everything that shows that player's glyphs. */
+function padGlyphsTick() {
+  const t0 = padType(0);
+  if (t0 !== PADG.t[0]) {
+    PADG.t[0] = t0;
+    PADG.stats.changes++;
+    padApplyTexts(t0);
+    // The device-change path of updateHud: HUD, prompts, hover card, stack panel and the open menu.
+    lastDevice = '';
+    TIPQ.device = '';
+    for (const s of UI.spellEls || []) s.last = -1;
+  }
+  if (typeof COOP === 'undefined' || !COOP.help) return;
+  const t1 = padType(1);
+  if (t1 !== PADG.t[1]) {
+    PADG.t[1] = t1;
+    PADG.stats.changes++;
+    COOP.help.innerHTML = coopHelpHtml();
+    COOP.actKey = null;
+  }
+  if (COOP_IN.extraPad >= 0) {
+    const tj = padType('join');
+    if (tj !== PADG.join) {
+      PADG.join = tj;
+      if (COOP.prompt) COOP.prompt.innerHTML = coopPromptHtml();
+    }
+  }
+}
+
+updateHud = ((prev) => function padGlyphUpdateHud(dt) {
+  padGlyphsTick();
+  prev(dt);
+})(updateHud);
+
+/** Test hook (__shopDebug.padGlyphs). */
+function padGlyphInfo() {
+  return { p1: padType(0), p2: padType(1), join: padType('join'), applied: PADG.t.slice(), txt: PADG.txt, stats: { ...PADG.stats } };
+}
+
 /* ---- 80-save.js ---- */
 /* ==== 80-save.js — settings (device-local), save v4 (counts per type) in two rotating slots with a checksum, hot snapshot ==== */
 
@@ -73454,23 +73881,25 @@ loadSettings = ((prev) => function uiaLoadSettings() {
   } catch {
     /* defaults stay */
   }
-  SETTINGS.ambient = SETTINGS.ambVol > 0;
   if (UIA.settingsMigrated) storeSettings();
+  // The user's decision (2026-10-27): no ambient noises at all, only the music in the background. The ambience bus stays
+  // silent and every room's ambience code path is skipped (SETTINGS.ambient gates them); the stored ambVol is kept.
+  SETTINGS.ambient = false;
 })(loadSettings);
+SETTINGS.ambient = false;
 
 // eslint-disable-next-line no-func-assign
 onSettingChanged = ((prev) => function uiaOnSettingChanged(key) {
-  // The old on / off switch follows the volume (it also gates the footsteps and every room's own ambience).
-  if (key === 'ambVol') SETTINGS.ambient = SETTINGS.ambVol > 0;
+  SETTINGS.ambient = false;
   prev(key);
 })(onSettingChanged);
 
-// The volume row replaces the old "Környezeti hangok" switch in Beállítások → Hang.
+// Neither the "Háttérzajok" volume nor the old "Környezeti hangok" switch is offered any more in Beállítások → Hang.
 (() => {
-  const row = { key: 'ambVol', label: 'setAmbVol', type: 'range', min: 0, max: 1, step: 0.1, show: (v) => `${Math.round(v * 100)} %` };
-  const i = SETTING_ROWS.findIndex((r) => r.key === 'ambient');
-  if (i >= 0) SETTING_ROWS.splice(i, 1, row);
-  else SETTING_ROWS.splice(SETTING_ROWS.findIndex((r) => r.key === 'sfx') + 1, 0, row);
+  for (const key of ['ambient', 'ambVol']) {
+    const i = SETTING_ROWS.findIndex((r) => r.key === key);
+    if (i >= 0) SETTING_ROWS.splice(i, 1);
+  }
 })();
 
 /* ------------------------------------------------------------------------------------------------
@@ -76360,6 +76789,1239 @@ function uicInfo() {
   };
 }
 
+/* ---- 87-wands.js ---- */
+/* ==== 87-wands.js — UI/UX package D, part 1 (NOTES-uiD.md): the choice of a wand.
+   - WAND_DEFS: the shift's own wand (the look of package A, the default and the look of every old save) and sixteen
+     canon wands, each with its own profile (length, taper, handle carving), colours and tip glow. Hungarian texts:
+     TXT.uidWands (19d-txt-uid.js).
+   - The wand in the hand stays ONE mesh with ONE material and ONE draw call (85-ui-a.js): choosing swaps only its
+     geometry (built once per choice, the old one disposed), the tip position, the idle tip colour and the hand pose
+     (a longer wand sits further back, so its tip stays where package A put it: the aim stays clear).
+   - Choosing is free (no galleons). Every wand is available from the start except the Pálcák Ura (the Elder Wand):
+     it unlocks when a shift has been played to the end (GAME.flags.endDone, or once on this device: the unlock is kept
+     in localStorage, so a new shift or the kihívás mód keeps it). WAND_UNLOCK holds the rule; change it there.
+   - The choice is a device setting in localStorage ('szs-uid-wand' = { id, elder }), never in the save: save v5 is
+     unchanged, an old save (or no record) gives the shift's own wand, i.e. exactly the look before this package.
+   - The Ollivander picker (MENU_BUILDERS.wands): stacked wand boxes (the focused one opens), the wand drawn as SVG from
+     the very same profile, its wood, core, length and description, and a spark test on choosing. Reachable from the
+     title menu and the Szünet menu (the Próféta section „Ollivander pálcaboltja”). Pad: d-pad / stick ↑ ↓ along the
+     boxes, A tries and chooses, B back. ==== */
+
+const UID_WAND = {
+  key: 'szs-uid-wand', rec: null, id: 'shift', applied: null, geo: new Map(), stats: { applies: 0, builds: 0, chosen: 0, sparks: 0, buildMs: 0 },
+  base0: null, flourish: false,
+};
+
+/** The unlock rule: every wand is free from the start; these need a condition (a function of the stored record). */
+const WAND_UNLOCK = {
+  elder: (rec) => !!(rec && rec.elder) || uidEndDone(),
+};
+
+/** Shorthand of a handle ring: [y from the butt (m), radius (mm), colour key]. */
+const WR = (y, r, c) => [y, r, c];
+
+/**
+ * The wands. L: length (m, in the hand; the canon inches → 0.31 · (in / 11)^0.55, within 0.28 … 0.40), tipR / neckR:
+ * the shaft radius at the tip and where the handle starts (mm), hy: the handle's top (m), handle: rings from the top
+ * down to the butt, col: colour keys (s shaft, b band, g grip, a accent, t ferrule, p pink canopy), tip: the idle tip
+ * glow; optional knots (shaft fractions with a bulge), spiral (ridges and / or stripes), bend (bow / hook / wave), noise.
+ */
+const WAND_DEFS = [
+  { id: 'shift', L: 0.31, legacy: true, tip: '#ffe6b8', col: { s: '#4f2f19', b: '#7a5530', g: '#2a190e' } },
+  {
+    id: 'harry', L: 0.31, tipR: 3.0, neckR: 7.4, hy: 0.11, tip: '#fff0d2', col: { s: '#7a4c2a', b: '#a06e40', g: '#55341c' },
+    handle: [WR(0.11, 9.2, 'b'), WR(0.104, 10.4, 'b'), WR(0.098, 9.0, 'g'), WR(0.084, 9.6, 'g'), WR(0.07, 10.4, 'g'), WR(0.059, 9.4, 'b'), WR(0.053, 11, 'b'),
+      WR(0.047, 9.6, 'g'), WR(0.03, 10.6, 'g'), WR(0.016, 11.4, 'g'), WR(0.008, 12, 'b'), WR(0.003, 10, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'hermione', L: 0.306, tipR: 2.8, neckR: 7.2, hy: 0.125, tip: '#ffe2c8', col: { s: '#6e4a2e', b: '#a47b52', g: '#5a3a22' },
+    spiral: { y0: 0, y1: 0.2, amp: 0.24, k: 2, turns: 5, stripe: 'b' },
+    handle: [WR(0.125, 8.0, 'g'), WR(0.1, 8.8, 'g'), WR(0.075, 9.6, 'g'), WR(0.05, 10.2, 'g'), WR(0.03, 10.6, 'g'), WR(0.014, 10.4, 'g'), WR(0.006, 9.2, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'ron', L: 0.354, tipR: 3.2, neckR: 7.8, hy: 0.12, tip: '#ffe8b4', col: { s: '#a88457', b: '#c9a878', g: '#7c5c38' },
+    handle: [WR(0.12, 8.4, 'b'), WR(0.115, 9.4, 'b'), WR(0.108, 8.8, 'g'), WR(0.05, 9.6, 'g'), WR(0.045, 10.4, 'b'), WR(0.038, 9.6, 'g'), WR(0.01, 10.4, 'g'),
+      WR(0.004, 9.4, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'ginny', L: 0.30, tipR: 2.8, neckR: 7.0, hy: 0.11, tip: '#ffd6b0', col: { s: '#7b3f26', b: '#c0844e', g: '#5e2c18' },
+    spiral: { y0: 0.006, y1: 0.11, amp: 0, k: 3, turns: 2.5, stripe: 'b' },
+    handle: [WR(0.11, 8.2, 'g'), WR(0.09, 9.0, 'g'), WR(0.07, 9.6, 'g'), WR(0.05, 10.0, 'g'), WR(0.03, 10.4, 'g'), WR(0.015, 10.8, 'g'), WR(0.006, 10.0, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'neville', L: 0.34, tipR: 3.0, neckR: 7.6, hy: 0.115, tip: '#ffe0c4', col: { s: '#8d3b2a', b: '#b8664a', g: '#5c2218' },
+    handle: [WR(0.115, 9.0, 'b'), WR(0.108, 10.2, 'b'), WR(0.1, 9.0, 'g'), WR(0.09, 10.0, 'b'), WR(0.082, 9.2, 'g'), WR(0.072, 10.2, 'b'), WR(0.064, 9.4, 'g'),
+      WR(0.04, 10.2, 'g'), WR(0.02, 11.0, 'g'), WR(0.01, 12.4, 'b'), WR(0.004, 11.0, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'luna', L: 0.30, tipR: 2.6, neckR: 6.8, hy: 0.12, tip: '#d8f0ff', col: { s: '#d8c9a8', b: '#7fa6c8', g: '#bba886' },
+    bend: { kind: 'wave', amp: 0.0032, n: 1.5 },
+    handle: [WR(0.12, 8.4, 'g'), WR(0.106, 10.4, 'g'), WR(0.096, 8.2, 'b'), WR(0.084, 9.8, 'g'), WR(0.07, 11.2, 'g'), WR(0.058, 8.8, 'b'), WR(0.044, 10.2, 'g'),
+      WR(0.026, 11.0, 'g'), WR(0.012, 10.0, 'g'), WR(0.004, 8.0, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'draco', L: 0.294, tipR: 2.6, neckR: 6.8, hy: 0.115, tip: '#e8f2ff', col: { s: '#3a2a22', b: '#c9ccd2', g: '#141214' },
+    handle: [WR(0.115, 7.6, 'b'), WR(0.11, 8.8, 'b'), WR(0.104, 8.0, 'g'), WR(0.07, 9.0, 'g'), WR(0.036, 10.0, 'g'), WR(0.03, 11.4, 'b'), WR(0.022, 11.8, 'b'),
+      WR(0.012, 10.2, 'b'), WR(0.004, 6.0, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'voldemort', L: 0.347, tipR: 2.4, neckR: 7.0, hy: 0.13, tip: '#d9ffe0', col: { s: '#d9d2bd', b: '#efe8d4', g: '#b8ae94' },
+    bend: { kind: 'hook', amp: 0.011, y1: 0.07 },
+    handle: [WR(0.13, 7.6, 'g'), WR(0.12, 9.6, 'b'), WR(0.112, 7.8, 'g'), WR(0.1, 9.8, 'b'), WR(0.092, 8.0, 'g'), WR(0.08, 10.0, 'b'), WR(0.07, 8.4, 'g'),
+      WR(0.05, 9.4, 'g'), WR(0.03, 8.6, 'g'), WR(0.014, 7.2, 'b'), WR(0.004, 4.2, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'bellatrix', L: 0.336, tipR: 2.6, neckR: 7.0, hy: 0.12, tip: '#f0d8ff', col: { s: '#2b1a12', b: '#5a4030', g: '#1c100a' },
+    bend: { kind: 'bow', amp: 0.0065 }, spiral: { y0: 0.004, y1: 0.12, amp: 0.3, k: 3, turns: 1.2, stripe: 'b' },
+    handle: [WR(0.12, 8.0, 'g'), WR(0.1, 9.0, 'g'), WR(0.08, 9.8, 'g'), WR(0.06, 10.4, 'g'), WR(0.04, 10.8, 'g'), WR(0.022, 11.2, 'g'), WR(0.01, 10.0, 'b'),
+      WR(0.003, 7.0, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'snape', L: 0.32, tipR: 2.6, neckR: 6.6, hy: 0.12, tip: '#e6e9ff', col: { s: '#141113', b: '#3a3236', g: '#0b0a0b' },
+    handle: [WR(0.12, 7.8, 'b'), WR(0.114, 8.8, 'b'), WR(0.108, 7.8, 'g'), WR(0.1, 8.8, 'b'), WR(0.093, 8.0, 'g'), WR(0.085, 9.0, 'b'), WR(0.077, 8.2, 'g'),
+      WR(0.068, 9.2, 'b'), WR(0.06, 8.4, 'g'), WR(0.04, 9.4, 'g'), WR(0.024, 10.2, 'g'), WR(0.014, 11.0, 'b'), WR(0.006, 9.6, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'lucius', L: 0.36, tipR: 2.8, neckR: 6.4, hy: 0.11, tip: '#e8fff0', col: { s: '#101010', b: '#c8ccd4', g: '#1a1a1c', a: '#3cff8a' },
+    bend: { kind: 'hook', amp: 0.012, y1: 0.06 },
+    handle: [WR(0.11, 7.2, 'b'), WR(0.1, 8.4, 'b'), WR(0.08, 8.0, 'b'), WR(0.062, 10.2, 'b'), WR(0.048, 13.4, 'b'), WR(0.04, 13.8, 'a'), WR(0.034, 13.6, 'b'),
+      WR(0.022, 12.0, 'b'), WR(0.012, 9.0, 'b'), WR(0.004, 5.0, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'elder', L: 0.368, tipR: 2.8, neckR: 7.4, hy: 0.13, tip: '#eef4ff', col: { s: '#8c7a66', b: '#6a5846', g: '#7a6854' },
+    knots: [0.22, 0.45, 0.68], noise: 0.05,
+    handle: [WR(0.13, 8.6, 'g'), WR(0.118, 10.6, 'b'), WR(0.106, 8.8, 'g'), WR(0.09, 10.8, 'b'), WR(0.076, 9.0, 'g'), WR(0.06, 11.0, 'b'), WR(0.044, 9.6, 'g'),
+      WR(0.024, 11.2, 'g'), WR(0.01, 11.6, 'b'), WR(0.003, 8.0, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'newt', L: 0.30, tipR: 2.8, neckR: 7.2, hy: 0.115, tip: '#f2f6d8', col: { s: '#6b4e33', b: '#8a6a48', g: '#4f3824', a: '#d8ccb0' },
+    noise: 0.12, tipZone: { from: 0.72, c: 'a' },
+    handle: [WR(0.115, 8.6, 'g'), WR(0.095, 9.4, 'g'), WR(0.075, 10.0, 'b'), WR(0.055, 9.6, 'g'), WR(0.035, 10.6, 'g'), WR(0.018, 11.0, 'g'), WR(0.006, 9.6, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'sirius', L: 0.32, tipR: 2.8, neckR: 7.2, hy: 0.12, tip: '#fff0e0', col: { s: '#1f1a17', b: '#b8a888', g: '#2c2420' },
+    handle: [WR(0.12, 8.0, 'b'), WR(0.112, 9.6, 'g'), WR(0.104, 8.4, 'b'), WR(0.094, 10.4, 'g'), WR(0.084, 8.8, 'b'), WR(0.07, 10.4, 'g'), WR(0.056, 9.0, 'b'),
+      WR(0.04, 10.8, 'g'), WR(0.024, 11.4, 'g'), WR(0.012, 12.4, 'b'), WR(0.004, 10.0, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'lupin', L: 0.298, tipR: 3.0, neckR: 7.4, hy: 0.105, tip: '#fff2d8', col: { s: '#7a6248', b: '#9c825e', g: '#5f4a35' },
+    handle: [WR(0.105, 8.8, 'b'), WR(0.098, 9.4, 'g'), WR(0.06, 9.8, 'g'), WR(0.03, 10.4, 'g'), WR(0.012, 10.8, 'g'), WR(0.004, 9.4, 'b'), WR(0, 0, 'b')],
+  },
+  {
+    id: 'hagrid', L: 0.40, umbrella: true, tip: '#ffd0e4', col: { s: '#3a2616', t: '#d8d0c0', p: '#e06a9a', b: '#c4507e', g: '#4a3020' },
+    spiral: { y0: 0.17, y1: 0.39, amp: 0.16, k: 8, turns: 0, stripe: 'b' }, bend: { kind: 'hook', amp: 0.02, y1: 0.06 },
+  },
+];
+const WAND_BY_ID = new Map(WAND_DEFS.map((w) => [w.id, w]));
+
+/** The shift's own wand: package A's profile (85-ui-a.js wandGeometry, radii × 1.2), converted to rings. */
+function uidLegacyRings() {
+  const P = [
+    [WAND_LEN, 0], [0.302, 0.0028], [0.26, 0.0040], [0.2, 0.0052], [0.15, 0.0062], [0.114, 0.0070], [0.11, 0.0094],
+    [0.102, 0.0102], [0.096, 0.0088], [0.08, 0.0090], [0.06, 0.0094], [0.044, 0.0092], [0.04, 0.0106], [0.033, 0.0108],
+    [0.029, 0.0094], [0.018, 0.0104], [0.010, 0.0114], [0.004, 0.0098], [0, 0],
+  ];
+  return P.map(([y, r]) => [y, r * 1.2, (y > 0.096 && y < 0.111) || (y > 0.028 && y < 0.041) ? 'b' : y > 0.105 ? 's' : 'g']);
+}
+
+/** The umbrella: the ferrule, the folded pink canopy, the stick and the hooked handle. */
+function uidUmbrellaRings(L) {
+  return [
+    [L, 0, 't'], [L - 0.004, 1.6, 't'], [L - 0.022, 2.0, 't'], [L - 0.026, 4.0, 'p'], [0.33, 8.0, 'p'], [0.28, 13.0, 'p'], [0.23, 17.5, 'p'], [0.2, 19.0, 'p'],
+    [0.18, 16.0, 'p'], [0.17, 9.0, 'p'], [0.165, 5.4, 'g'], [0.12, 5.6, 'g'], [0.08, 5.8, 'g'], [0.06, 6.4, 'g'], [0.04, 7.0, 'g'], [0.02, 7.4, 'g'],
+    [0.008, 7.0, 'g'], [0.002, 5.0, 'g'], [0, 0, 'g'],
+  ].map(([y, r, c]) => [y, r / 1000, c]);
+}
+
+/** The rings of a wand from the tip to the butt: [y (m), radius (m), colour key]. */
+function uidWandRings(def) {
+  if (def.legacy) return uidLegacyRings();
+  if (def.umbrella) return uidUmbrellaRings(def.L);
+  const L = def.L;
+  const hy = def.hy;
+  const ts = [0, 0.012, 0.05, 0.15, 0.3, 0.48, 0.66, 0.84, 1];
+  const shaft = ts.map((t) => {
+    const r = t === 0 ? 0 : t === 0.012 ? def.tipR * 0.72 : def.tipR + (def.neckR - def.tipR) * Math.pow(t, 0.85);
+    return [t, r];
+  });
+  for (const kf of def.knots || []) {
+    const r = def.tipR + (def.neckR - def.tipR) * Math.pow(kf, 0.85);
+    shaft.push([kf - 0.035, r * 0.98], [kf, r * 1.42], [kf + 0.035, r * 0.98]);
+  }
+  shaft.sort((a, b) => a[0] - b[0]);
+  const rings = [];
+  for (const [t, r] of shaft) {
+    if (t >= 1) continue;
+    const y = L - t * (L - hy);
+    rings.push([y, r / 1000, def.tipZone && t < 1 - def.tipZone.from ? def.tipZone.c : 's']);
+  }
+  for (const [y, r, c] of def.handle) rings.push([y, r / 1000, c]);
+  return rings;
+}
+
+/** The axis offset (x, m) at height y: a bow, a hook at the butt or a gentle wave. */
+function uidBendX(def, y) {
+  const B = def.bend;
+  if (!B) return 0;
+  if (B.kind === 'bow') return B.amp * Math.sin((Math.PI * y) / def.L);
+  if (B.kind === 'hook') return y < B.y1 ? B.amp * ((B.y1 - y) / B.y1) ** 2 : 0;
+  if (B.kind === 'wave') return B.amp * Math.sin((Math.PI * 2 * B.n * y) / def.L) * (y / def.L);
+  return 0;
+}
+
+function uidHash(n) {
+  const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+/** Segments around the axis (package A: 10). */
+const UID_SEG = 10;
+
+/**
+ * The geometry of a wand: package A's layout (position, normal, aCol, aGlow; the rings from the tip to the butt, the
+ * glow quad last), so WAND_VERT / WAND_FRAG and the single draw call are unchanged.
+ */
+function uidWandGeometry(def) {
+  const t0 = performance.now();
+  const P = uidWandRings(def);
+  const C = {};
+  for (const k in def.col) C[k] = uiaLinear(def.col[k]);
+  const pos = [];
+  const nor = [];
+  const col = [];
+  const glw = [];
+  const idx = [];
+  const S = def.spiral;
+  for (let j = 0; j < P.length; j++) {
+    const [y, r0, ck] = P[j];
+    const a = P[Math.max(0, j - 1)];
+    const b = P[Math.min(P.length - 1, j + 1)];
+    let nr = -(b[0] - a[0]);
+    let ny = b[1] - a[1];
+    const nl = Math.hypot(nr, ny) || 1;
+    nr /= nl;
+    ny /= nl;
+    const bx = uidBendX(def, y);
+    const base = C[ck] || C.s;
+    for (let i = 0; i <= UID_SEG; i++) {
+      const th = (i / UID_SEG) * Math.PI * 2;
+      const cs = Math.cos(th);
+      const sn = Math.sin(th);
+      let r = r0;
+      let c = base;
+      if (S && y >= S.y0 && y <= S.y1 && r0 > 0) {
+        const ph = S.k * th + S.turns * Math.PI * 2 * ((y - S.y0) / Math.max(1e-6, S.y1 - S.y0));
+        const w = Math.max(0, Math.cos(ph));
+        r *= 1 + S.amp * w * w;
+        if (S.stripe && w > 0.55 && C[S.stripe]) c = C[S.stripe];
+      }
+      if (def.noise && r0 > 0 && j > 1 && j < P.length - 2) r *= 1 + def.noise * (uidHash(j * 31 + (i % UID_SEG)) - 0.5) * 2;
+      pos.push(bx + r * cs, y, r * sn);
+      nor.push(nr * cs, ny, nr * sn);
+      col.push(c[0], c[1], c[2]);
+      glw.push(0, 0, 0);
+    }
+  }
+  for (let j = 0; j < P.length - 1; j++) {
+    for (let i = 0; i < UID_SEG; i++) {
+      const a = j * (UID_SEG + 1) + i;
+      const b = a + 1;
+      const c = a + UID_SEG + 1;
+      const d = c + 1;
+      idx.push(a, b, c, b, d, c);
+    }
+  }
+  const g0 = pos.length / 3;
+  const tx = uidBendX(def, P[0][0]);
+  for (const [cx, cy] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) {
+    pos.push(tx, P[0][0], 0);
+    nor.push(0, 0, 1);
+    col.push(1, 1, 1);
+    glw.push(1, cx, cy);
+  }
+  idx.push(g0, g0 + 1, g0 + 2, g0, g0 + 2, g0 + 3);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  g.setAttribute('normal', new THREE.Float32BufferAttribute(nor, 3));
+  g.setAttribute('aCol', new THREE.Float32BufferAttribute(col, 3));
+  g.setAttribute('aGlow', new THREE.Float32BufferAttribute(glw, 3));
+  g.setIndex(idx);
+  g.computeBoundingSphere();
+  g.userData.uidTip = [tx, P[0][0]];
+  UID_WAND.stats.builds++;
+  UID_WAND.stats.buildMs = +(performance.now() - t0).toFixed(3);
+  return g;
+}
+
+/* ------------------------------------------------------------------------------------------------
+   The stored choice and the unlock
+   ------------------------------------------------------------------------------------------------ */
+
+function uidWandRec() {
+  if (!UID_WAND.rec) {
+    const r = uibStoreGet(UID_WAND.key, null);
+    UID_WAND.rec = r && typeof r === 'object' ? { id: typeof r.id === 'string' ? r.id : 'shift', elder: !!r.elder } : { id: 'shift', elder: false };
+    if (!WAND_BY_ID.has(UID_WAND.rec.id)) UID_WAND.rec.id = 'shift';
+  }
+  return UID_WAND.rec;
+}
+
+function uidWandStore() {
+  try {
+    uibStoreSet(UID_WAND.key, uidWandRec());
+  } catch {
+    /* storage optional: the choice lasts for this page */
+  }
+}
+
+/** The ending was played to the end in the loaded shift (or, on the title, in the latest save). */
+function uidEndDone() {
+  try {
+    if (GAME && GAME.flags && GAME.flags.endDone) return true;
+    const d = SAVE && SAVE.latest && SAVE.latest.data;
+    return !!(d && d.flags && d.flags.endDone);
+  } catch {
+    return false;
+  }
+}
+
+function uidWandUnlocked(id) {
+  const f = WAND_UNLOCK[id];
+  return !f || !!f(uidWandRec());
+}
+
+/** Marks the Elder Wand unlocked on this device (once; a toast when it is new). */
+function uidUnlockElder(say) {
+  const R = uidWandRec();
+  if (R.elder) return false;
+  R.elder = true;
+  uidWandStore();
+  if (say) toast(TXT.uid.olvUnlockedToast, 'gold');
+  return true;
+}
+
+/** The chosen wand's id (a locked or unknown choice falls back to the shift's wand). */
+function uidWandId() {
+  const id = uidWandRec().id;
+  return WAND_BY_ID.has(id) && uidWandUnlocked(id) ? id : 'shift';
+}
+
+/* ------------------------------------------------------------------------------------------------
+   Applying a wand to package A's mesh
+   ------------------------------------------------------------------------------------------------ */
+
+/** Swaps the hand wand to `id`: its geometry, the tip, the idle glow colour and the hand pose. Same mesh and material. */
+function uidWandApply(id = uidWandId()) {
+  const def = WAND_BY_ID.get(id) || WAND_BY_ID.get('shift');
+  UID_WAND.id = def.id;
+  if (!WAND.mesh) return false;
+  if (UID_WAND.applied === def.id) return true;
+  if (!UID_WAND.base0) UID_WAND.base0 = WAND.base.clone();
+  if (UID_WAND.applied === null && def.legacy) {
+    // The boot look of package A is the shift's wand already: nothing to swap.
+    UID_WAND.applied = def.id;
+    return true;
+  }
+  // The shift's wand is package A's own geometry (exactly the look before this package).
+  const g = def.legacy ? wandGeometry() : uidWandGeometry(def);
+  if (def.legacy) g.userData.uidTip = [0, WAND_LEN];
+  const old = WAND.mesh.geometry;
+  WAND.mesh.geometry = g;
+  if (old && old !== g) old.dispose();
+  const [tx, ty] = g.userData.uidTip;
+  WAND.tipLocal.set(tx, ty, 0);
+  // A longer wand sits further back along its own axis: the tip stays where package A put it (the aim stays clear).
+  WAND.base.copy(UID_WAND.base0).addScaledVector(WAND.dir, -(ty - WAND_LEN));
+  const c = uiaLinear(def.tip);
+  WAND_IDLE_COL[0] = c[0];
+  WAND_IDLE_COL[1] = c[1];
+  WAND_IDLE_COL[2] = c[2];
+  UID_WAND.applied = def.id;
+  UID_WAND.stats.applies++;
+  return true;
+}
+
+/** Chooses wand `id` (free; a locked one is refused). Returns true when it is the wand now. */
+function uidWandChoose(id) {
+  if (!WAND_BY_ID.has(id)) return false;
+  if (!uidWandUnlocked(id)) {
+    toast(TXT.uid.olvLockedToast, 'bad');
+    sfx('deny');
+    return false;
+  }
+  const R = uidWandRec();
+  R.id = id;
+  uidWandStore();
+  uidWandApply(id);
+  UID_WAND.stats.chosen++;
+  return true;
+}
+
+// The hand wand is built with the puffs (85-ui-a.js); the chosen look is applied right after, before the staged compile.
+// eslint-disable-next-line no-func-assign
+buildPuffs = ((prev) => function uidBuildPuffs() {
+  prev();
+  try {
+    uidWandApply();
+  } catch (err) {
+    console.warn('[uiD] wand apply failed', err);
+  }
+})(buildPuffs);
+
+// A finished ending unlocks the Pálcák Ura on this device.
+// eslint-disable-next-line no-func-assign
+endingFinish = ((prev) => function uidEndingFinish(...args) {
+  const r = prev.apply(this, args);
+  try {
+    uidUnlockElder(true);
+  } catch {
+    /* the unlock is optional */
+  }
+  return r;
+})(endingFinish);
+
+// A loaded save whose ending was played unlocks it too (a save from an earlier build of this device, another device's).
+// eslint-disable-next-line no-func-assign
+applySaveData = ((prev) => function uidApplySaveData(...args) {
+  const r = prev.apply(this, args);
+  try {
+    if (GAME.flags && GAME.flags.endDone) uidUnlockElder(false);
+    if (UID_WAND.applied && UID_WAND.applied !== uidWandId()) uidWandApply();
+  } catch {
+    /* optional */
+  }
+  return r;
+})(applySaveData);
+
+/* ------------------------------------------------------------------------------------------------
+   The Ollivander picker
+   ------------------------------------------------------------------------------------------------ */
+
+/** Hex colour of a ring's key. */
+function uidHex(def, k) {
+  return def.col[k] || def.col.s;
+}
+
+/** The wand as an SVG drawing (tip to the right), from the same rings as the 3D model. */
+function uidWandSvg(def, opts = {}) {
+  const rings = uidWandRings(def);
+  const W = 600;
+  const H = 70;
+  const L = 0.40;
+  const sx = (W - 40) / L;
+  const sr = sx * 1.25;
+  const cy = H / 2;
+  const X = (y) => 14 + y * sx;
+  const Y = (y, r) => cy - uidBendX(def, y) * sx + r;
+  const id = `uidg${opts.uid || ''}${def.id}`;
+  let segs = '';
+  const top = [];
+  const bot = [];
+  for (let j = rings.length - 1; j >= 0; j--) {
+    const [y, r] = rings[j];
+    top.push(`${X(y).toFixed(1)},${Y(y, -r * sr).toFixed(1)}`);
+    bot.push(`${X(y).toFixed(1)},${Y(y, r * sr).toFixed(1)}`);
+  }
+  for (let j = rings.length - 1; j > 0; j--) {
+    const [y0, r0, c0] = rings[j];
+    const [y1, r1] = rings[j - 1];
+    segs += `<polygon points="${X(y0).toFixed(1)},${Y(y0, -r0 * sr).toFixed(1)} ${X(y1).toFixed(1)},${Y(y1, -r1 * sr).toFixed(1)} ${X(y1).toFixed(1)},${Y(y1, r1 * sr).toFixed(1)} ${X(y0).toFixed(1)},${Y(y0, r0 * sr).toFixed(1)}" fill="${uidHex(def, c0)}"/>`;
+  }
+  // Spiral stripes and canopy pleats as thin strokes.
+  let marks = '';
+  const S = def.spiral;
+  if (S && S.stripe) {
+    const n = Math.max(3, Math.round((S.turns || 1) * 3 + S.k));
+    for (let i = 0; i < n; i++) {
+      const y = S.y0 + ((i + 0.5) / n) * (S.y1 - S.y0);
+      const r = rings.reduce((m, q) => (Math.abs(q[0] - y) < Math.abs(m[0] - y) ? q : m), rings[0])[1] * sr;
+      if (r <= 0) continue;
+      marks += `<line x1="${(X(y) - 3).toFixed(1)}" y1="${Y(y, -r).toFixed(1)}" x2="${(X(y) + 3).toFixed(1)}" y2="${Y(y, r).toFixed(1)}" stroke="${uidHex(def, S.stripe)}" stroke-width="2" opacity="0.8"/>`;
+    }
+  }
+  const outline = `${top.join(' ')} ${bot.reverse().join(' ')}`;
+  const tipX = X(rings[0][0]);
+  const tipY = Y(rings[0][0], 0);
+  return `<svg class="olv-wand" viewBox="0 0 ${W} ${H}" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.5"/>`
+    + `<stop offset="0.35" stop-color="#fff" stop-opacity="0.06"/><stop offset="0.7" stop-color="#000" stop-opacity="0.2"/><stop offset="1" stop-color="#000" stop-opacity="0.55"/></linearGradient>`
+    + `<radialGradient id="${id}t"><stop offset="0" stop-color="#fff"/><stop offset="0.3" stop-color="${def.tip}" stop-opacity="0.9"/><stop offset="1" stop-color="${def.tip}" stop-opacity="0"/></radialGradient></defs>`
+    + `<g class="olv-body">${segs}${marks}<polygon points="${outline}" fill="url(#${id})"/></g>`
+    + `<circle class="olv-tip" cx="${tipX.toFixed(1)}" cy="${tipY.toFixed(1)}" r="11" fill="url(#${id}t)"/></svg>`;
+}
+
+/** Wood · core · length of a wand (unknown parts said so). */
+function uidWandFacts(def) {
+  const T = TXT.uidWands[def.id];
+  const U = TXT.uid;
+  return [
+    [U.olvWood, T.wood || U.olvUnknown], [U.olvCore, T.core || U.olvUnknown],
+    [U.olvLen, T.len ? fmt(U.olvInches, { n: String(T.len).replace('.', ',') }) : U.olvUnknown], [U.olvTrait, T.trait || ''],
+  ];
+}
+
+uibStyle('uid-wands', `
+.layer.olv-layer { background: radial-gradient(ellipse at 50% 40%, rgba(16, 9, 4, 0.55), rgba(6, 3, 2, 0.88)); }
+.olv-shop { position: relative; box-sizing: border-box; width: min(calc(150vh * min(var(--ts), 1.2)), 100%); max-height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 1.4vh;
+  padding: 2.4vh 3vh 2vh; color: #f3e6c8; border-radius: 0.6vh; overflow: hidden;
+  background-color: #2a1a0e; background-image: var(--noise), repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.16) 0 0.3vh, transparent 0.3vh 3.4vh), linear-gradient(180deg, #4a2e18, #2a180c 70%, #1a0f07);
+  background-size: 180px 180px, auto, auto; background-blend-mode: soft-light, normal, normal;
+  box-shadow: 0 2.4vh 6vh rgba(0, 0, 0, 0.75), inset 0 0 0 0.45vh #1a0f07, inset 0 0 0 0.65vh #8c6a3a, inset 0 0 5vh rgba(0, 0, 0, 0.6); }
+.olv-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2vh; border-bottom: 0.3vh solid #8c6a3a; padding-bottom: 1vh; }
+.olv-name { margin: 0; font: 400 calc(6vh * min(var(--ts), 1.3))/1 "Uncial Antiqua", var(--font-display); color: #f0d48a; letter-spacing: 0.04em;
+  text-shadow: 0 0.3vh 0 #000, 0 0 2vh rgba(240, 200, 110, 0.35); }
+.olv-sign { font: 400 calc(2.2vh * var(--ts))/1.2 "Almendra", var(--font-serif); color: #d9c49a; letter-spacing: 0.06em; }
+.olv-motto { font: 500 italic calc(2.2vh * var(--ts))/1.2 var(--font-serif); color: #e8c87a; text-align: right; }
+.olv-main { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr); gap: 2.6vh; min-height: 0; }
+.olv-shelf h3, .olv-counter h3 { margin: 0 0 0.8vh; font: 400 calc(2.1vh * var(--ts))/1 "Almendra", var(--font-serif); letter-spacing: 0.14em; text-transform: uppercase; color: #c9a86a; }
+.olv-shelf { min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); }
+.olv-boxes { gap: 0.55vh; max-height: 100%; }
+.olv-layer .menu .scroll, .olv-shop .scroll { box-sizing: border-box; padding: 0.9vh 1.6vh; margin: -0.9vh -1.6vh; }
+.olv-box.item { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.3vh 1.2vh; min-height: calc(5.2vh * var(--ts)); padding: 0.55vh 1.4vh 0.55vh 2.2vh;
+  color: #2a1a0e; border: 0; border-radius: 0.25vh; overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0.18)), linear-gradient(90deg, #b9a07a, #d8c39a 8%, #cbb48a 92%, #9c8460);
+  box-shadow: 0 0.35vh 0 #5a4024, 0 0.6vh 1vh rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(60, 40, 20, 0.55); transition: transform 0.14s ease, box-shadow 0.14s ease; }
+.olv-box.item::before { content: ""; position: absolute; left: 0.8vh; top: 18%; bottom: 18%; width: 0.5vh; border-radius: 0.2vh; background: var(--olv-c, #6a4a2a); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35); }
+.olv-box .ob-who { font: 400 calc(2.35vh * var(--ts))/1.1 "Almendra", var(--font-serif); color: #24160a; overflow-wrap: anywhere; }
+.olv-box .ob-sub { grid-column: 1 / 2; font: 600 italic calc(1.75vh * var(--ts))/1.15 var(--font-serif); color: #5b452c; overflow-wrap: anywhere; }
+.olv-box .ob-mark { grid-row: 1 / 3; grid-column: 2; font: 700 calc(1.6vh * var(--ts))/1 var(--font-body); letter-spacing: 0.08em; text-transform: uppercase; color: #8e1d16; }
+.olv-box .ob-lid { display: none; grid-column: 1 / -1; height: calc(2.6vh * var(--ts)); margin: 0.4vh 0 0.1vh; border-radius: 0.3vh;
+  background: radial-gradient(ellipse at 50% 50%, #6a1426, #3a0812 80%); box-shadow: inset 0 0.3vh 0.8vh rgba(0, 0, 0, 0.7); overflow: hidden; }
+.olv-box .ob-lid svg { display: block; width: 100%; height: 100%; }
+.olv-box.focused { transform: translateX(1.4vh) scale(1.02); color: #24160a; background: linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(0, 0, 0, 0.1)), linear-gradient(90deg, #d6bf94, #f1e0b8 8%, #e6d2a6 92%, #b89c70);
+  box-shadow: 0 0 0 0.3vh #1a0f07, 0 0 0 0.7vh var(--focus-out), 0 0.8vh 1.8vh rgba(0, 0, 0, 0.6); }
+.olv-box.focused .ob-lid { display: block; animation: olvOpen 0.28s ease-out; }
+.olv-box.chosen .ob-mark { color: #1d5a22; }
+.olv-box.locked { filter: grayscale(0.55) brightness(0.8); }
+.olv-box.locked .ob-who::after { content: " 🔒"; font-size: 0.8em; }
+.olv-back.item { justify-content: center; color: #f3e6c8; background: rgba(0, 0, 0, 0.3); border: 1px solid #8c6a3a; }
+.olv-back.item.focused { color: #24160a; background: linear-gradient(180deg, #f1e0b8, #cbb48a); }
+.olv-counter { min-height: 0; display: grid; grid-template-rows: auto auto auto auto minmax(0, 1fr) auto auto; align-content: start; gap: 1.1vh; padding: 1.6vh 2vh; border-radius: 0.4vh; color: #24160a;
+  background-color: #e9dcbc; background-image: var(--noise), radial-gradient(ellipse 120% 90% at 30% 20%, #f6ecd2, #e2d0a8 60%, #c8ae7c 100%); background-size: 180px 180px, 100% 100%; background-blend-mode: multiply, normal;
+  box-shadow: inset 0 0 4vh rgba(120, 84, 30, 0.38), 0 1vh 2.4vh rgba(0, 0, 0, 0.5); }
+.olv-counter h3 { color: #8e1d16; }
+.olv-stage { position: relative; height: calc(13vh * min(var(--ts), 1.3)); border-radius: 0.4vh; overflow: hidden; display: grid; place-items: center;
+  background: radial-gradient(ellipse at 50% 55%, #7a1a2c, #3a0a14 70%, #1e050a); box-shadow: inset 0 0 0 0.35vh #2a1a0e, inset 0 0.6vh 2vh rgba(0, 0, 0, 0.7); }
+.olv-stage .olv-wand { width: 94%; height: auto; filter: drop-shadow(0 0.5vh 0.6vh rgba(0, 0, 0, 0.6)); }
+.olv-stage .olv-tip { animation: olvTip 2.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.olv-stage.locked .olv-wand { filter: brightness(0.12) drop-shadow(0 0 0.6vh rgba(240, 220, 160, 0.4)); }
+.olv-stage .olv-sparks { position: absolute; left: 80%; top: 50%; width: 0; height: 0; pointer-events: none; }
+.olv-stage .olv-sparks i { position: absolute; width: 0.9vh; height: 0.9vh; margin: -0.45vh; border-radius: 50%; background: radial-gradient(circle, #fff, var(--sc, #ffd26a) 45%, transparent 70%); opacity: 0; }
+.olv-stage.spark .olv-sparks i { animation: olvSpark 1.1s ease-out forwards; animation-delay: var(--sd, 0s); }
+.olv-stage.spark .olv-wand { animation: olvShake 0.5s ease-out; }
+.olv-who { margin: 0; font: 400 calc(4.2vh * min(var(--ts), 1.4))/1.05 "Abril Fatface", var(--font-display); color: #20160d; overflow-wrap: anywhere; }
+.olv-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4vh 2vh; margin: 0; }
+.olv-facts div { display: flex; gap: 0.8vh; align-items: baseline; border-bottom: 1px dotted rgba(60, 40, 20, 0.5); padding-bottom: 0.2vh; min-width: 0; }
+.olv-facts dt { font: 400 calc(1.7vh * var(--ts))/1.2 "Almendra", var(--font-serif); letter-spacing: 0.1em; text-transform: uppercase; color: #8e1d16; flex: none; }
+.olv-facts dd { margin: 0; font: 700 calc(2.1vh * var(--ts))/1.2 var(--font-serif); color: #20160d; overflow-wrap: anywhere; }
+.olv-desc { margin: 0; min-height: 0; overflow: hidden; font: 500 calc(2.15vh * var(--ts))/1.32 var(--font-serif); color: #2a1c10; }
+.olv-state { font: 700 calc(2vh * var(--ts))/1.25 var(--font-body); color: #5b452c; }
+.olv-state.chosen { color: #1d5a22; }
+.olv-state.locked { color: #8e1d16; }
+.olv-state.spark { font: 400 calc(2.6vh * var(--ts))/1.2 "Uncial Antiqua", var(--font-display); color: #8e1d16; }
+.olv-foot { display: flex; justify-content: space-between; align-items: center; gap: 2vh; flex-wrap: wrap; }
+.olv-foot .quiet { color: #c9b48a; }
+.olv-shop .hints { color: #e8d7b0; }
+.olv-shop.big .ob-sub, .olv-shop.big .olv-motto { display: none; }
+.olv-shop.big .olv-main { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+#app.hc .olv-counter { background: #fff; }
+#app.hc .olv-box.item { background: #f4ecd8; }
+@keyframes olvOpen { from { height: 0; opacity: 0; } to { opacity: 1; } }
+@keyframes olvTip { 0%, 100% { opacity: 0.7; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.12); } }
+@keyframes olvSpark { 0% { opacity: 1; transform: translate(0, 0) scale(1.2); } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); } }
+@keyframes olvShake { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-1.4deg); } 60% { transform: rotate(1.1deg); } }
+@media (max-width: 760px) { .olv-main { grid-template-columns: 1fr; } .olv-stage { height: 80px; } .olv-name { font-size: 30px; } }
+@media (prefers-reduced-motion: reduce) { .olv-stage .olv-tip, .olv-box.focused .ob-lid { animation: none; } }
+`);
+
+/** The spark-test sound: a rising shimmer and a soft pop (WebAudio, the 55-audio.js primitives). */
+function uidSoundSpark() {
+  if (typeof audioReady !== 'function' || !audioReady()) return;
+  try {
+    const t = AUDIO.ctx.currentTime + 0.02;
+    [784, 988, 1175, 1568].forEach((f, i) => tone(f, 'sine', t + i * 0.07, 0.4, 0.05, AUDIO.fx));
+    noise(t, 0.35, 0.03, 'bandpass', 5200, 1.2, AUDIO.fx, 2400);
+  } catch {
+    /* audio is optional */
+  }
+}
+
+MENU_BUILDERS.wands = (d = {}) => {
+  const U = TXT.uid;
+  const big = (SETTINGS.textSize || 1) >= 1.5;
+  const root = layer('dim olv-layer');
+  const shop = el('div', `olv-shop${big ? ' big' : ''}`);
+  const head = el('header', 'olv-head');
+  const hl = el('div');
+  hl.append(el('h2', 'olv-name', U.olvTitle), el('div', 'olv-sign', U.olvSign));
+  head.append(hl, el('div', 'olv-motto', U.olvMotto));
+  const main = el('div', 'olv-main');
+  const shelf = el('div', 'olv-shelf');
+  shelf.append(el('h3', '', U.olvBoxes));
+  const box = el('div', 'items scroll olv-boxes');
+  const items = [];
+  const chosen = uidWandId();
+  let focus = 0;
+  WAND_DEFS.forEach((def, i) => {
+    const T = TXT.uidWands[def.id];
+    const locked = !uidWandUnlocked(def.id);
+    const sub = [T.wood, T.core].filter(Boolean).join(' · ') || T.trait;
+    const it = menuItem(`<span class="ob-who">${escapeHtml(locked ? U.olvLocked : T.who)}</span><span class="ob-mark">${def.id === chosen ? '✓' : ''}</span>`
+      + `<span class="ob-sub">${escapeHtml(locked ? T.short : sub)}</span><span class="ob-lid">${uidWandSvg(def, { uid: 'b' })}</span>`, () => {
+      if (uidWandChoose(def.id)) {
+        UID_WAND.flourish = GAME.phase === 'play';
+        renderMenu('wands', { ...d, spark: def.id }, i);
+      }
+    }, { cls: `olv-box${def.id === chosen ? ' chosen' : ''}${locked ? ' locked' : ''}` });
+    it.style.setProperty('--olv-c', def.col.g);
+    it.dataset.wand = def.id;
+    if (def.id === chosen) focus = i;
+    items.push(it);
+    box.append(it);
+  });
+  const back = menuItem(escapeHtml(U.olvBack), () => closeMenu(), { cls: 'olv-back' });
+  items.push(back);
+  box.append(back);
+  shelf.append(box);
+  const counter = el('div', 'olv-counter');
+  main.append(shelf, counter);
+  const foot = el('div', 'olv-foot');
+  foot.append(el('div', 'quiet', U.olvFree), hintsRow([['confirm', U.olvChooseHint], ['back', TXT.promptBack]]));
+  shop.append(head, main, foot);
+  root.append(shop);
+  let last = -1;
+  const show = (i) => {
+    const def = WAND_DEFS[i];
+    if (!def) {
+      counter.replaceChildren(el('div', 'olv-desc', U.olvTestBack));
+      return;
+    }
+    const T = TXT.uidWands[def.id];
+    const locked = !uidWandUnlocked(def.id);
+    const stage = el('div', `olv-stage${locked ? ' locked' : ''}`);
+    stage.innerHTML = uidWandSvg(def, { uid: 's' });
+    const sparks = el('div', 'olv-sparks');
+    for (let k = 0; k < 14; k++) {
+      const s = el('i');
+      const a = (k / 14) * Math.PI * 2 + 0.3 * Math.sin(k * 7.1);
+      const r = 5 + 7 * uidHash(k + 3);
+      s.style.cssText = `--dx:${(Math.cos(a) * r).toFixed(1)}vh;--dy:${(Math.sin(a) * r).toFixed(1)}vh;--sd:${(uidHash(k) * 0.25).toFixed(2)}s;--sc:${def.tip}`;
+      sparks.append(s);
+    }
+    // The sparks start at the tip (the SVG is 600 wide, 94 % of the stage, the tip at 14 + L · 1400 units).
+    sparks.style.left = `${(3 + ((14 + uidWandRings(def)[0][0] * 1400) / 600) * 94).toFixed(1)}%`;
+    stage.append(sparks);
+    const dl = el('dl', 'olv-facts');
+    for (const [k, v] of uidWandFacts(def)) {
+      const row = el('div');
+      row.append(el('dt', '', k), el('dd', '', v));
+      dl.append(row);
+    }
+    const isChosen = def.id === uidWandId();
+    const spark = d.spark === def.id;
+    const state = el('div', `olv-state${spark ? ' spark' : locked ? ' locked' : isChosen ? ' chosen' : ''}`, spark ? U.olvSpark : locked ? U.olvLocked : isChosen ? U.olvChosen : '');
+    if (!spark && !locked && !isChosen) state.innerHTML = `${glyph('confirm')} ${escapeHtml(U.olvChoose)}`;
+    counter.replaceChildren(el('h3', '', locked ? U.olvLocked : T.short), stage, el('h2', 'olv-who', locked ? '?' : T.who), dl,
+      el('p', 'olv-desc', locked ? U.olvLockedLine : T.desc), state);
+    if (locked) dl.style.visibility = 'hidden';
+    if (spark) {
+      d.spark = null;
+      UID_WAND.stats.sparks++;
+      requestAnimationFrame(() => stage.classList.add('spark'));
+      uidSoundSpark();
+      const sub = el('div', 'olv-state', fmt(U.olvSparkSub, { name: T.short }));
+      counter.append(sub);
+    }
+  };
+  const m = {
+    root, items, defaultIndex: Number.isInteger(d.focus) ? d.focus : focus, onBack: () => closeMenu(),
+    onClose: () => {
+      if (UID_WAND.flourish && GAME.phase === 'play') {
+        UID_WAND.flourish = false;
+        // The chosen wand greets the hand with Rendező bűbáj's small circle (animation only, no spell).
+        setTimeout(() => {
+          try {
+            if (!MENU.open) uidWandFlourish();
+          } catch {
+            /* optional */
+          }
+        }, 120);
+      }
+    },
+    update: () => {
+      if (m.index !== last) {
+        last = m.index;
+        show(m.index);
+      }
+    },
+    olv: { chosen },
+  };
+  return m;
+};
+
+/** The hand wand's greeting after a choice: package A's circle animation in the new wand's tip colour (no cast). */
+function uidWandFlourish() {
+  if (!WAND.mesh || !WAND.visible) return false;
+  WAND.cast = 'sort';
+  WAND.u = 0;
+  WAND.sparkCol = WAND_IDLE_COL.map((c) => c * 0.45);
+  WAND.sparkAt = 0;
+  return true;
+}
+
+/** The title menu's item (before Beállítások) and the Szünet menu's (61-menus.js calls uidPauseItem after Beállítások). */
+function uidWandItem(label) {
+  const T = TXT.uidWands[uidWandId()];
+  return menuItem(`<span class="grow">${escapeHtml(label)}</span><span class="val">${escapeHtml(T ? T.short : '')}</span>`, () => openMenu('wands'), { cls: 'uid-wands' });
+}
+
+function uidPauseItem() {
+  return uidWandItem(TXT.uid.olvPauseItem);
+}
+
+{
+  const base = MENU_BUILDERS.title;
+  MENU_BUILDERS.title = (d) => {
+    const m = base(d);
+    try {
+      const it = uidWandItem(TXT.uid.olvTitleItem);
+      let at = m.items.findIndex((x) => x.textContent.trim() === TXT.titleSettings);
+      if (at < 0) at = m.items.length;
+      const ref = m.items[at];
+      if (ref) ref.before(it);
+      else if (m.items.length) m.items[m.items.length - 1].after(it);
+      m.items.splice(at, 0, it);
+    } catch (err) {
+      console.warn('[uiD] title item failed', err);
+    }
+    return m;
+  };
+}
+
+// The Próféta section kicker of the pause item (61b-prophet.js only knows the base labels).
+{
+  const prev = MENU_BUILDERS.pause;
+  MENU_BUILDERS.pause = (d) => {
+    const m = prev(d);
+    try {
+      const it = m.items.find((x) => x.classList.contains('uid-wands'));
+      const rv = it && it.querySelector('.rv');
+      if (rv && !rv.querySelector('.rv-k')) rv.prepend(el('span', 'rv-k', TXT.uid.olvKick));
+    } catch {
+      /* the kicker is optional */
+    }
+    return m;
+  };
+}
+
+/** Harness view of the wands. */
+function uidWandInfo() {
+  const m = MENU.current && MENU.current.id === 'wands' ? MENU.current : null;
+  const g = WAND.mesh ? WAND.mesh.geometry : null;
+  return {
+    id: uidWandId(), stored: { ...uidWandRec() }, applied: UID_WAND.applied, ids: WAND_DEFS.map((w) => w.id), n: WAND_DEFS.length,
+    unlocked: WAND_DEFS.filter((w) => uidWandUnlocked(w.id)).map((w) => w.id), elder: uidWandUnlocked('elder'),
+    tris: g && g.index ? g.index.count / 3 : 0, tip: WAND.tipLocal.toArray().map((x) => +x.toFixed(4)), base: WAND.base.toArray().map((x) => +x.toFixed(4)),
+    idle: WAND_IDLE_COL.map((x) => +x.toFixed(3)), open: !!m, focus: m && m.items[m.index] ? m.items[m.index].dataset.wand || 'back' : null,
+    stats: { ...UID_WAND.stats },
+  };
+}
+
+/* ---- 88-menus-hp.js ---- */
+/* ==== 88-menus-hp.js — UI/UX package D, part 2 (NOTES-uiD.md): every menu that packages B and C did not restyle gets a
+   Harry Potter look, in the materials of package B (parchment, ink, wax seals, Almendra / Uncial Antiqua / Abril Fatface /
+   Cormorant Garamond, the procedural --noise texture; no image, no film asset).
+   - Presentation only: renderMenu is wrapped and, after the menu's own builder ran (its items, actions, focus model and
+     controller navigation untouched), the menu's layer gets the theme classes (HPM_THEMES) and a few decorative,
+     non-focusable nodes (a kicker line, a wax seal, a stamp, the bus ticket strip, the conductor's line, the green
+     flames). Scroll lists with a vh height lose a little height to make room for the kicker.
+   - Themes: the title as a sealed letter of the Abszol út's shopkeepers, the confirmations as small sealed parchments,
+     Beállítások / Irányítás as a Ministry decree, the Gyűjtőnapló as a leather-bound album with parchment photo slots,
+     the Polctérkép (and the fallback location list) as an inked parchment chart, the Kóbor Grimbusz stop as a purple
+     bus ticket, the Hop-hálózat with green flames, the Varázslatpult's shop tabs as a shop counter with price tags
+     (Gringotts as the bank's marble counter), the Szerencseüst as an iron cauldron, letters with a seal, the Talált
+     tárgyak as a parcel label, the slot actions as a price tag, the hall's lectern as a sealed parchment; the end
+     credits as a parchment scroll; the co-op prompts as parchment slips.
+   - Not touched: the Szünet menu (package B's Reggeli Próféta), the spell book tab of the Varázslatpult (package B), the
+     RBF certificates (package C), the Ollivander shop (87-wands.js, its own look).
+   Cost: a handful of DOM nodes and class changes per render (HPM.stats). ==== */
+
+const HPM = { stats: { decorated: 0, ms: 0, maxMs: 0 }, busN: 0, last: null };
+
+/** Menu id → theme. A missing id keeps the plain look. */
+const HPM_THEMES = {
+  title: 'letter', confirm: 'sealed', gyujto: 'sealed', settings: 'decree', controls: 'decree', book: 'album', map: 'chart', districts: 'chart',
+  crate: 'bus', hop: 'floo', lectern: 'counter', cauldron: 'cauldron', letter: 'note', endLetter: 'note', basket: 'parcel', slotAct: 'tag',
+};
+/** Parchment themes share the ink-on-parchment item look. */
+const HPM_PARCH = new Set(['letter', 'sealed', 'decree', 'chart', 'note', 'tag', 'parcel']);
+
+function hpmKick(text) {
+  return el('div', 'hpm-kick', text);
+}
+
+function hpmSeal(mark) {
+  const s = el('div', 'hpm-seal');
+  s.setAttribute('aria-hidden', 'true');
+  s.append(el('span', '', mark || 'SZ'));
+  return s;
+}
+
+/** Compass rose of the chart (inline SVG, ink lines). */
+const HPM_COMPASS = '<svg viewBox="-20 -20 40 40" aria-hidden="true"><circle r="15" fill="none" stroke="currentColor" stroke-width="0.6"/><circle r="11" fill="none" stroke="currentColor" stroke-width="0.4" stroke-dasharray="1 1.4"/>'
+  + '<path d="M0-18 L3 0 L0 18 L-3 0Z" fill="currentColor" opacity="0.85"/><path d="M-18 0 L0-3 L18 0 L0 3Z" fill="currentColor" opacity="0.55"/>'
+  + '<text y="-19.5" text-anchor="middle" font-size="5" fill="currentColor" font-family="Almendra, serif">É</text></svg>';
+
+/** Flames of the Floo panel (inline SVG, CSS-animated sway). */
+const HPM_FLAMES = '<svg viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C10 22 18 30 24 14 C30 28 38 20 46 6 C52 24 62 18 70 10 C76 26 86 22 94 4 C100 24 110 20 118 12 C124 28 134 22 142 6 C148 24 158 20 166 12 C172 26 182 24 190 10 C194 24 198 30 200 40Z" fill="url(#hpmF)"/>'
+  + '<defs><linearGradient id="hpmF" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#d8ffe0"/><stop offset="0.35" stop-color="#3ee070" stop-opacity="0.85"/><stop offset="1" stop-color="#0a6a2a" stop-opacity="0"/></linearGradient></defs></svg>';
+
+/** Takes a little height off the vh-sized scroll lists so the added kicker never pushes the menu out of the screen. */
+function hpmShrinkScroll(root, vh) {
+  for (const sc of root.querySelectorAll('.scroll')) {
+    const m = /^(\d+(?:\.\d+)?)vh$/.exec(sc.style.maxHeight || '');
+    if (m) sc.style.maxHeight = `calc(${m[1]}vh - ${vh}vh * var(--ts))`;
+  }
+}
+
+/** Adds the theme classes and the ornaments to the freshly rendered menu m (its items are never touched). */
+function hpmDecorate(m) {
+  const id = m.id;
+  let theme = HPM_THEMES[id];
+  if (!theme || !m.root) return;
+  if (id === 'lectern' && (m.spellbook || (m.data && m.data.tab === 'tools'))) return;
+  const t0 = performance.now();
+  const U = TXT.uid;
+  const root = m.root;
+  const big = (SETTINGS.textSize || 1) >= 1.5;
+  const sheet = root.querySelector('.panel.menu, .letter');
+  if (!sheet) return;
+  if (id === 'lectern' && m.data && m.data.tab === 'vault') theme = 'vault';
+  root.classList.add('hpm', `hpm-${theme}`, `hpm-id-${id}`);
+  if (HPM_PARCH.has(theme)) root.classList.add('hpm-parch');
+  if (big) root.classList.add('hpm-big');
+  sheet.classList.add('hpm-sheet');
+  const h = sheet.querySelector('h1, h2');
+  const before = (node) => {
+    if (h) h.before(node);
+    else sheet.prepend(node);
+  };
+  const beforeHints = (node) => {
+    const hints = sheet.querySelector(':scope > .hints, :scope > .tabs-hints, :scope > .tab-hints');
+    const last = [...sheet.children].reverse().find((c) => c.classList.contains('hints'));
+    const ref = hints || last;
+    if (ref) ref.before(node);
+    else sheet.append(node);
+  };
+  let shrink = 2.4;
+  switch (theme) {
+    case 'letter': {
+      before(hpmKick(U.titleKick));
+      const sub = sheet.querySelector('.sub');
+      if (sub && !big) sub.after(el('div', 'hpm-addr', U.titleAddress));
+      sheet.append(hpmSeal(U.titleSeal));
+      break;
+    }
+    case 'sealed':
+      before(hpmKick(id === 'gyujto' ? U.hallKick : U.confirmKick));
+      sheet.append(hpmSeal(U.titleSeal));
+      break;
+    case 'decree': {
+      before(hpmKick(id === 'settings' ? `${U.decreeHead} · ${U.decreeSub}` : `${U.decreeHead} · ${U.controlsHead}`));
+      const st = el('div', 'hpm-stamp', U.decreeStamp);
+      st.setAttribute('aria-hidden', 'true');
+      sheet.append(st);
+      break;
+    }
+    case 'album':
+      before(hpmKick(U.albumKick));
+      break;
+    case 'chart': {
+      before(hpmKick(id === 'districts' ? U.districtsKick : m.data && m.data.tab === 1 ? U.chartRules : U.chartKick));
+      if (!big) {
+        const c = el('div', 'hpm-compass');
+        c.innerHTML = HPM_COMPASS;
+        sheet.append(c);
+      }
+      break;
+    }
+    case 'bus': {
+      const strip = el('div', 'hpm-ticket');
+      const no = String(1000 + ((Math.floor((GAME.playS || 0) / 60) * 7 + HPM.busN) % 9000)).padStart(4, '0');
+      strip.innerHTML = `<span class="tk-k">${escapeHtml(U.busKick)}</span><span class="tk-n num">${escapeHtml(fmt(U.busNo, { n: no }))}</span>`;
+      sheet.prepend(strip);
+      if (!big) {
+        const lines = U.busLine;
+        const cond = el('div', 'hpm-conductor');
+        cond.innerHTML = `<b>${escapeHtml(U.busConductor)}:</b> „${escapeHtml(lines[HPM.busN % lines.length])}”`;
+        beforeHints(cond);
+      }
+      HPM.busN++;
+      shrink = 4.4;
+      break;
+    }
+    case 'floo': {
+      before(hpmKick(U.flooKick));
+      if (!big) beforeHints(el('div', 'hpm-say', U.flooSay));
+      const f = el('div', 'hpm-flames');
+      f.innerHTML = HPM_FLAMES;
+      sheet.append(f);
+      shrink = 4;
+      break;
+    }
+    case 'counter':
+      before(hpmKick(U.counterKick));
+      break;
+    case 'vault':
+      before(hpmKick(U.vaultKick));
+      break;
+    case 'cauldron':
+      before(hpmKick(U.caulKick));
+      sheet.append(el('div', 'hpm-brew'));
+      break;
+    case 'note': {
+      const head = sheet.querySelector('.lt-head');
+      if (head) head.before(hpmKick(U.noteKick));
+      sheet.append(hpmSeal(U.titleSeal));
+      break;
+    }
+    case 'parcel':
+      before(hpmKick(U.parcelKick));
+      break;
+    case 'tag':
+      before(hpmKick(U.tagKick));
+      break;
+    default:
+      break;
+  }
+  hpmShrinkScroll(root, shrink);
+  HPM.last = { id, theme };
+  const ms = performance.now() - t0;
+  HPM.stats.decorated++;
+  HPM.stats.ms = +ms.toFixed(3);
+  if (ms > HPM.stats.maxMs) HPM.stats.maxMs = +ms.toFixed(3);
+}
+
+// eslint-disable-next-line no-func-assign
+renderMenu = ((prev) => function hpmRenderMenu(id, data, index) {
+  // The decoration runs between the menu's builder and its insertion into the page (the builder is wrapped for this one
+  // call): the classes are on the nodes before the first layout, so the menu is styled and laid out only once.
+  const base = MENU_BUILDERS[id];
+  if (typeof base !== 'function' || !HPM_THEMES[id]) {
+    prev(id, data, index);
+    return;
+  }
+  const tmp = (d) => {
+    const m = base(d);
+    if (m && m.root) {
+      m.id = id;
+      m.data = d;
+      try {
+        hpmDecorate(m);
+      } catch (err) {
+        console.warn('[uiD] menu decoration failed', id, err);
+      }
+    }
+    return m;
+  };
+  MENU_BUILDERS[id] = tmp;
+  try {
+    prev(id, data, index);
+  } finally {
+    if (MENU_BUILDERS[id] === tmp) MENU_BUILDERS[id] = base;
+  }
+})(renderMenu);
+
+/** Harness view: the current menu's theme and ornaments. */
+function hpmInfo() {
+  const m = MENU.current;
+  const r = m && m.root;
+  return {
+    id: m ? m.id : null, theme: r ? [...r.classList].filter((c) => c.startsWith('hpm-') && !c.startsWith('hpm-id-')).join(' ') : '', themed: !!(r && r.classList.contains('hpm')),
+    kick: r && r.querySelector('.hpm-kick') ? r.querySelector('.hpm-kick').textContent : null, seal: !!(r && r.querySelector('.hpm-seal')),
+    items: m ? m.items.length : 0, index: m ? m.index : -1, focus: m && m.items[m.index] ? m.items[m.index].textContent.trim().slice(0, 60) : null,
+    overflow: r ? (() => { const s = r.querySelector('.hpm-sheet, .olv-shop'); if (!s) return null; const b = s.getBoundingClientRect(); return { top: Math.round(b.top), bottom: Math.round(b.bottom), h: innerHeight, scrollH: s.scrollHeight, clientH: s.clientHeight }; })() : null,
+    stats: { ...HPM.stats },
+  };
+}
+
+uibStyle('uid-menus', `
+/* ---------- shared: the parchment sheet, ink items, kickers, wax seal ---------- */
+.hpm .hpm-sheet { position: relative; }
+/* The sheet is a column whose scroll list (or map) gives way first: with a big text size the header, the list and the
+   hints all stay on the screen (the list keeps its own vh cap and scrolls by the focus as before). */
+.hpm .hpm-sheet.menu { display: flex; flex-direction: column; }
+.hpm .hpm-sheet.menu > * { flex: none; }
+.hpm .hpm-sheet.menu > .scroll { flex: 0 1 auto; min-height: calc(7vh * min(var(--ts), 1.5)); }
+.hpm .hpm-sheet.menu > .map-wrap { flex: 0 1 auto; min-height: 0; overflow: hidden; }
+.hpm .hpm-sheet .radial-side { min-height: 0; overflow: hidden; }
+.hpm-chart.hpm-big .map-svg.radial { height: min(46vh, 40vw); }
+.hpm-parch .hpm-sheet.panel, .hpm-parch .hpm-sheet.letter { color: #24160a; background-color: #e9dcbc;
+  background-image: var(--noise), radial-gradient(ellipse 120% 90% at 30% 20%, #f6ecd2, #e2d0a8 60%, #c8ae7c 100%);
+  background-size: 180px 180px, 100% 100%; background-blend-mode: multiply, normal; border: 1px solid rgba(60, 40, 20, 0.55); border-radius: 0.4vh;
+  box-shadow: 0 2.4vh 6vh rgba(0, 0, 0, 0.7), inset 0 0 5vh rgba(120, 84, 30, 0.38), inset 0 0 0 1px rgba(255, 248, 230, 0.35); }
+.hpm-parch .hpm-sheet.panel::before { display: none; }
+.hpm-parch .hpm-sheet.panel::after { inset: 0.9vh; border: 1px solid rgba(60, 40, 20, 0.3); border-radius: 0.2vh; }
+.hpm .hpm-kick { font: 400 calc(1.75vh * var(--ts))/1.15 "Almendra", var(--font-serif); letter-spacing: 0.14em; text-transform: uppercase; color: #8e1d16; overflow-wrap: anywhere; }
+.hpm-parch .engraved { background: none; -webkit-text-fill-color: currentColor; color: #20160d; filter: none; font-family: "Uncial Antiqua", var(--font-display); letter-spacing: 0.02em; }
+.hpm-parch .menu .sub, .hpm-parch .menu p, .hpm-parch .quiet, .hpm-parch .stats, .hpm-parch .status-chip { color: #4a3620; }
+.hpm-parch .stats b { color: #20160d; }
+.hpm-parch .hints { color: #3a2a18; }
+.hpm-parch .item { color: #24160a; background: rgba(255, 250, 235, 0.18); border: 0; border-bottom: 1px dashed rgba(32, 22, 13, 0.5); border-radius: 0.3vh; }
+.hpm-parch .item .val { color: #8e1d16; }
+.hpm-parch .item.dim { color: #8a7656; }
+.hpm-parch .item.focused, .hpm-album .bcard.item.focused { transform: scale(1.03); color: #f4ecd8; background: linear-gradient(180deg, #2e2012, #1a1008); border-bottom-color: transparent;
+  box-shadow: 0 0 0 0.3vh #f4ecd8, 0 0 0 0.7vh var(--focus-out), 0 0.6vh 1.6vh rgba(0, 0, 0, 0.5); }
+.hpm-parch .item.focused .val { color: var(--gold-hi); }
+.hpm-parch .item.focused .label small { color: #d9c49a; }
+.hpm-parch .item.focused.dim { color: #c9b48a; }
+.hpm-parch .set-row .label small { color: #5b452c; }
+.hpm-parch .name-input { background: #fff8e6; color: #20160d; border-color: #5b452c; }
+.hpm-parch .chip { background: rgba(255, 250, 235, 0.4); color: #20160d; border-color: rgba(60, 40, 20, 0.5); }
+.hpm .hpm-seal { position: absolute; right: 2.4vh; bottom: 2vh; width: calc(7vh * min(var(--ts), 1.3)); height: calc(7vh * min(var(--ts), 1.3)); display: grid; place-items: center; pointer-events: none;
+  border-radius: 46% 54% 50% 48%; background: radial-gradient(circle at 38% 32%, #e2564a, #a81f1c 45%, #6e0e0e 80%);
+  box-shadow: 0 0.4vh 0.8vh rgba(0, 0, 0, 0.45), inset 0 0 0 0.6vh rgba(120, 10, 10, 0.45), inset 0 0 0 0.85vh rgba(255, 140, 120, 0.25); transform: rotate(-8deg); }
+.hpm .hpm-seal span { font: 400 calc(2.8vh * min(var(--ts), 1.3))/1 "Uncial Antiqua", var(--font-display); color: #5e0a0a; text-shadow: 0 1px 0 rgba(255, 160, 140, 0.5); }
+
+/* ---------- the title: a sealed letter of the Abszol út's shopkeepers, at night ---------- */
+.layer.hpm-letter { background: radial-gradient(ellipse 70% 90% at 28% 50%, rgba(8, 6, 20, 0.15), rgba(6, 4, 18, 0.55) 70%, rgba(4, 2, 12, 0.75)); }
+.hpm-letter .hpm-sheet.panel { padding-bottom: calc(3vh + 4vh * min(var(--ts), 1.3)); transform: rotate(-0.6deg); }
+.hpm-letter .menu h1 { font-size: calc(max(6.4vh, 30px) * min(var(--ts), 1.3)); line-height: 1.02; text-wrap: balance; }
+.hpm-letter .menu .sub { font-style: italic; color: #4a3620; }
+.hpm-letter .hpm-addr { font: 500 italic calc(2.1vh * var(--ts))/1.3 var(--font-serif); color: #3a2a18; border-top: 1px solid rgba(60, 40, 20, 0.35); padding-top: 0.8vh; }
+.hpm-letter .items .item { font: 700 calc(2.9vh * var(--ts))/1.12 var(--font-serif); }
+.hpm-letter .items .item .val { font: 600 calc(2vh * var(--ts))/1.1 var(--font-body); }
+.hpm-letter .press { background: rgba(20, 12, 30, 0.75); color: #f0d48a; font-family: "Almendra", var(--font-serif); }
+.hpm-letter .hpm-seal { right: 3vh; bottom: 1.6vh; }
+.hpm-letter.hpm-big .menu h1 { font-size: calc(max(4.6vh, 24px) * 1.3); }
+.hpm-letter.hpm-big .items .item { font-size: var(--fs-body); min-height: calc(4.4vh * var(--ts)); }
+.hpm-letter.hpm-big .items .item .val { font-size: calc(1.5vh * var(--ts)); }
+.hpm-letter.hpm-big .hpm-sheet.panel { padding-top: 2vh; padding-bottom: 2vh; gap: 1vh; }
+.hpm-letter.hpm-big .hpm-seal, .hpm-sealed.hpm-big .hpm-seal, .hpm-note.hpm-big .hpm-seal { display: none; }
+.hpm-sealed.hpm-big .hpm-sheet.panel, .hpm-note.hpm-big .hpm-sheet.letter { padding-bottom: 3vh; }
+
+/* ---------- confirmations and the hall's lectern: a small sealed parchment ---------- */
+.hpm-sealed .hpm-sheet.panel { padding-bottom: calc(3vh + 4vh * min(var(--ts), 1.3)); }
+.hpm-sealed .hpm-sheet p { font: 600 calc(2.6vh * var(--ts))/1.3 var(--font-serif); color: #24160a; }
+.layer.hpm-sealed.dark { background: rgba(8, 4, 2, 0.78); }
+
+/* ---------- Beállítások / Irányítás: a Ministry decree ---------- */
+.hpm-decree .hpm-sheet .items { counter-reset: hpmsec; }
+.hpm-decree .sec-title { font: 400 calc(2vh * var(--ts))/1.1 "Almendra", var(--font-serif); letter-spacing: 0.12em; color: #8e1d16; border-bottom: 1px solid rgba(142, 29, 22, 0.45); padding-bottom: 0.3vh; margin-top: 1.2vh; }
+.hpm-decree .sec-title::before { counter-increment: hpmsec; content: "§ " counter(hpmsec) ". "; }
+.hpm-decree .item { font-family: var(--font-serif); font-weight: 700; font-size: calc(var(--fs-body) * 1.05); }
+.hpm-decree .ctl-cols h3 { font: 400 calc(2vh * var(--ts))/1.1 "Almendra", var(--font-serif); letter-spacing: 0.12em; color: #8e1d16; border-bottom: 1px solid rgba(142, 29, 22, 0.45); }
+.hpm-decree .ctl-rows .r { color: #24160a; border-bottom: 1px dotted rgba(60, 40, 20, 0.35); padding-bottom: 0.3vh; }
+.hpm-decree .hpm-stamp { position: absolute; right: 3vh; top: 2.2vh; padding: 0.4vh 1.2vh; border: 0.35vh double rgba(142, 29, 22, 0.7); border-radius: 0.6vh; pointer-events: none;
+  font: 400 calc(2.2vh * min(var(--ts), 1.3))/1 "Uncial Antiqua", var(--font-display); color: rgba(142, 29, 22, 0.72); transform: rotate(7deg); letter-spacing: 0.08em; }
+.hpm-decree.hpm-big .hpm-stamp { display: none; }
+
+/* ---------- the Gyűjtőnapló: a leather-bound album with parchment photo slots ---------- */
+.hpm-album .hpm-sheet.panel { background-color: #3a1e10; background-image: var(--noise), radial-gradient(ellipse at 30% 20%, #6a3a20, #3a1e10 60%, #24110a);
+  background-size: 180px 180px, 100% 100%; background-blend-mode: overlay, normal; border: 0.35vh solid #1a0c06;
+  box-shadow: 0 2.4vh 6vh rgba(0, 0, 0, 0.75), inset 0 0 0 0.6vh #24110a, inset 0 0 0 0.75vh #b8862c, inset 0 0 0 1.05vh #24110a, inset 0 0 0 1.15vh rgba(184, 134, 44, 0.6), inset 0 0 6vh rgba(0, 0, 0, 0.6); }
+.hpm-album .hpm-sheet.panel::before { display: none; }
+.hpm-album .hpm-sheet.panel::after { display: none; }
+.hpm-album .hpm-kick { color: #e0b85a; }
+.hpm-album .engraved { font-family: "Uncial Antiqua", var(--font-display); }
+.hpm-album .menu .sub { color: #e9d6a8; }
+.hpm-album .book-sum, .hpm-album .menu p.quiet { color: #e2cfa2; }
+.hpm-album .book-sum .big { color: #f6e7c0; }
+.hpm-album .book-grid { border-radius: 0.4vh; background-color: #e9dcbc; background-image: var(--noise), linear-gradient(90deg, #d8c49a, #f2e6c8 6%, #efe1c0 94%, #d2bd92);
+  background-size: 180px 180px, 100% 100%; background-blend-mode: multiply, normal; box-shadow: inset 0 0 3vh rgba(120, 84, 30, 0.45); }
+/* The photo corners are two background layers of the card itself (no pseudo-elements: 54 cards per page). */
+.hpm-album .bcard.item { color: #24160a; border: 1px solid rgba(60, 40, 20, 0.35); border-radius: 0.2vh;
+  background: linear-gradient(135deg, #3a1e10 50%, transparent 50%) left top / 1.3vh 1.3vh no-repeat, linear-gradient(315deg, #3a1e10 50%, transparent 50%) right bottom / 1.3vh 1.3vh no-repeat, #f6ecd4; }
+.hpm-album .bcard .bn { background: rgba(60, 40, 20, 0.18); color: #3a2a18; }
+.hpm-album .bcard .bt small { color: #5b452c; }
+.hpm-album .bcard .bc { color: #8e1d16; }
+.hpm-album .bcard .bb { background: rgba(60, 40, 20, 0.22); }
+.hpm-album .bcard .bt-tray { color: #2f6a2a; }
+.hpm-album .bcard .bt-wrong { color: #a8231c; }
+.hpm-album .bcard.done { background: linear-gradient(180deg, #f7e2a8, #e9c978); border-color: #b8862c; }
+.hpm-album .book-group { color: #8e1d16; font-family: "Almendra", var(--font-serif); font-weight: 400; letter-spacing: 0.04em; border-bottom-color: rgba(142, 29, 22, 0.4); }
+.hpm-album .book-group small { color: #5b452c; }
+.hpm-album .bcard.focused .bt small, .hpm-album .bcard.focused .bc { color: #f4ecd8; }
+.hpm-album .bcard.focused .bn { background: var(--gold-hi); color: #24160a; }
+.hpm-album > .panel > .item:not(.bcard), .hpm-album .hpm-sheet > .item { color: #f3e6c8; background: rgba(0, 0, 0, 0.3); border-color: #b8862c; }
+.hpm-album .hpm-sheet > .item.focused { color: #24160a; background: linear-gradient(180deg, var(--metal-2), var(--metal-4)); }
+.hpm-album .hints { color: #e2cfa2; }
+.hpm-album.hpm-big .hpm-sheet > p.quiet, .hpm-album.hpm-big .dchips, .hpm-album.hpm-big .hpm-kick { display: none; }
+.hpm-album.hpm-big .book-sum { gap: 0.4vh 1.6vh; font-size: calc(var(--fs-small) * 0.8); }
+.hpm-album.hpm-big .hpm-sheet.menu { gap: 1vh; padding-top: 2vh; padding-bottom: 2vh; }
+
+/* ---------- the Polctérkép: an inked parchment chart ---------- */
+.hpm-chart .radial .sec-bg { fill: color-mix(in srgb, var(--dc) 32%, #e2cfa2); stroke: #3a2614; stroke-width: 0.06; }
+.hpm-chart .radial .sector.asleep .sec-bg { fill: color-mix(in srgb, var(--dc) 9%, #d6c294); stroke-dasharray: 0.3 0.2; }
+.hpm-chart .radial .sec-ring { fill: rgba(60, 40, 20, 0.22); }
+.hpm-chart .radial .sec-prog { fill: color-mix(in srgb, var(--dc) 72%, #2a1a0e); }
+.hpm-chart .radial .sector.mastered .sec-ring, .hpm-chart .radial .sector.mastered .sec-prog { fill: #b8862c; }
+.hpm-chart .radial .sec-num { font-family: "Uncial Antiqua", var(--font-display); fill: #20160d; }
+.hpm-chart .radial .sec-name { font-family: var(--font-serif); font-weight: 700; fill: #20160d; stroke: rgba(246, 236, 210, 0.75); }
+.hpm-chart .radial .sec-count { fill: #4a3620; }
+.hpm-chart .radial .sec-here { fill: #8e1d16; }
+.hpm-chart .radial .sector.target .sec-bg { stroke: #8e1d16; }
+.hpm-chart .radial .sector.focused .sec-bg { fill: color-mix(in srgb, var(--dc) 58%, #efe0b8); stroke: #8e1d16; stroke-width: 0.24; }
+.hpm-chart .radial .sector.focused .sec-num, .hpm-chart .radial .sector.focused .sec-name { fill: #120b05; }
+.hpm-chart .radial .hub circle { fill: #d9c49a; stroke: #3a2614; stroke-width: 0.1; }
+.hpm-chart .radial .hub.here circle { stroke: #8e1d16; stroke-width: 0.22; }
+.hpm-chart .radial .hub-name { font-family: "Almendra", var(--font-serif); fill: #8e1d16; }
+.hpm-chart .radial .hub-line { fill: #3a2614; }
+.hpm-chart .map-svg { filter: drop-shadow(0 0.15vh 0 rgba(60, 40, 20, 0.35)); }
+.hpm-chart .radial-detail { color: #24160a; background: rgba(255, 248, 230, 0.42); border: 1px solid rgba(60, 40, 20, 0.45); box-shadow: inset 0 0 2vh rgba(120, 84, 30, 0.25); }
+.hpm-chart .radial-detail h3 { color: #20160d; font-family: "Almendra", var(--font-serif); }
+.hpm-chart .radial-detail .rd-num { color: color-mix(in srgb, var(--dc) 65%, #20160d); font-family: "Uncial Antiqua", var(--font-display); }
+.hpm-chart .radial-detail .rd-cat { color: #4a3620; }
+.hpm-chart .radial-detail .rd-prog { color: #8e1d16; }
+.hpm-chart .radial-detail .line { color: #24160a; }
+.hpm-chart .radial-detail .gold { color: #8a5a10; }
+.hpm-chart .radial-detail .quiet { color: #5b452c; }
+.hpm-chart .tab { color: #3a2a18; border-color: rgba(60, 40, 20, 0.5); font-family: var(--font-serif); font-weight: 700; }
+.hpm-chart .tab.on { color: #f4ecd8; background: linear-gradient(180deg, #2e2012, #1a1008); border-color: #1a1008; }
+.hpm-chart .rules { color: #24160a; font-family: var(--font-serif); font-weight: 600; }
+.hpm-chart .hpm-compass { position: absolute; right: 2.2vh; bottom: 2vh; width: 9vh; height: 9vh; color: rgba(58, 38, 20, 0.55); pointer-events: none; }
+
+/* ---------- the Kóbor Grimbusz stop: a purple triple-decker bus ticket ---------- */
+.hpm-bus .hpm-sheet.panel { color: #f6ecff; background-color: #3a1660; background-image: var(--noise), linear-gradient(180deg, #5c2c8c, #42196e 45%, #2c0e4c);
+  background-size: 180px 180px, 100% 100%; background-blend-mode: soft-light, normal; border: 0; border-radius: 0.5vh; padding-left: 4.2vh; padding-right: 4.2vh;
+  -webkit-mask-image: radial-gradient(circle at 0 50%, transparent 0.9vh, #000 0.95vh), radial-gradient(circle at 100% 50%, transparent 0.9vh, #000 0.95vh);
+  -webkit-mask-size: 51% 3vh; -webkit-mask-position: left top, right top; -webkit-mask-repeat: repeat-y;
+  mask-image: radial-gradient(circle at 0 50%, transparent 0.9vh, #000 0.95vh), radial-gradient(circle at 100% 50%, transparent 0.9vh, #000 0.95vh);
+  mask-size: 51% 3vh; mask-position: left top, right top; mask-repeat: repeat-y;
+  box-shadow: none; }
+.hpm-bus .hpm-sheet.panel::before { left: 2.4vh; right: 2.4vh; top: auto; bottom: 1.2vh; height: 0; border-top: 0.35vh dashed rgba(255, 214, 120, 0.55); background: none; }
+.hpm-bus .hpm-sheet.panel::after { inset: 0.8vh 2.2vh; border: 1px solid rgba(255, 214, 120, 0.45); }
+.hpm-bus .hpm-ticket { display: flex; justify-content: space-between; gap: 2vh; flex-wrap: wrap; margin: -1vh -0.6vh 0; padding: 0.6vh 1.2vh; border-radius: 0.3vh;
+  background: repeating-linear-gradient(90deg, #ffd25a 0 1.2vh, #f0b832 1.2vh 2.4vh); color: #2c0e4c; font: 400 calc(1.9vh * var(--ts))/1.1 "Almendra", var(--font-serif); letter-spacing: 0.14em; text-transform: uppercase; }
+.hpm-bus .hpm-ticket .tk-n { font-family: var(--font-body); font-weight: 700; letter-spacing: 0.06em; }
+.hpm-bus .engraved { font-family: "Abril Fatface", var(--font-display); letter-spacing: 0.03em; background: linear-gradient(180deg, #fff6c8, #ffd25a 45%, #e89a1a 70%, #ffe08a);
+  -webkit-background-clip: text; background-clip: text; }
+.hpm-bus .menu .sub { color: #e6d2ff; }
+.hpm-bus .sec-title { font: 400 calc(1.9vh * var(--ts))/1.1 "Almendra", var(--font-serif); letter-spacing: 0.14em; color: #ffd25a; border-bottom: 1px dashed rgba(255, 214, 120, 0.5); padding-bottom: 0.3vh; }
+.hpm-bus .item { position: relative; color: #f6ecff; background: rgba(255, 255, 255, 0.06); border: 1px dashed rgba(255, 214, 120, 0.4); border-radius: 0.3vh; padding-left: 2.6vh; }
+.hpm-bus .item .val { color: #ffd25a; }
+.hpm-bus .item.dim { color: #b8a0d0; }
+.hpm-bus .item small { color: #d8c4f0; }
+.hpm-bus .item.focused { color: #2c0e4c; background: linear-gradient(180deg, #fff0b0, #ffd25a 55%, #f0b832); border: 1px solid #fff0b0; }
+.hpm-bus .item.focused small, .hpm-bus .item.focused .val { color: #3a1660; }
+.hpm-bus .item.focused::before { content: ""; position: absolute; left: 0.7vh; top: 50%; width: 1.2vh; height: 1.2vh; margin-top: -0.6vh; border-radius: 50%; background: #3a1660;
+  box-shadow: inset 0 0.2vh 0.3vh rgba(0, 0, 0, 0.6), 0 0 0 0.15vh rgba(255, 255, 255, 0.5); }
+.hpm-bus .cpad { background: rgba(20, 4, 36, 0.55); border-color: rgba(255, 214, 120, 0.35); color: #e6d2ff; }
+.hpm-bus .hpm-conductor { font: 500 italic calc(2.1vh * var(--ts))/1.3 var(--font-serif); color: #f0e0ff; }
+.hpm-bus .hpm-conductor b { font: 400 calc(1.7vh * var(--ts))/1 "Almendra", var(--font-serif); font-style: normal; letter-spacing: 0.1em; color: #ffd25a; margin-right: 0.6vh; }
+.hpm-bus .hints { color: #e6d2ff; }
+.hpm-bus .chip { background: rgba(20, 4, 36, 0.6); border-color: #ffd25a; }
+
+/* ---------- the Hop-hálózat: soot-dark stone and green flames ---------- */
+.hpm-floo .hpm-sheet.panel { color: #e8ffee; background-color: #141a16; background-image: var(--noise), radial-gradient(ellipse 90% 60% at 50% 110%, rgba(40, 220, 100, 0.35), transparent 70%),
+  linear-gradient(180deg, #2a302c, #141a16 65%, #0c120e); background-size: 180px 180px, 100% 100%, 100% 100%; background-blend-mode: soft-light, normal, normal; border: 1px solid rgba(80, 255, 140, 0.45);
+  box-shadow: 0 0 3vh rgba(40, 220, 100, 0.25), 0 1.2vh 3.2vh rgba(0, 0, 0, 0.6), inset 0 0 2.4vh rgba(0, 0, 0, 0.6); padding-bottom: 5vh; }
+.hpm-floo .hpm-sheet.panel::before { background: linear-gradient(90deg, transparent, #3ee070, #c8ffd4, #3ee070, transparent); }
+.hpm-floo .hpm-sheet.panel::after { border-color: rgba(80, 255, 140, 0.2); }
+.hpm-floo .hpm-kick { color: #7dffa0; }
+.hpm-floo .engraved { font-family: "Almendra", var(--font-serif); background: linear-gradient(180deg, #f0fff2, #9dffb8 40%, #2bd062 70%, #c8ffd4); -webkit-background-clip: text; background-clip: text; }
+.hpm-floo .menu .sub, .hpm-floo .hints { color: #b8e8c4; }
+.hpm-floo .item { color: #e8ffee; background: rgba(0, 0, 0, 0.32); border-color: rgba(80, 255, 140, 0.35); }
+.hpm-floo .item .val { color: #9dffb8; }
+.hpm-floo .item.focused { color: #0a2a14; background: linear-gradient(180deg, #e0ffe6, #7dffa0 55%, #2bd062); border-color: #e0ffe6; box-shadow: 0 0 0 0.3vh #06140a, 0 0 0 0.7vh #9dffb8, 0 0 2.4vh rgba(60, 255, 120, 0.55); }
+.hpm-floo .item.focused .val { color: #0a2a14; }
+.hpm-floo .hpm-say { font: 500 italic calc(2.1vh * var(--ts))/1.3 var(--font-serif); color: #c8ffd4; }
+.hpm-floo .hpm-flames { position: absolute; left: 0; right: 0; bottom: 0; height: 4.6vh; pointer-events: none; opacity: 0.8; transform-origin: 50% 100%; animation: hpmFlame 1.6s ease-in-out infinite alternate; }
+.hpm-floo .hpm-flames svg { width: 100%; height: 100%; display: block; }
+.hpm-floo .chip { border-color: #7dffa0; }
+
+/* ---------- the Varázslatpult's shop tabs: a counter with price tags; Gringotts: the bank's marble counter ---------- */
+.hpm-counter .hpm-sheet.panel { background-color: #3a2412; background-image: var(--noise), repeating-linear-gradient(92deg, rgba(0, 0, 0, 0.14) 0 0.25vh, transparent 0.25vh 2.6vh, rgba(255, 220, 160, 0.05) 2.6vh 2.8vh, transparent 2.8vh 5vh),
+  linear-gradient(180deg, #5a3a1e, #3a2412 60%, #24160a); background-size: 180px 180px, auto, auto; background-blend-mode: soft-light, normal, normal; border: 0.3vh solid #1a0f07;
+  box-shadow: 0 1.2vh 3.2vh rgba(0, 0, 0, 0.65), inset 0 0 0 0.45vh #8c6a3a, inset 0 0 3vh rgba(0, 0, 0, 0.55); }
+.hpm-counter .hpm-sheet.panel::before { display: none; }
+.hpm-counter .hpm-kick { color: #e0b85a; }
+.hpm-counter .engraved, .hpm-vault .engraved { font-family: "Almendra", var(--font-serif); }
+.hpm-counter .upcard, .hpm-vault .upcard { position: relative; color: #24160a; padding-left: 3vh; border: 1px solid rgba(60, 40, 20, 0.5); border-radius: 0.3vh 1.4vh 1.4vh 0.3vh;
+  background-color: #efe2c2; background-image: var(--noise), linear-gradient(180deg, #f7ecd2, #e4d2a8); background-size: 180px 180px, 100% 100%; background-blend-mode: multiply, normal;
+  box-shadow: 0 0.4vh 0.9vh rgba(0, 0, 0, 0.45); }
+.hpm-counter .upcard::before, .hpm-vault .upcard::before { content: ""; position: absolute; left: 1vh; top: 1.3vh; width: 1vh; height: 1vh; border-radius: 50%; background: #3a2412; box-shadow: inset 0 0 0 0.18vh #b8862c; }
+.hpm-counter .upcard .name, .hpm-vault .upcard .name { color: #20160d; font-family: "Almendra", var(--font-serif); font-size: calc(var(--fs-body) * 1.12); }
+.hpm-counter .upcard .line, .hpm-vault .upcard .line { color: #4a3620; }
+.hpm-counter .upcard .price, .hpm-vault .upcard .price { color: #8e1d16; font-family: var(--font-serif); font-size: calc(var(--fs-small) * 1.08); }
+.hpm-counter .upcard .price.poor, .hpm-vault .upcard .price.poor { color: #8a7656; }
+.hpm-counter .upcard.max .price, .hpm-vault .upcard.max .price { color: #2f6a2a; }
+.hpm-counter .upcard .pips i, .hpm-vault .upcard .pips i { background: rgba(60, 40, 20, 0.25); }
+.hpm-counter .upcard .pips i.on, .hpm-vault .upcard .pips i.on { background: #b8862c; }
+.hpm-counter .upcard.focused, .hpm-vault .upcard.focused { color: #f4ecd8; background: linear-gradient(180deg, #2e2012, #1a1008); box-shadow: 0 0 0 0.3vh #f4ecd8, 0 0 0 0.7vh var(--focus-out), 0 0.8vh 2vh rgba(0, 0, 0, 0.6); }
+.hpm-counter .upcard.focused .name, .hpm-counter .upcard.focused .line, .hpm-vault .upcard.focused .name, .hpm-vault .upcard.focused .line { color: #f4ecd8; }
+.hpm-counter .upcard.focused .price, .hpm-vault .upcard.focused .price { color: var(--gold-hi); }
+.hpm-counter .tab, .hpm-vault .tab { font-family: var(--font-serif); font-weight: 700; }
+.hpm-counter .menu .sub, .hpm-counter .hints { color: #e2cfa2; }
+.hpm-vault .hpm-sheet.panel { color: #20160d; background-color: #e8e4da; background-image: var(--noise), linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 30%, rgba(160, 150, 130, 0.25) 55%, transparent 70%, rgba(255, 255, 255, 0.35)),
+  linear-gradient(180deg, #f2efe6, #d6cfbd); background-size: 180px 180px, 100% 100%, 100% 100%; background-blend-mode: multiply, normal, normal; border: 0.35vh solid #b8862c;
+  box-shadow: 0 1.2vh 3.2vh rgba(0, 0, 0, 0.6), inset 0 0 0 0.6vh #f2efe6, inset 0 0 0 0.75vh rgba(184, 134, 44, 0.6); }
+.hpm-vault .hpm-sheet.panel::before { background: linear-gradient(90deg, #8a5a10, #ffe08a, #8a5a10); }
+.hpm-vault .hpm-kick { color: #1f5a3a; }
+.hpm-vault .engraved { background: none; -webkit-text-fill-color: currentColor; color: #1f3a2a; filter: none; }
+.hpm-vault .menu .sub, .hpm-vault .hints { color: #3a4a3a; }
+.hpm-vault .tab { color: #1f3a2a; border-color: rgba(31, 58, 42, 0.45); }
+.hpm-vault .tab.on { color: #f4e6b8; background: linear-gradient(180deg, #2a5a3a, #133222); border-color: #133222; }
+.hpm-vault .chip { background: rgba(31, 58, 42, 0.12); color: #1f3a2a; border-color: #b8862c; }
+.hpm-vault .upcard.focused { background: linear-gradient(180deg, #1f3a2a, #0f2216); }
+
+/* ---------- the Szerencseüst: an iron cauldron with a green brew ---------- */
+.hpm-cauldron .hpm-sheet.panel { background-color: #16141a; background-image: var(--noise), radial-gradient(ellipse 80% 50% at 50% 115%, rgba(120, 255, 90, 0.3), transparent 70%), linear-gradient(180deg, #2c2a30, #16141a 70%);
+  background-size: 180px 180px, 100% 100%, 100% 100%; background-blend-mode: soft-light, normal, normal; border: 0.3vh solid #0a090c; border-radius: 1.4vh 1.4vh 4vh 4vh;
+  box-shadow: 0 1.2vh 3.2vh rgba(0, 0, 0, 0.65), inset 0 0 0 0.4vh #46424c, inset 0 0 3vh rgba(0, 0, 0, 0.6); padding-bottom: 4.6vh; }
+.hpm-cauldron .hpm-sheet.panel::before { display: none; }
+.hpm-cauldron .hpm-kick { color: #a8f080; }
+.hpm-cauldron .engraved { font-family: "Almendra", var(--font-serif); }
+.hpm-cauldron .boon { background: radial-gradient(ellipse at 50% 30%, var(--boon, var(--gold-30)), transparent 70%), linear-gradient(180deg, #f2e6c8, #dcc79c); color: #24160a; border-color: rgba(60, 40, 20, 0.5); }
+.hpm-cauldron .boon p, .hpm-cauldron .boon .caps { color: #4a3620; }
+.hpm-cauldron .boon .bname { color: #8e1d16; font-family: "Almendra", var(--font-serif); }
+.hpm-cauldron .hpm-brew { position: absolute; left: 12%; right: 12%; bottom: 1.2vh; height: 2.4vh; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(circle at 20% 60%, rgba(200, 255, 160, 0.8) 0 0.5vh, transparent 0.6vh), radial-gradient(circle at 55% 40%, rgba(200, 255, 160, 0.7) 0 0.7vh, transparent 0.8vh),
+  radial-gradient(circle at 80% 65%, rgba(200, 255, 160, 0.75) 0 0.45vh, transparent 0.55vh), radial-gradient(ellipse at 50% 50%, #5ad040, #1e6a18 70%);
+  box-shadow: 0 0 2vh rgba(120, 255, 90, 0.45); animation: hpmBrew 2.4s ease-in-out infinite; }
+
+/* ---------- letters: the owl post with a wax seal ---------- */
+.hpm-note .hpm-sheet.letter { padding-bottom: calc(3.2vh + 4vh * min(var(--ts), 1.3)); }
+.hpm-note .lt-head { font-family: "Almendra", var(--font-serif); color: #8e1d16; letter-spacing: 0.12em; }
+.hpm-note .hpm-kick { font-size: calc(1.5vh * var(--ts)); color: #5b452c; }
+.hpm-note .lt-body::first-letter { font: 400 calc(4.6vh * var(--ts))/0.85 "Uncial Antiqua", var(--font-display); float: left; padding: 0.3vh 0.6vh 0 0; color: #8e1d16; }
+
+/* ---------- the Talált tárgyak: a parcel label on brown paper with string ---------- */
+.hpm-parcel .hpm-sheet.panel { background-color: #c49c66; background-image: var(--noise), linear-gradient(90deg, transparent calc(50% - 0.25vh), rgba(240, 230, 200, 0.75) calc(50% - 0.25vh), rgba(240, 230, 200, 0.75) calc(50% + 0.25vh), transparent calc(50% + 0.25vh)),
+  linear-gradient(180deg, #d2ae78, #b88c54); background-size: 180px 180px, 100% 100%, 100% 100%; background-blend-mode: multiply, normal, normal; }
+.hpm-parcel .hpm-sheet .items { position: relative; padding: 1.2vh; background: rgba(250, 244, 226, 0.92); border-radius: 0.3vh; box-shadow: 0 0.3vh 0.8vh rgba(60, 40, 20, 0.4); }
+
+/* ---------- slot actions: a price tag ---------- */
+.hpm-tag .hpm-sheet.panel { border-radius: 0.4vh 3vh 3vh 0.4vh; padding-left: 4.4vh; }
+.hpm-tag .hpm-sheet.panel::before { display: block; left: 1.4vh; right: auto; top: 50%; width: 1.4vh; height: 1.4vh; min-height: 0; margin-top: -0.7vh; border-radius: 50%; background: #3a2412; opacity: 1; box-shadow: inset 0 0 0 0.2vh #b8862c; }
+.hpm-tag .gold { color: #8a5a10; }
+
+/* ---------- the end credits: a parchment scroll ---------- */
+#app #endui .cred { box-sizing: border-box; padding: 3.4vh 3vh 6vh; color: #24160a; text-shadow: none; border-radius: 0.4vh;
+  background-color: #e9dcbc; background-image: var(--noise), radial-gradient(ellipse 120% 90% at 30% 20%, #f6ecd2, #e2d0a8 60%, #c8ae7c 100%); background-size: 180px 180px, 100% 100%; background-blend-mode: multiply, normal;
+  box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.7), inset 0 0 4vh rgba(120, 84, 30, 0.4); border-top: 1.2vh solid #5a3a1e; border-bottom: 1.2vh solid #5a3a1e; }
+#app #endui .cred .hd { font-family: "Uncial Antiqua", var(--font-display); color: #8e1d16; }
+#app #endui .cred .sub { font-family: "Almendra", var(--font-serif); font-weight: 400; color: #5b452c; }
+#app #endui .cred .ln { color: #20160d; }
+#app #endui .cred .ln.g { color: #8a5a10; }
+#app #endui .cred .by { left: 3vh; right: 3vh; bottom: 2vh; color: #4a3620; font-family: var(--font-serif); font-style: italic; }
+#app #endui .speech { background: linear-gradient(180deg, rgba(36, 22, 12, 0.92), rgba(20, 12, 6, 0.94)); border-color: #b8862c; }
+#app #endui .speech .who { font-family: "Almendra", var(--font-serif); font-weight: 400; }
+
+/* ---------- the co-op prompts: parchment slips with player 2's cyan edge ---------- */
+#hud .coop-prompt, #hud .coop-help { color: #24160a; background-color: #ece0c2; background-image: var(--noise), linear-gradient(180deg, #f6ecd2, #e2d0a8); background-size: 180px 180px, 100% 100%; background-blend-mode: multiply, normal;
+  border: 1px solid rgba(60, 40, 20, 0.5); border-left: 0.6vh solid #3fd8d0; border-radius: 0.3vh; box-shadow: 0 0.8vh 2vh rgba(0, 0, 0, 0.5); font-family: var(--font-serif); font-weight: 700; }
+#hud .coop-help b { color: #0e6a66; font-family: "Almendra", var(--font-serif); font-weight: 400; }
+#hud .coop-badge { background: rgba(236, 224, 194, 0.94); color: #24160a; border-color: #3fd8d0; font-family: var(--font-serif); }
+
+/* ---------- high contrast and motion ---------- */
+#app.hc .hpm-parch .hpm-sheet.panel, #app.hc .hpm-parch .hpm-sheet.letter, #app.hc .hpm-album .book-grid { background: #fff; color: #000; }
+#app.hc .hpm .item.focused { background: #000; color: #fff; }
+@keyframes hpmFlame { from { transform: scaleY(0.85); opacity: 0.65; } to { transform: scaleY(1.12); opacity: 0.9; } }
+@keyframes hpmBrew { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.15); } }
+@media (prefers-reduced-motion: reduce) { .hpm-floo .hpm-flames, .hpm-cauldron .hpm-brew { animation: none; } }
+@media (max-width: 760px) { .hpm .hpm-seal, .hpm-decree .hpm-stamp, .hpm-chart .hpm-compass { display: none; } .hpm-bus .hpm-sheet.panel { padding-left: 22px; padding-right: 22px; } }
+`);
+
 /* ---- 90-main.js ---- */
 /* ==== 90-main.js — quality tiers, governor, render size, main loop, game flow, staged boot, context loss and
    recovery, performance panel, debug hook (PERF-PLAN.md sections 2, 5 and 6) ==== */
@@ -77624,9 +79286,17 @@ function askPrecache() {
  */
 const FAKE_PAD = { active: false, pad: null, list: [] };
 
-function makeFakePad(index = 0) {
+/** Gamepad.id of the fake pad kinds (NOTES-psglyphs.md): the Chromium-on-Windows ids of a DualSense and a DualShock 4. */
+const FAKE_PAD_IDS = {
+  dualsense: 'DualSense Wireless Controller (STANDARD GAMEPAD Vendor: 054c Product: 0ce6)',
+  ds4: 'Wireless Controller (STANDARD GAMEPAD Vendor: 054c Product: 09cc)',
+};
+
+/** `kind`: 'xbox' (default), 'dualsense', 'ds4', or a full Gamepad.id string. */
+function makeFakePad(index = 0, kind = 'xbox') {
   const buttons = Array.from({ length: 17 }, () => ({ pressed: false, touched: false, value: 0 }));
-  return { id: `Fake Xbox Controller ${index} (STANDARD GAMEPAD)`, index, connected: true, mapping: 'standard', timestamp: performance.now(), axes: [0, 0, 0, 0], buttons, vibrationActuator: null };
+  const id = FAKE_PAD_IDS[kind] || (kind && kind !== 'xbox' ? String(kind) : `Fake Xbox Controller ${index} (STANDARD GAMEPAD)`);
+  return { id, index, connected: true, mapping: 'standard', timestamp: performance.now(), axes: [0, 0, 0, 0], buttons, vibrationActuator: null };
 }
 
 const DEBUG_API = {
@@ -78113,9 +79783,12 @@ const DEBUG_API = {
     },
   },
   fakePad: {
-    /** Connects a fake pad at Gamepad API index `index` (default 0) and makes it the driven one. */
-    connect(index = 0) {
-      FAKE_PAD.pad = makeFakePad(index);
+    /**
+     * Connects a fake pad at Gamepad API index `index` (default 0) and makes it the driven one. `kind`: 'xbox' (default),
+     * 'dualsense', 'ds4' or a full Gamepad.id (the PlayStation glyph tests, NOTES-psglyphs.md).
+     */
+    connect(index = 0, kind = 'xbox') {
+      FAKE_PAD.pad = makeFakePad(index, kind);
       FAKE_PAD.list[index] = FAKE_PAD.pad;
       FAKE_PAD.active = true;
       return true;
@@ -78141,6 +79814,10 @@ const DEBUG_API = {
     /** The player slots of the input layer: [{ connected, index, id, mapping }, …]. */
     slots() {
       return IN.pads.map((p) => ({ ...p }));
+    },
+    /** The pad glyph families in use (71-pad-glyphs.js): { p1, p2, join, applied, txt, stats }. */
+    glyphs() {
+      return typeof padGlyphInfo === 'function' ? padGlyphInfo() : null;
     },
     press(i) {
       const b = FAKE_PAD.pad.buttons[i];
