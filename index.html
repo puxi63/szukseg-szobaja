@@ -63848,17 +63848,20 @@ function pileStraySources(k) {
 /**
  * Pile a delivered figurine of district d goes to: its home with 1 − stray share (when there is room), else a stray in
  * an awake pile that takes strays from d, else home, else any awake pile with room; −1 when every pile is full.
+ * A completed room (every slot of its district full) takes no more figurines (the user's decision, 2026-10-28): its
+ * stray share goes to the other rooms; strays already lying there stay until they are carried away.
  */
 function pileTargetFor(rec, r, strayShare = PILE_CFG.stray) {
   const d = rec.district;
-  const homeOk = d >= 0 && districtAwake(d) && pileRoom(d) > 0;
+  const open = (k) => districtAwake(k) && pileRoom(k) > 0 && !districtComplete(k);
+  const homeOk = d >= 0 && open(d);
   if (homeOk && r() >= strayShare) return d;
   const cands = [];
-  for (let k = 0; k < 10; k++) if (k !== d && districtAwake(k) && pileRoom(k) > 0 && pileStraySources(k).includes(d)) cands.push(k);
+  for (let k = 0; k < 10; k++) if (k !== d && open(k) && pileStraySources(k).includes(d)) cands.push(k);
   if (cands.length) return cands[Math.floor(r() * cands.length)];
   if (homeOk) return d;
   let best = -1;
-  for (let k = 0; k < 10; k++) if (districtAwake(k) && pileRoom(k) > (best >= 0 ? pileRoom(best) : 0)) best = k;
+  for (let k = 0; k < 10; k++) if (open(k) && pileRoom(k) > (best >= 0 ? pileRoom(best) : 0)) best = k;
   return best;
 }
 
